@@ -213,6 +213,18 @@ module.exports = function (grunt) {
       }
     },
 
+    // Build - Deploy site to repository.
+    buildcontrol: {
+      dist: {
+        options: {
+          remote: 'git@github.com:YaronMiro/AngularJs-UI-Router---Example.git',
+          branch: 'gh-pages',
+          commit: true,
+          push: true
+        }
+      }
+    },
+
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -431,6 +443,12 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'test',
+    'build',
+    'buildcontrol'
   ]);
 
   grunt.registerTask('default', [

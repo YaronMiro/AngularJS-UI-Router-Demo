@@ -1,7 +1,9 @@
 {
   "name": "myapp",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "grunt-build-control": "^0.2.2"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
