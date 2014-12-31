@@ -9,20 +9,15 @@
  * Main module of the application.
  */
 angular
-  .module('myAppApp', [
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+.module('myApp', ['ui.router'])
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/main');
+
+    $stateProvider
+      .state('main', {
+        url: '/main',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
   });
