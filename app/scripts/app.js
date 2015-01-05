@@ -12,6 +12,7 @@ angular
 .module('myApp', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
 
+    // Default url route.
     $urlRouterProvider.otherwise('/main');
 
     $stateProvider
@@ -20,4 +21,9 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      });
   });
