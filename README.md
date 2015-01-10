@@ -3,22 +3,17 @@ AngularJs-UI-Router---Example
 
 Demo project for the AngularJs UI-Router.
 
-Install
+##Build locally.
 
+```bash
+bundle install
 npm install
 bower install
-Grunt tasks
+grunt build
+```
 
-Serve locally
+##Open in browser.
 
+```bash
 grunt serve
-
-Serve locally a from the built dist directory (no livereload)
-
-grunt serve:dist
-
-Build (push to gh-pages)
-
-grunt deploy
-
-The css processor is SASS.
+```
