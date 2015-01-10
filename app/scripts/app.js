@@ -48,8 +48,11 @@ angular
           'content@': {
             templateUrl: 'views/pages/about.html'
           },
-          'footer@': {
-            template: 'About page footer'
+//          'footer@': {
+//            template: 'About page footer'
+//          },
+          'footer@main.about': {
+            template: '<p>Inner about page footer</p>'
           }
         }
        })
