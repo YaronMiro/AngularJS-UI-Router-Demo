@@ -11,4 +11,5 @@ angular.module('myApp')
   .controller('HomeCtrl', function ($scope) {
 
     $scope.menus = ['home','about'];
+    console.log($scope.menus);
   });

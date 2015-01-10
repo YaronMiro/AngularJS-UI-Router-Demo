@@ -14,6 +14,8 @@ angular
 
     // Default url route.
     $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.when("", "/home");
+    $urlRouterProvider.when("/", "/home");
 
     $stateProvider
       // The main view.
@@ -25,11 +27,9 @@ angular
             templateUrl: '/views/main/header.html'
           },
           'footer': {
-            templateUrl: '/views/main/footer.html'
+            templateUrl: '/views/main/footer.html',
+            controller: 'HomeCtrl'
           }
-        },
-        onEnter: function(){
-          console.log("enter main");
         }
        })
 
@@ -40,9 +40,6 @@ angular
           'content@': {
             templateUrl: '/views/pages/home.html'
           }
-        },
-        onEnter: function(){
-          console.log("enter home page");
         }
        })
 
@@ -53,9 +50,6 @@ angular
           'content@': {
             templateUrl: '/views/pages/about.html'
           }
-        },
-        onEnter: function(){
-          console.log("enter about page");
         }
        })
   }]);
