@@ -8,7 +8,7 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('HomeCtrl', function ($scope) {
 
-    $scope.menus = ['main','about'];
+    $scope.menus = ['home','about'];
   });

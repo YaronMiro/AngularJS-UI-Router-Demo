@@ -16,8 +16,10 @@
   </head>
   <body ng-app="myApp">
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div ui-view></div>
+    <div class="container main">
+      <div ui-view="header"></div>
+      <div ui-view="content"></div>
+      <div ui-view="footer"></div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -61,7 +63,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/home.js"></script>
         <!-- endbuild -->
 </body>
 </html>
