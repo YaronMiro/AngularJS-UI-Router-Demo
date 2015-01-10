@@ -22,11 +22,10 @@ angular
         abstract: true,
         views: {
           'header': {
-            templateUrl: 'views/header.html'
+            templateUrl: 'views/main/header.html'
           },
           'footer': {
-            templateUrl: 'views/footer.html',
-            controller: 'HomeCtrl'
+            templateUrl: 'views/main/footer.html'
           }
         }
        })
@@ -36,7 +35,8 @@ angular
         url: 'home',
         views: {
           'content@': {
-            templateUrl: 'views/home.html'
+            controller: 'HomeCtrl',
+            templateUrl: 'views/pages/home.html'
           }
         }
        })
@@ -46,7 +46,10 @@ angular
         url: 'about',
         views: {
           'content@': {
-            templateUrl: 'views/about.html'
+            templateUrl: 'views/pages/about.html'
+          },
+          'footer@': {
+            template: 'About page footer'
           }
         }
        })
