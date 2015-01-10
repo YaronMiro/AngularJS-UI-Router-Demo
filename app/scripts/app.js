@@ -14,8 +14,6 @@ angular
 
     // Default url route.
     $urlRouterProvider.otherwise('/home');
-    $urlRouterProvider.when("", "/home");
-    $urlRouterProvider.when("/", "/home");
 
     $stateProvider
       // The main view.
