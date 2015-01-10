@@ -24,9 +24,6 @@ angular
           'header': {
             templateUrl: '/views/main/header.html'
           },
-          'content': {
-            templateUrl: '/views/main/main.html'
-          },
           'footer': {
             templateUrl: '/views/main/footer.html'
           }
