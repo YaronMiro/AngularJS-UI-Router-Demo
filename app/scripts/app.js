@@ -21,9 +21,13 @@ angular
         url: '/',
         abstract: true,
         views: {
+          // Absolutely targets the 'header' view in this state's.
+          // <div ui-view='header'/> within index.html
           'header': {
             templateUrl: 'views/main/header.html'
           },
+          // Absolutely targets the 'footer' view in this state's.
+          // <div ui-view='footer'/> within index.html
           'footer': {
             templateUrl: 'views/main/footer.html'
           }
@@ -34,11 +38,20 @@ angular
       .state('main.home',{
         url: 'home',
         views: {
+          // Relatively targets the 'content' view in this state parent state, 'main'.
+          // <div ui-view='content'/> within index.html
           'content@': {
-            controller: 'HomeCtrl',
-            templateUrl: 'views/pages/home.html'
+            templateUrl: 'views/pages/home/home.html',
+            controller: 'HomePageCtrl'
           }
         }
+       })
+
+      // Home edit.
+      .state('main.home.edit',{
+        url: '/edit',
+        templateUrl: 'views/pages/home/home.edit.html',
+        controller: 'HomePageEditCtrl'
        })
 
       // About.

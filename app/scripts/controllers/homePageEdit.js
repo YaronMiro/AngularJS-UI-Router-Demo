@@ -8,8 +8,7 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('HomeCtrl', ['$scope', function ($scope) {
+  .controller('HomePageEditCtrl', ['$scope', function ($scope) {
 
-    $scope.menus = ['home','about'];
-    console.log($scope.menus);
+   console.log('edit');
   }]);
