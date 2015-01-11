@@ -47,12 +47,6 @@ angular
         views: {
           'content@': {
             templateUrl: 'views/pages/about.html'
-          },
-//          'footer@': {
-//            template: 'About page footer'
-//          },
-          'footer@main.about': {
-            template: '<p>Inner about page footer</p>'
           }
         }
        })
