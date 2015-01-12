@@ -1,4 +1,5 @@
 @import "compass/css3/border-radius";
+@import "compass/css3/transition";
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 // Override default bootstrap variables.
@@ -80,9 +81,10 @@ body {
 
   .movie {
     cursor: pointer;
+    @include transition(opacity 0.5s ease-in-out);
 
     &:hover {
-      @include opacity(0.5);
+      @include opacity(0.6);
     }
   }
 }
