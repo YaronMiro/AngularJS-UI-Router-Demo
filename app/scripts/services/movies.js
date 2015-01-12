@@ -43,24 +43,23 @@ angular.module('myApp')
     function requestMoviesById(ids) {
       var deferred = $q.defer();
 
+      // Exit early if it's not an array.
       if (!angular.isArray(ids)) {
         return;
       }
 
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
-
-          // Ad an extra movie image size.
-          angular.forEach(movies, function(movie) {
-//            console.log(movie);
+          // Ad an extra movie image size 400px width.
+          angular.forEach(movies.results, function(movie) {
+            var artworkUrl400 = movie.artworkUrl100.replace('100x100', "400x400");
+            movie.artworkUrl400 = artworkUrl400;
           });
-
-          deferred.resolve(movies);
+          deferred.resolve(movies.results);
         })
       // Return promise object.
       return deferred.promise;
     }
-
 
     // Public API here
     return {

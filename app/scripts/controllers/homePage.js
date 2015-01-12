@@ -10,8 +10,7 @@
 angular.module('myApp')
   .controller('HomePageCtrl', ['$scope', 'Movies', function ($scope, Movies) {
 
-    Movies.gettingMovies(25).then(function(movies){
-      console.log(movies, 'dsdad');
+    Movies.gettingMovies(2).then(function(movies){
       $scope.movies = movies;
     });
 
