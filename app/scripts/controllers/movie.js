@@ -8,7 +8,7 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('HomePageEditCtrl', ['$scope', function ($scope) {
+  .controller('MovieCtrl', ['$scope', function ($scope) {
 
    console.log('edit');
   }]);

@@ -1,4 +1,9 @@
+@import "compass/css3/border-radius";
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// Override default bootstrap variables.
+$grid-gutter-width: 0px;
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -6,29 +11,34 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background: black;
 }
 
 #main {
 
   .header,
   .footer {
+    color: #777;
     padding-left: 15px;
     padding-right: 15px;
   }
 
   .content {
-    background: white;
     padding: 19px;
 
-    .jumbotron {
+    .top {
+      padding: 60px;
       text-align: center;
       margin: 0px;
+      @include border-top-left-radius(6px);
+      @include border-top-right-radius(6px);
+      background: rgb(30, 30, 30);
     }
   }
 
   .header {
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 19px;
+//    border-bottom: 1px solid #e5e5e5;
+//    padding-bottom: 19px;
 
     h3 {
       margin-top: 0;
@@ -38,9 +48,8 @@ body {
   }
 
   .footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
+//    padding-top: 19px;
+//    border-top: 1px solid #e5e5e5;
   }
 
   .btn-view {

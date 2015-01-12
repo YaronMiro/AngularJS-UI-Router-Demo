@@ -48,12 +48,12 @@ angular
        })
 
       // Home edit.
-      .state('main.home.edit',{
+      .state('main.home.movie',{
         // Relatively targets the unnamed view in this state parent state, 'main.home'.
         // <div ui-view/> within home.html
-        url: '/edit',
-        templateUrl: 'views/pages/home/home.edit.html',
-        controller: 'HomePageEditCtrl'
+        url: '/movie',
+        templateUrl: 'views/pages/home/home.movie.html',
+        controller: 'MovieCtrl'
        })
 
       // About.
