@@ -4,6 +4,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // Override default bootstrap variables.
 $grid-gutter-width: 0px;
 
+// Colors.
+$gray: #777777;
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -18,7 +21,6 @@ body {
 
   .header,
   .footer {
-    color: #777;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -37,10 +39,11 @@ body {
   }
 
   .header {
-//    border-bottom: 1px solid #e5e5e5;
-//    padding-bottom: 19px;
+    color: $gray;
+    text-transform: uppercase;
 
     h3 {
+      color: #ffffff;
       margin-top: 0;
       margin-bottom: 0;
       line-height: 40px;
@@ -48,14 +51,39 @@ body {
   }
 
   .footer {
-//    padding-top: 19px;
-//    border-top: 1px solid #e5e5e5;
+
+    a {
+      color: white;
+
+      &:hover {
+        text-decoration: none;
+        color: #9e9e9e;
+      }
+
+      span {
+        color: $gray;
+      }
+    }
+
+    .divider {
+      color: $gray;
+      display: inline-block;
+      margin: 0px 3px;
+    }
   }
 
   .btn-view {
   @include button-variant(white, #337ab7, #2d6198);
   @include button-size(8px, 8px, 16px, 0px, 6px);
 
+  }
+
+  .movie {
+    cursor: pointer;
+
+    &:hover {
+      @include opacity(0.5);
+    }
   }
 }
 

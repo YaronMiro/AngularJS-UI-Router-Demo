@@ -1,9 +1,10 @@
 <div class="top">
-  <header><a href=""></a></header>
-  <h1>Home page</h1>
-    <a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a>
+    <!--<a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a>-->
+    <!--<button class="btn btn-default" data-toggle="collapse" data-target="#movies">Get movies</button>-->
+
 </div>
-  <section class="movies row">
+  <!--<section id="movies" class="row collapse">-->
+  <section id="movies" class="row">
     <div class="movie col-xs-6 col-md-4" ng-repeat="movie in movies" id="{{ movie.trackId }}">
       <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }} - poster image"/>
     </div>
