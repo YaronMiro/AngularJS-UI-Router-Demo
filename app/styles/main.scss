@@ -21,7 +21,7 @@ body {
 #main {
 
   #main-header,
-  #main-header {
+  #main-footer {
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -60,7 +60,7 @@ body {
     }
   }
 
-  #main-header {
+  #main-footer {
 
     a {
       color: white;
@@ -79,6 +79,10 @@ body {
       color: $gray;
       display: inline-block;
       margin: 0px 3px;
+    }
+
+    .back-to-top {
+      text-transform: uppercase;
     }
   }
 

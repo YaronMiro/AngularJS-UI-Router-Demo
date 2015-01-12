@@ -50,7 +50,6 @@ angular.module('myApp')
           angular.forEach(movies.results, function(movie) {
             var artworkUrl600 = movie.artworkUrl100.replace('100x100', "600x600");
             movie.artworkUrl600 = artworkUrl600;
-            console.log(artworkUrl600);
           });
 
           deferred.resolve(movies.results);
