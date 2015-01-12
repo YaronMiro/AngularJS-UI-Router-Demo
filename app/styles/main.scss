@@ -99,6 +99,17 @@ body {
     &:hover {
       @include opacity(0.6);
     }
+
+    .index {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      @include border-top-left-radius(6px);
+    }
   }
 }
 
