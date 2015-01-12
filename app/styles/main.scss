@@ -20,26 +20,35 @@ body {
 
 #main {
 
-  .header,
-  .footer {
+  #main-header,
+  #main-header {
     padding-left: 15px;
     padding-right: 15px;
   }
 
-  .content {
+  #main-content {
     padding: 19px;
 
-    .top {
-      padding: 60px;
+    .top,
+    .bottom {
+      padding: 20px;
       text-align: center;
       margin: 0px;
+      background: rgb(30, 30, 30);
+    }
+
+    .top {
       @include border-top-left-radius(6px);
       @include border-top-right-radius(6px);
-      background: rgb(30, 30, 30);
+    }
+
+    .bottom {
+      @include border-bottom-left-radius(6px);
+      @include border-bottom-right-radius(6px);
     }
   }
 
-  .header {
+  #main-header {
     color: $gray;
     text-transform: uppercase;
 
@@ -51,7 +60,7 @@ body {
     }
   }
 
-  .footer {
+  #main-header {
 
     a {
       color: white;
