@@ -2,7 +2,7 @@
   <section id="movies" class="row">
     <div class="movie col-xs-6 col-md-4" ng-repeat="movie in movies" id="{{ movie.trackId }}">
       <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }} - poster image"/>
-      <div class="index">{{ $index }}</div>
+      <div class="index">{{ $index + 1 }}</div>
     </div>
   </section>
 <section class="edit" ui-view></section>
