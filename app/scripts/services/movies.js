@@ -1,41 +1,66 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', function ($http, $q) {
+  .factory('Movies', ['$http', '$q', function ($http, $q) {
 
     /**
-    * Return the promise of the list of top 25 movies Ids.
+    * Return the promise of the list of top movies Ids amount by moviesCount.
+    *
+    * @param moviesCount
+    *  Number of movies to return.
     *
     * @returns {*}
     */
-    function requestTopMoviesIds() {
+    function requestTopMoviesIds(moviesCount) {
       var deferred = $q.defer();
 
       $http({
         method: 'GET',
-        url: 'https://itunes.apple.com/us/rss/topmovies/limit=25/json'
+        url: 'https://itunes.apple.com/us/rss/topmovies/limit=' + moviesCount + '/json'
       })
       .success(function(data) {
           var moviesList = data.feed.entry;
           var moviesIds = [];
-
-          // GEt the top 25 movies IDs.
+          // Get the top 25 movies IDs.
           angular.forEach(moviesList, function(movie) {
             moviesIds.push(movie.id.attributes['im:id']);
           });
-
-          console.log('Movies: ', moviesList);
-          console.log('Movie ids: ', moviesIds);
           deferred.resolve(moviesIds);
       })
-      .error(function(data) {
-        console.log('Error: ', data);
-        deferred.reject(data);
-      });
 
       // Return promise object.
       return deferred.promise;
     }
+
+    /**
+     *
+     * @param ids
+     *  An array of movies IDs.
+     *
+     * @returns {}
+     */
+
+    function requestMoviesById(ids) {
+      var deferred = $q.defer();
+
+      if (!angular.isArray(ids)) {
+        return;
+      }
+
+      $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
+        .success(function(movies) {
+
+          // Ad an extra movie image size.
+          angular.forEach(movies, function(movie) {
+//            console.log(movie);
+          });
+
+          deferred.resolve(movies);
+        })
+      // Return promise object.
+      return deferred.promise;
+    }
+
 
     // Public API here
     return {
@@ -44,10 +69,17 @@ angular.module('myApp')
        *
        * @returns {*}
        */
-      gettingMovies: function () {
-        return requestTopMoviesIds().then(function(data) {
-          console.log('Public API', data)
+      gettingMovies: function(moviesCount) {
+        var deferred = $q.defer();
+
+        // Get the top movies ids.
+        requestTopMoviesIds(moviesCount).then(function(moviesIds) {
+          requestMoviesById(moviesIds).then(function(movies) {
+            deferred.resolve(movies);
+          })
         });
+        // Return promise object.
+        return deferred.promise;
       }
     };
-  });
+  }]);

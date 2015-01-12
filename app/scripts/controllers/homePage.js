@@ -10,6 +10,10 @@
 angular.module('myApp')
   .controller('HomePageCtrl', ['$scope', 'Movies', function ($scope, Movies) {
 
-    $scope.movies = Movies.gettingMovies();
+    Movies.gettingMovies(25).then(function(movies){
+      console.log(movies, 'dsdad');
+      $scope.movies = movies;
+    });
+
     $scope.menus = ['home','about'];
   }]);
