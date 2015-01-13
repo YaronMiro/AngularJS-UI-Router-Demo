@@ -18,4 +18,6 @@ angular.module('myApp')
       console.log(string);
     }
 
+    $scope.flag = false;
+
   }]);
