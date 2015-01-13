@@ -7,6 +7,7 @@ $grid-gutter-width: 0px;
 
 // Colors.
 $gray: #777777;
+$blue: #337ab7;
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
@@ -57,6 +58,26 @@ body {
       margin-top: 0;
       margin-bottom: 0;
       line-height: 40px;
+    }
+
+    .nav-pills {
+
+      li {
+        &.active {
+          a {
+            border: 1px solid $blue;
+          }
+        }
+
+        a {
+          color: white;
+          background: transparent;
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
     }
   }
 
@@ -112,7 +133,5 @@ body {
     }
   }
 }
-
-
 
 
