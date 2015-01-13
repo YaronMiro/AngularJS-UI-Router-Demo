@@ -1,28 +1,8 @@
-<!--<div class="top">&lt;!&ndash;<a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a>&ndash;&gt;</div>-->
-  <!--<section id="movies" class="row">-->
-    <!--<div class="flip-container movie col-xs-6 col-md-4"  id="{{ movie.trackId }}"  ng-repeat="movie in movies" ng-click="clickMe(movie.trackName)">-->
-      <!--<img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }} - poster image"/>-->
-      <!--<div class="index">{{ $index + 1 }}</div>-->
-    <!--</div>-->
-  <!--</section>-->
-<!--<section class="edit" ui-view></section>-->
-<!--<div class="bottom"></div>-->
-
 <div class="top"><!--<a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a>--></div>
   <section id="movies" class="row">
     <div class="movie col-xs-6 col-md-4"  id="{{ movie.trackId }}"  ng-repeat="movie in movies" ng-click="clickMe(movie.trackName)">
-      <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-        <div class="flipper">
-          <div class="front">
-            <span class="name">David Walsh</span>
-          </div>
-          <div class="back">
-            <div class="back-logo"></div>
-            <div class="back-title">@davidwalshblog</div>
-            <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
-          </div>
-        </div>
-      </div>
+      <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }} - poster image"/>
+      <div class="index">{{ $index + 1 }}</div>
     </div>
   </section>
 <section class="edit" ui-view></section>
