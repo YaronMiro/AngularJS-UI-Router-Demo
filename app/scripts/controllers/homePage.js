@@ -14,5 +14,8 @@ angular.module('myApp')
       $scope.movies = movies;
     });
 
-    $scope.menus = ['home','about'];
+    $scope.clickMe = function(string) {
+      console.log(string);
+    }
+
   }]);
