@@ -1,18 +1,18 @@
-<div class="top"><!--<a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a>--></div>
+<div class="top"><a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a></div>
   <section id="movies" class="row">
     <div class="col-xs-6 col-md-4 movies-wrapper" id="{{ movie.trackId }}"  ng-repeat="movie in movies">
-      <div class="movie" ng-click="flag = !flag">
-        <!-- preview -->
-        <img ng-show="!flag" class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
-        <div class="index">{{ $index + 1 }}</div>
-      </div>
+      <div ui-view></div>
+      <!--<div class="movie" ng-click="flag = !flag">-->
+        <!--&lt;!&ndash; preview &ndash;&gt;-->
+        <!--<img ng-show="!flag" class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>-->
+        <!--<div class="index">{{ $index + 1 }}</div>-->
+      <!--</div>-->
       <!-- Summary -->
-      <div ng-show="flag" class="summary">
-        <h3>{{ movie.trackName }}</h3>
-        <p class="description">{{ movie.shortDescription }}</p>
-        <div class="btn btn-default" ng-click="flag = !flag">Back</div>
-      </div>
+      <!--<div ng-show="flag" class="summary">-->
+        <!--<h3>{{ movie.trackName }}</h3>-->
+        <!--<p class="description">{{ movie.shortDescription }}</p>-->
+        <!--<div class="btn btn-default" ng-click="flag = !flag">Back</div>-->
+      <!--</div>-->
     </div>
   </section>
-<section class="edit" ui-view></section>
 <div class="bottom"></div>
