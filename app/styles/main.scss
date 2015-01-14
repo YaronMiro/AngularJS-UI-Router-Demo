@@ -7,6 +7,7 @@ $grid-gutter-width: 0px;
 
 // Colors.
 $gray: #777777;
+$darkGray: #1e1e1e;
 $blue: #337ab7;
 
 // bower:scss
@@ -35,7 +36,7 @@ body {
       padding: 20px;
       text-align: center;
       margin: 0px;
-      background: rgb(30, 30, 30);
+      background: $darkGray;
     }
 
     .top {
@@ -107,29 +108,46 @@ body {
     }
   }
 
-  .btn-view {
-  @include button-variant(white, #337ab7, #2d6198);
-  @include button-size(8px, 8px, 16px, 0px, 6px);
+  .movies-wrapper {
+    min-height: 451px;
+    height: 100%;
 
-  }
+    .movie {
+      cursor: pointer;
+      @include transition(opacity 0.5s ease-in-out);
 
-  .movie {
-    cursor: pointer;
-    @include transition(opacity 0.5s ease-in-out);
+      &:hover {
+        @include opacity(0.6);
+      }
 
-    &:hover {
-      @include opacity(0.6);
+      .index {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        background: rgba(0, 0, 0, 0.25);
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        @include border-top-left-radius(6px);
+      }
     }
 
-    .index {
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-      background: rgba(0, 0, 0, 0.25);
-      padding: 10px;
-      color: white;
-      font-weight: bold;
-      @include border-top-left-radius(6px);
+    .summary {
+//      padding: 20px;
+
+      h3 {
+        text-transform: uppercase;
+        color: $blue;
+        border-top: 1px solid rgba(255, 255, 255, 0.4);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        padding-top: 9px;
+        padding-bottom: 9px;
+        text-align: center;
+      }
+
+      .description {
+        background: $darkGray;
+      }
     }
   }
 }

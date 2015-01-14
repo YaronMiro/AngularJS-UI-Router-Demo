@@ -46,10 +46,12 @@ angular.module('myApp')
       var deferred = $q.defer();
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
-          // Ad an extra movie image size 400px width.
+          // Ad an extra movie image sizes 300px | 600px width.
           angular.forEach(movies.results, function(movie) {
             var artworkUrl600 = movie.artworkUrl100.replace('100x100', "600x600");
+            var artworkUrl200 = movie.artworkUrl100.replace('100x100', "200x200");
             movie.artworkUrl600 = artworkUrl600;
+            movie.artworkUrl200 = artworkUrl200;
           });
 
           deferred.resolve(movies.results);
