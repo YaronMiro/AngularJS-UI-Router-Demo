@@ -21,12 +21,12 @@ angular
         url: '/',
         abstract: true,
         views: {
-          // Absolutely targets the 'header' view in this state's.
+          // Absolutely targets the 'header' view in this state.
           // <div ui-view="header"/> within index.html
           'header': {
             templateUrl: 'views/main/header.html'
           },
-          // Absolutely targets the 'footer' view in this state's.
+          // Absolutely targets the 'footer' view in this state.
           // <div ui-view="footer"/> within index.html
           'footer': {
             templateUrl: 'views/main/footer.html'
@@ -44,12 +44,12 @@ angular
             templateUrl: 'views/pages/movies/movies.html',
             controller: 'MoviesCtrl'
           },
-          // Absolutely targets the 'preview' view in this state's.
+          // Absolutely targets the 'preview' view in this state.
           // <div ui-view="preview"/> within movies.html
           'preview@main.movies': {
             templateUrl: 'views/pages/movies/movie.preview.html'
           },
-          // Absolutely targets the 'summary' view in this state's.
+          // Absolutely targets the 'summary' view in this state.
           // <div ui-view="summary"/> within movies.html
           'summary@main.movies': {
             templateUrl: 'views/pages/movies/movie.summary.html'

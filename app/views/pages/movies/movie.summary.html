@@ -1,5 +1,11 @@
 <div class="summary">
-  <h3>{{ movie.trackName }}</h3>
-  <p class="description">{{ movie.shortDescription }}</p>
-  <button ng-click="$parent.viewMode = !viewMode">Back</button>
+  <div class="wrapper">
+    <h3>{{ movie.trackName }}</h3>
+    <div class="popularity-ranking">{{ $index + 1 }}</div>
+    <p class="description">{{ movie.shortDescription }}</p>
+    <button class="btn text-center" ng-click="$parent.viewMode = !viewMode">
+      <span class="glyphicon glyphicon-circle-arrow-left"></span>
+      Back
+    </button>
+  </div>
 </div>

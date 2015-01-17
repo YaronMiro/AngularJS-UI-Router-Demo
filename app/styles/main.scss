@@ -54,7 +54,21 @@ body {
     color: $gray;
     text-transform: uppercase;
 
-    h3 {
+    .navbar {
+      margin-bottom: 0px;
+
+      .navbar-toggle {
+
+        border: 1px solid $blue;
+
+        .icon-bar {
+          background: $blue;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 24px;
       color: #ffffff;
       margin-top: 0;
       margin-bottom: 0;
@@ -62,7 +76,6 @@ body {
     }
 
     .nav-pills {
-
       li {
         &.active {
           a {
@@ -120,7 +133,7 @@ body {
         @include opacity(0.6);
       }
 
-      .index {
+      .popularity-ranking {
         position: absolute;
         bottom: 0px;
         right: 0px;
@@ -133,20 +146,58 @@ body {
     }
 
     .summary {
-//      padding: 20px;
-
-      h3 {
-        text-transform: uppercase;
-        color: $blue;
-        border-top: 1px solid rgba(255, 255, 255, 0.4);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        padding-top: 9px;
-        padding-bottom: 9px;
+      .wrapper {
         text-align: center;
-      }
 
-      .description {
-        background: $darkGray;
+        h3 {
+          text-transform: uppercase;
+          color: white;
+          border-top: 1px solid $blue;
+          border-bottom: 1px solid $blue;
+          padding-top: 9px;
+          padding-bottom: 9px;
+        }
+
+        .popularity-ranking {
+          margin-bottom: 10px;
+          margin: 0 auto;
+          background: $darkGray;
+          color: white;
+          line-height: 30px;
+          width: 30px;
+          height: 30px;
+          @include border-radius(50%);
+        }
+        
+        
+//        .img-container {
+//
+//          width: 100%;
+//          height: 100px;
+//          overflow: hidden;
+//
+//          img {
+//            width: 100%;
+//            @include opacity(0.6);
+//          }
+//        }
+
+        .description {
+          font-size: 12px;
+          color: #ffffff;
+          padding: 20px;
+        }
+
+        button {
+          color: $gray;
+          background: transparent;
+          border: 1px solid $gray;
+
+          &:hover {
+            color: $blue;
+            border-color: $gray;
+          }
+        }
       }
     }
   }
