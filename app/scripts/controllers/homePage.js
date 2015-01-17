@@ -8,16 +8,17 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('HomePageCtrl', ['$scope', 'Movies', function ($scope, Movies) {
+  .controller('HomePageCtrl', ['$scope', '$state', 'Movies', function ($scope, $state, Movies) {
+
+    $scope.flag = false;
 
     Movies.gettingMovies(30).then(function(movies){
       $scope.movies = movies;
     });
 
-    $scope.clickMe = function(string) {
-      console.log(string);
+    $scope.toggleMovieMode = function() {
+      $state.current.name == 'main.home' ?  $state.go('.movie') :  $state.go('main.home');
     }
 
-    $scope.flag = false;
 
   }]);

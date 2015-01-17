@@ -10,5 +10,5 @@
 angular.module('myApp')
   .controller('MovieCtrl', ['$scope', function ($scope) {
 
-   console.log('edit');
+   console.log($scope.$parent.movies);
   }]);

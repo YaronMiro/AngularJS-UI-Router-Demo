@@ -1,13 +1,21 @@
 <div class="top"><a class="btn-view"  ui-sref=".movie" ui-sref-active="active">movies</a></div>
+
   <section id="movies" class="row">
-    <div class="col-xs-6 col-md-4 movies-wrapper" id="{{ movie.trackId }}"  ng-repeat="movie in movies">
-      <div ui-view></div>
-      <!--<div class="movie" ng-click="flag = !flag">-->
-        <!--&lt;!&ndash; preview &ndash;&gt;-->
+    <div class="col-xs-6 col-md-4 movies-wrapper" id="{{ movie.trackId }}"  ng-click="toggleMovieMode(); flag=!flag" ng-repeat="movie in movies">
+      <p>{{ $index }}</p>
+      <div>{{ flag }}</div>
+      <div ng-if="flag" ui-view></div>
+
+
+      <!--<div ng-click="flag = !flag">fddfds-->
+        <!--<div ng-if="flag">yaron</div>-->
+      <!--</div>-->
+      <!-- preview -->
+      <!--<div class="movie preview" ng-click="flag = !flag">-->
         <!--<img ng-show="!flag" class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>-->
         <!--<div class="index">{{ $index + 1 }}</div>-->
       <!--</div>-->
-      <!-- Summary -->
+       <!--Summary -->
       <!--<div ng-show="flag" class="summary">-->
         <!--<h3>{{ movie.trackName }}</h3>-->
         <!--<p class="description">{{ movie.shortDescription }}</p>-->
