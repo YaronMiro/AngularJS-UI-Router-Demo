@@ -126,6 +126,11 @@ body {
     min-height: 451px;
     height: 100%;
 
+
+//    &:nth-child(odd) {
+//      background: red;
+//    }
+
     .preview {
       cursor: pointer;
       @include transition(opacity 0.5s ease-in-out);
@@ -150,10 +155,6 @@ body {
       color: #ffffff;
       text-align: center;
 
-      .space-top {
-        margin-top: 10px;
-      }
-
       strong {
         color: $gray;
       }
@@ -163,8 +164,9 @@ body {
         color: white;
         border-top: 1px solid $blue;
         border-bottom: 1px solid $blue;
-        padding-top: 9px;
-        padding-bottom: 9px;
+        padding: 9px 4px 9px 4px;
+        font-size: 16px;
+        font-weight: bold;
       }
 
       .popularity-ranking {
@@ -177,18 +179,24 @@ body {
         @include border-radius(50%);
       }
 
-      .description {
-        font-size: 12px;
+      .wrapper {
         padding-right: 20px;
         padding-left: 20px;
-      }
+        text-align: left;
 
-      .detail {
-        color: rgb(0, 173, 255);;
-        margin-top: 10px;
+        &> * {
+          margin-top: 7px;
+        }
+
+        .description {
+          overflow-y: hidden;
+          height: 185px;
+          font-size: 12px;
+        }
       }
 
       button {
+        margin-top: 10px;
         color: $gray;
         background: transparent;
         border: 1px solid $gray;
