@@ -58,11 +58,11 @@ angular
        })
 
       // My movies.
-      .state('main.trailer',{
-        url: '^/trailer/:name',
+      .state('main.movies.info',{
+        url: '/info/:name/:position',
         views: {
           'content@': {
-            templateUrl: 'views/pages/movies/movie.trailer.html',
+            templateUrl: 'views/pages/movies/movie.info.html',
             controller: 'MoviesCtrl'
           }
         }

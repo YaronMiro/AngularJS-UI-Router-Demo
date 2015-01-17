@@ -1,0 +1,4 @@
+<h1>Trailer</h1>
+ <div ng-init="currentMovie = movies[$stateParams.position]"></div>
+  <div>{{ movies[$stateParams.position] }}</div>
+<img class="img-responsive" ng-src="{{ movies[$stateParams.position].artworkUrl600 }}" alt="{{ movies[$stateParams.position].trackName }}-poster image"/>
