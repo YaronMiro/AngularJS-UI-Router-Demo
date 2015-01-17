@@ -4,7 +4,7 @@ angular.module('myApp')
   .factory('Movies', ['$http', '$q', function ($http, $q) {
 
     /**
-     * Return the promise of the list of top movies Ids amount by moviesCount.
+     * Return the promise {*} with the list of top movies Ids amount by moviesCount.
      *
      * @param moviesCount
      *  Number of movies to return.
@@ -31,11 +31,38 @@ angular.module('myApp')
     }
 
     /**
+     * Return the request movie trailer (Embed code) by movie name.
+     *
+     * @param name
+     *  string | Movie name.
+     *
+     * @returns string (html markup)
+     */
+    function requestMovieTrailer(name) {
+
+      var deferred = $q.defer();
+      $http({
+        method: 'GET',
+        url: 'http://www.myapifilms.com/taapi?film=' + name + '&width=000&count=1&format=JSON'
+      })
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(data) {
+          console.log('Error: ', data);
+        })
+
+      // Return promise object.
+      return deferred.promise;
+    }
+
+    /**
+     * Return the promise {*} with the list of top movies data.
      *
      * @param ids
      *  An array of movies IDs.
      *
-     * @returns {}
+     * @returns {*}
      */
     function requestMoviesById(ids) {
 

@@ -190,7 +190,7 @@ body {
 
         .description {
           overflow-y: hidden;
-          height: 185px;
+          max-height: 185px;
           font-size: 12px;
         }
       }

@@ -6,12 +6,12 @@
     <div><strong>Release date: </strong><span>{{ movie.releaseDate | date:'longDate' }}</span></div>
     <div class="description">{{ movie.longDescription }}</div>
     <div><strong>{{ movie.artistName }}</strong></div>
+    <button class="btn" ng-click="$parent.viewMode = !viewMode">
+      <span class="glyphicon glyphicon-circle-arrow-left"></span>
+      Back
+    </button>
+    <button class="btn" ng-click="$state.go('main.trailer', {'name': movie.trackName})">
+      <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Watch the trailer
+    </button>
   </div>
-  <button class="btn" ng-click="$parent.viewMode = !viewMode">
-    <span class="glyphicon glyphicon-circle-arrow-left"></span>
-    Back
-  </button>
-  <button class="btn" ui-sref="party">
-    <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Watch the trailer
-  </button>
 </div>

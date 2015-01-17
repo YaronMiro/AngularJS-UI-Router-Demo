@@ -58,6 +58,17 @@ angular
        })
 
       // My movies.
+      .state('main.trailer',{
+        url: '^/trailer/:name',
+        views: {
+          'content@': {
+            templateUrl: 'views/pages/movies/movie.trailer.html',
+            controller: 'MoviesCtrl'
+          }
+        }
+       })
+
+      // My movies.
       .state('main.myMovies',{
         url: 'my-movies',
         views: {
