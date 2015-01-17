@@ -13,7 +13,7 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     // Default url route.
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/movies');
 
     $stateProvider
       // The main view.
@@ -22,43 +22,44 @@ angular
         abstract: true,
         views: {
           // Absolutely targets the 'header' view in this state's.
-          // <div ui-view='header'/> within index.html
+          // <div ui-view="header"/> within index.html
           'header': {
             templateUrl: 'views/main/header.html'
           },
           // Absolutely targets the 'footer' view in this state's.
-          // <div ui-view='footer'/> within index.html
+          // <div ui-view="footer"/> within index.html
           'footer': {
             templateUrl: 'views/main/footer.html'
           }
         }
        })
 
-      // Home.
-      .state('main.home',{
-        url: 'home',
+      // Movies.
+      .state('main.movies',{
+        url: 'movies',
         views: {
           // Relatively targets the 'content' view in this state parent state, 'main'.
           // <div ui-view='content'/> within index.html
           'content@': {
-            templateUrl: 'views/pages/home/home.html',
-            controller: 'HomePageCtrl'
+            templateUrl: 'views/pages/movies/movies.html',
+            controller: 'MoviesCtrl'
+          },
+          // Absolutely targets the 'preview' view in this state's.
+          // <div ui-view="preview"/> within movies.html
+          'preview@main.movies': {
+            templateUrl: 'views/pages/movies/movie.preview.html'
+          },
+          // Absolutely targets the 'summary' view in this state's.
+          // <div ui-view="summary"/> within movies.html
+          'summary@main.movies': {
+            templateUrl: 'views/pages/movies/movie.summary.html'
           }
         }
        })
 
-      // Home edit.
-      .state('main.home.movie',{
-        // Relatively targets the unnamed view in this state parent state, 'main.home'.
-        // <div ui-view/> within home.html
-        url: '/movie',
-        templateUrl: 'views/pages/home/home.movie.html',
-        controller: 'MovieCtrl'
-       })
-
-      // About.
-      .state('main.about',{
-        url: 'about',
+      // My movies.
+      .state('main.myMovies',{
+        url: 'my-movies',
         views: {
           'content@': {
             templateUrl: 'views/pages/about.html'
