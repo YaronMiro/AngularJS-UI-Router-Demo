@@ -57,13 +57,24 @@ angular
         }
        })
 
-      // My movies.
+      // Movie full.
       .state('main.movies.full',{
-        url: '/:name/:position',
+        url: '^/movie-details/:name',
+        params: {name: 'default', position: -1},
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
             controller: 'MoviesCtrl'
+          }
+        },
+        onEnter: function($state, $stateParams) {
+          // pretty url (e.g) movie%20name => movie-name
+          var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
+          $stateParams.name = cleanParam;
+
+          // Redirect to "movies" view in case of an invalid url.
+          if ($stateParams.position == -1) {
+            $state.go('main.movies');
           }
         }
        })
