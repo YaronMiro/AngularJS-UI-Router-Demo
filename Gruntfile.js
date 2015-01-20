@@ -213,6 +213,32 @@ module.exports = function (grunt) {
       }
     },
 
+    // Environment configuration.
+    ngconstant: {
+      options: {
+        name: 'config'
+      },
+      server: {
+        constants: {
+          Config: grunt.file.readJSON('config.json').development
+        },
+        values: {
+          debug: true
+        },
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        }
+      },
+      build: {
+        constants: {
+          Config: grunt.file.readJSON('config.json').production
+        },
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        }
+      }
+    },
+
     // Build - Deploy site to repository.
     buildcontrol: {
       dist: {
@@ -407,6 +433,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:server',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -429,6 +456,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:build',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

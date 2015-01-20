@@ -4,3 +4,5 @@ dist
 .sass-cache
 .idea
 bower_components
+config.json
+app/scripts/config.js
