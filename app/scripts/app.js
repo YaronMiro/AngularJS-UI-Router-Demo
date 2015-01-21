@@ -78,8 +78,9 @@ angular
           var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
           $stateParams.name = cleanParam;
 
+          // @todo replace with regex param from [0-9]
           // Redirect to "movies" view in case of an invalid url.
-          if ($stateParams.position == -1) {
+          if ($stateParams.position != -1) {
             $state.go('main.movies');
           }
         }
@@ -96,8 +97,8 @@ angular
        });
 
       // Configuration of the loading bar.
-      cfpLoadingBarProvider.includeSpinner = false;
-      cfpLoadingBarProvider.latencyThreshold = 1000;
+      //cfpLoadingBarProvider.includeSpinner = false;
+      //cfpLoadingBarProvider.latencyThreshold = 1000;
 
   }])
   .run([ '$rootScope', '$state', '$stateParams', '$log', 'Config', function ($rootScope, $state, $stateParams, $log, Config) {
