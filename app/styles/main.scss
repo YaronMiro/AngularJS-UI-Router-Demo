@@ -130,7 +130,7 @@ body {
       @include transition(opacity 0.5s ease-in-out);
 
       &:hover {
-        @include opacity(0.6);
+//        @include opacity(0.6);
       }
 
       .popularity-ranking {
@@ -204,3 +204,23 @@ body {
   }
 }
 
+// ngAnimate css
+// Fade.
+.fadein,
+.fadeout {
+//  @include transition(all, 0.6s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.6s;
+}
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+}
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}

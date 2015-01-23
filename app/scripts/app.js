@@ -73,16 +73,14 @@ angular
             controller: 'MoviesCtrl'
           }
         },
+//        resolve: function() {
+//
+//
+//        },
         onEnter: function($state, $stateParams) {
           // pretty url (e.g) movie%20name => movie-name
           var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
           $stateParams.name = cleanParam;
-
-          // @todo replace with regex param from [0-9]
-          // Redirect to "movies" view in case of an invalid url.
-          if ($stateParams.position != -1) {
-            $state.go('main.movies');
-          }
         }
        })
 
@@ -109,6 +107,8 @@ angular
     // to active whenever 'contacts.list' or one of its decedents is active.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    return;
 
     if (!!Config.debugUiRouter) {
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
