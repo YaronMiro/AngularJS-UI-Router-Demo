@@ -4,7 +4,7 @@
   <div class="wrapper">
     <div><strong>Genre: </strong> {{ movie.primaryGenreName }}</div>
     <div><strong>Release date: </strong><span>{{ movie.releaseDate | date:'longDate' }}</span></div>
-    <div class="description">{{ movie.longDescription }}</div>
+    <div class="description">{{ movie.longDescription | limitTo: 500 }}...</div>
     <div><strong>{{ movie.artistName }}</strong></div>
     <button class="btn" ng-click="$parent.viewMode = !viewMode">
       <span class="glyphicon glyphicon-circle-arrow-left"></span>
