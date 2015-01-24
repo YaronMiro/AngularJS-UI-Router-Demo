@@ -72,6 +72,9 @@ angular
 
       // Movie full.
       .state('main.movies.full',{
+        // The "^"  character excludes the parent prefix url format ("movies")
+        // from this child state url, instead of "movies/movie-details/:name"
+        // it will become "movie-details/:name"
         url: '^/movie-details/:name',
         params: {name: 'default', position: -1},
         views: {
