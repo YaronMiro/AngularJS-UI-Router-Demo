@@ -7,8 +7,8 @@
   <!--</article>-->
 <!--<div class="bottom"></div>-->
 
-<section class="wrapper-test">
-  <div id="card" ng-repeat="movie in movies" ng-init="flipMode = ''" class="{{ flipMode }}">
+<section class="wrapper-test row">
+  <div id="card" ng-repeat="movie in movies" ng-init="flipMode = ''" class="col-md-4 {{ flipMode }}">
     <figure class="front" ui-view="preview">1</figure>
     <figure class="back" ui-view="summary">2</figure>
   </div>
