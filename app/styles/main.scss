@@ -241,11 +241,11 @@ body {
 
 .wrapper-test {
   position: relative;
-  perspective: 2000px;
+  perspective: 25000px;
 }
 
 #card {
-  height: 100%;
+  height: 570px;
   transform-style: preserve-3d;
   transition: transform 1s;
 }
@@ -254,15 +254,11 @@ body {
   display: block;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
   backface-visibility: hidden;
 }
 
-#card .front {
-  background: red;
-}
 #card .back {
-  background: blue;
   transform: rotateY( 180deg );
 }
 

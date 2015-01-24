@@ -10,7 +10,7 @@
 angular.module('myApp')
   .controller('MoviesCtrl', ['$scope','$stateParams', 'Movies', function ($scope, $stateParams, Movies) {
 
-    Movies.gettingMovies(3).then(function(movies){
+    Movies.gettingMovies(30).then(function(movies){
       $scope.movies = movies;
     });
 
