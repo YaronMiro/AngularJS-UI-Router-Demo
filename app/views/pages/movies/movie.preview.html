@@ -1,4 +1,5 @@
-<div class="preview" ng-click="$parent.viewMode = !viewMode">
+<!--<div class="preview" ng-click="$parent.viewMode = !viewMode; $parent.flipMode == '' ? 'flipped ': '';">-->
+<div class="preview" ng-click="$parent.flipMode = 'flipped'">
   <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
   <div class="popularity-ranking">{{ $index + 1 }}</div>
 </div>
