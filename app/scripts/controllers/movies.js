@@ -8,7 +8,9 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('HomePageEditCtrl', ['$scope', function ($scope) {
+  .controller('MoviesCtrl', ['$scope','$stateParams', 'movies', function ($scope, $stateParams, movies) {
 
-   console.log('edit');
+      // Movies data.
+      $scope.movies = movies;
+
   }]);

@@ -1,4 +1,16 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/transition";
+@import "compass/css3/opacity";
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// Override default bootstrap variables.
+$grid-gutter-width: 0px;
+
+// Colors.
+$gray: #777777;
+$darkGray: #1e1e1e;
+$blue: #337ab7;
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -6,50 +18,213 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background: black;
 }
 
 #main {
 
-  .header,
-  .footer {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
+  #main-header,
+  #main-footer {
 
-  .content {
-    background: white;
-    padding: 19px;
-
-    .jumbotron {
+    .top,
+    .bottom {
+      padding: 20px;
       text-align: center;
       margin: 0px;
+      background: $darkGray;
     }
   }
 
-  .header {
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 19px;
+  #main-header {
+    color: $gray;
+    text-transform: uppercase;
 
-    h3 {
+    .top {
+      @include border-top-left-radius(6px);
+      @include border-top-right-radius(6px);
+    }
+
+    .navbar {
+      margin-bottom: 0px;
+
+      .navbar-toggle {
+
+        border: 1px solid $blue;
+
+        .icon-bar {
+          background: $blue;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #ffffff;
       margin-top: 0;
       margin-bottom: 0;
       line-height: 40px;
     }
+
+    .nav-pills {
+      li {
+        &.active {
+          a {
+            border: 1px solid $blue;
+          }
+        }
+
+        a {
+          color: white;
+          background: transparent;
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+    }
   }
 
-  .footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
+  #main-footer {
+
+    .bottom {
+      @include border-bottom-left-radius(6px);
+      @include border-bottom-right-radius(6px);
+    }
+
+    a {
+      color: white;
+
+      &:hover {
+        text-decoration: none;
+        color: #337ab7;
+      }
+
+      span {
+        color: $gray;
+      }
+    }
+
+    .divider {
+      color: $gray;
+      display: inline-block;
+      margin: 0px 3px;
+    }
+
+    .back-to-top {
+      text-transform: uppercase;
+    }
   }
 
-  .btn-view {
-  @include button-variant(white, #337ab7, #2d6198);
-  @include button-size(8px, 8px, 16px, 0px, 6px);
+  .movies-wrapper {
+    height: 551px;
 
+    .preview {
+      cursor: pointer;
+      @include transition(opacity 0.5s ease-in-out);
+
+      &:hover {
+        @include opacity(0.6);
+      }
+
+      .popularity-ranking {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        background: rgba(0, 0, 0, 0.25);
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        @include border-top-left-radius(6px);
+      }
+    }
+
+    .summary {
+      color: #ffffff;
+      text-align: center;
+
+      strong {
+        color: $gray;
+      }
+
+      h3 {
+        text-transform: uppercase;
+        color: white;
+        border-top: 1px solid $blue;
+        border-bottom: 1px solid $blue;
+        padding: 9px 4px 9px 4px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .popularity-ranking {
+        margin: 0 auto;
+        background: $darkGray;
+        color: white;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        @include border-radius(50%);
+      }
+
+      .wrapper {
+        padding-right: 20px;
+        padding-left: 20px;
+        text-align: left;
+
+        &> * {
+          margin-top: 7px;
+        }
+
+        .description {
+          font-size: 12px;
+        }
+      }
+
+      button {
+        margin-top: 10px;
+        color: $gray;
+        background: transparent;
+        border: 1px solid $gray;
+
+        &:hover {
+          color: $blue;
+          border-color: $gray;
+        }
+      }
+    }
   }
 }
 
+// ngAnimate css
+.fadein,
+.fadeout {
+  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.4s);
+}
 
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+}
 
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
 
+.slide {
+  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.3s);
+}
+
+// ui-view "main" fade animation.
+.slide.ng-enter {
+  opacity: 0;
+}
+
+.slide.ng-enter.ng-enter-active, .slide.ng-leave {
+  opacity: 1;
+}
+
+.slide.ng-leave.ng-leave-active {
+  opacity: 0;
+}

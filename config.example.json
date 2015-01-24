@@ -1,0 +1,8 @@
+{
+  "development": {
+    "debugUiRouter": true
+  },
+  "production": {
+    "debugUiRouter": false
+  }
+}
