@@ -25,12 +25,6 @@ body {
 
   #main-header,
   #main-footer {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  #main-content {
-    padding: 19px;
 
     .top,
     .bottom {
@@ -39,21 +33,16 @@ body {
       margin: 0px;
       background: $darkGray;
     }
-
-    .top {
-      @include border-top-left-radius(6px);
-      @include border-top-right-radius(6px);
-    }
-
-    .bottom {
-      @include border-bottom-left-radius(6px);
-      @include border-bottom-right-radius(6px);
-    }
   }
 
   #main-header {
     color: $gray;
     text-transform: uppercase;
+
+    .top {
+      @include border-top-left-radius(6px);
+      @include border-top-right-radius(6px);
+    }
 
     .navbar {
       margin-bottom: 0px;
@@ -97,6 +86,11 @@ body {
   }
 
   #main-footer {
+
+    .bottom {
+      @include border-bottom-left-radius(6px);
+      @include border-bottom-right-radius(6px);
+    }
 
     a {
       color: white;
@@ -203,10 +197,9 @@ body {
 }
 
 // ngAnimate css
-// Fade.
 .fadein,
 .fadeout {
-  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.35s);
+  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.4s);
 }
 
 .fadein.ng-hide-remove,
@@ -220,48 +213,18 @@ body {
 }
 
 .slide {
-  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.2s);
+  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.3s);
 }
 
-// ui-view fade animation.
+// ui-view "main" fade animation.
 .slide.ng-enter {
   opacity: 0;
-
 }
 
 .slide.ng-enter.ng-enter-active, .slide.ng-leave {
   opacity: 1;
-
 }
 
 .slide.ng-leave.ng-leave-active {
   opacity: 0;
-}
-
-
-.wrapper-test {
-  position: relative;
-  perspective: 25000px;
-}
-
-#card {
-  height: 570px;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
-
-#card figure {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: auto;
-  backface-visibility: hidden;
-}
-
-#card .back {
-  transform: rotateY( 180deg );
-}
-
-#card.flipped {
-  transform: rotateY( 180deg );
 }

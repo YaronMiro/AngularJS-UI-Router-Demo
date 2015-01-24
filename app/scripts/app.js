@@ -44,8 +44,8 @@ angular
       .state('main.movies',{
         url: 'movies',
         views: {
-          // Relatively targets the 'content' view in this state parent state, 'main'.
-          // <div ui-view='content'/> within index.html
+          // Relatively targets the 'content' view in this state parent state,
+          // 'main'. <div ui-view='content'/> within index.html
           'content@': {
             templateUrl: 'views/pages/movies/movies.html',
             controller: 'MoviesCtrl'
@@ -60,6 +60,13 @@ angular
           'summary@main.movies': {
             templateUrl: 'views/pages/movies/movie.summary.html'
           }
+        },
+        resolve: {
+          // Example showing injection of service into resolve function.
+          // Service then returns a promise.
+          movies: function(Movies){
+            return Movies.gettingMovies(30);
+          }
         }
        })
 
@@ -73,10 +80,6 @@ angular
             controller: 'MoviesCtrl'
           }
         },
-//        resolve: function() {
-//
-//
-//        },
         onEnter: function($state, $stateParams) {
           // pretty url (e.g) movie%20name => movie-name
           var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
@@ -102,9 +105,7 @@ angular
   .run([ '$rootScope', '$state', '$stateParams', '$log', 'Config', function ($rootScope, $state, $stateParams, $log, Config) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
-    // applications.For example:
-    // <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
-    // to active whenever 'contacts.list' or one of its decedents is active.
+    // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
 
