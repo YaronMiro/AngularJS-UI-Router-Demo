@@ -77,27 +77,26 @@ body {
       @include border-bottom-right-radius(6px);
     }
 
-    a {
-      color: white;
+    .links{
+      margin-top: 15px;
+      a {
+        color: white;
 
-      &:hover {
-        text-decoration: none;
-        color: #337ab7;
+        &:hover {
+          text-decoration: none;
+          color: #337ab7;
+        }
+
+        span {
+          color: $gray;
+        }
       }
 
-      span {
+      .divider {
         color: $gray;
+        display: inline-block;
+        margin: 0px 3px;
       }
-    }
-
-    .divider {
-      color: $gray;
-      display: inline-block;
-      margin: 0px 3px;
-    }
-
-    .back-to-top {
-      text-transform: uppercase;
     }
   }
 

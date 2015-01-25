@@ -78,7 +78,7 @@ angular
         // The "^"  character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name"
-        url: '^/movie-details/:name/:position',
+        url: '^/movie-info/:position',
         //params: {name: 'default', position: -1},
         views: {
           'content@': {
@@ -86,10 +86,19 @@ angular
             controller: 'MoviesCtrl'
           }
         },
-        onEnter: function($stateParams) {
+        // Injecting the "movies" we all ready resolved on the "parent" state.
+        // then we are able to avoid calling the service again.
+        // (reducing our XMLHttpRequest).
+        onEnter: function($stateParams, movies) {
+
+          console.log(movies);
+          var selectedMovieTitle = movies[$stateParams.position];
+          console.log(selectedMovieTitle);
+
+
           // pretty url (e.g) movie%20name => movie-name
-          var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
-          $stateParams.name = cleanParam;
+//          var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
+//          $stateParams.name = cleanParam;
           //$stateParams.position = '';
         }
        })

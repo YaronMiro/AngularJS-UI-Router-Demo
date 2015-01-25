@@ -16,7 +16,7 @@ angular.module('myApp')
       if(angular.isDefined(selectedMovie)) {
         $scope.selectedMovie = $scope.movies[selectedMovie];
       }
-    console.log($scope.selectedMovie)
-    console.log($stateParams)
+//    console.log($scope.selectedMovie)
+//    console.log($stateParams)
 
   }]);
