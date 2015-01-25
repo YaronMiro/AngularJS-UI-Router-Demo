@@ -15,6 +15,43 @@ $blue: #337ab7;
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+
+// Only the desktop width.
+@mixin desktop-only {
+  @media (min-width: $screen-md-min) {
+    @content;
+  }
+}
+
+// Only for tablet width.
+@mixin tablet-only {
+  @media (min-width: $screen-sm) and (max-width: ($screen-sm-max)) {
+    @content;
+  }
+}
+
+// Only for mobile width.
+@mixin mobile-only {
+  @media (max-width: ($screen-xs-max)) {
+    @content;
+  }
+}
+
+// Only for mobile and tablet width.
+@mixin mobile-and-tablet-only {
+  @media (max-width: ($screen-sm-max)) {
+    @content;
+  }
+}
+
+// Only for tablet and desktop width.
+@mixin tablet-and-desktop-only {
+  @media (min-width: ($screen-sm)) {
+    @content;
+  }
+}
+
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;

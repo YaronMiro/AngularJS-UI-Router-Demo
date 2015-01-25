@@ -66,6 +66,9 @@ angular
           // Service then returns a promise.
           movies: function(Movies){
             return Movies.gettingMovies(30);
+          },
+          selectedMovie: function($stateParams){
+            return $stateParams.position;
           }
         }
        })
@@ -75,18 +78,19 @@ angular
         // The "^"  character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name"
-        url: '^/movie-details/:name',
-        params: {name: 'default', position: -1},
+        url: '^/movie-details/:name/:position',
+        //params: {name: 'default', position: -1},
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
             controller: 'MoviesCtrl'
           }
         },
-        onEnter: function($state, $stateParams) {
+        onEnter: function($stateParams) {
           // pretty url (e.g) movie%20name => movie-name
           var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
           $stateParams.name = cleanParam;
+          //$stateParams.position = '';
         }
        })
 
