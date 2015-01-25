@@ -66,40 +66,26 @@ angular
           // Service then returns a promise.
           movies: function(Movies){
             return Movies.gettingMovies(30);
-          },
-          selectedMovie: function($stateParams){
-            return $stateParams.position;
           }
         }
        })
 
       // Movie full.
       .state('main.movies.full',{
-        // The "^"  character excludes the parent prefix url format ("movies")
+        // The "^" character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name"
-        url: '^/movie-info/:position',
-        //params: {name: 'default', position: -1},
+        url: '^/movie-info/{name}/{position:int}',
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
             controller: 'MoviesCtrl'
           }
         },
-        // Injecting the "movies" we all ready resolved on the "parent" state.
-        // then we are able to avoid calling the service again.
-        // (reducing our XMLHttpRequest).
-        onEnter: function($stateParams, movies) {
-
-          console.log(movies);
-          var selectedMovieTitle = movies[$stateParams.position];
-          console.log(selectedMovieTitle);
-
-
-          // pretty url (e.g) movie%20name => movie-name
-//          var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
-//          $stateParams.name = cleanParam;
-          //$stateParams.position = '';
+        onEnter: function($stateParams) {
+          // pretty url - we will replace it with a cleaner structure.
+          // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1
+          $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
         }
        })
 
