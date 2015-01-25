@@ -1,56 +1,4 @@
-@import "compass/css3/border-radius";
-@import "compass/css3/transition";
-@import "compass/css3/opacity";
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-
-// Override default bootstrap variables.
-$grid-gutter-width: 0px;
-
-// Colors.
-$gray: #777777;
-$darkGray: #1e1e1e;
-$blue: #337ab7;
-
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-
-
-// Only the desktop width.
-@mixin desktop-only {
-  @media (min-width: $screen-md-min) {
-    @content;
-  }
-}
-
-// Only for tablet width.
-@mixin tablet-only {
-  @media (min-width: $screen-sm) and (max-width: ($screen-sm-max)) {
-    @content;
-  }
-}
-
-// Only for mobile width.
-@mixin mobile-only {
-  @media (max-width: ($screen-xs-max)) {
-    @content;
-  }
-}
-
-// Only for mobile and tablet width.
-@mixin mobile-and-tablet-only {
-  @media (max-width: ($screen-sm-max)) {
-    @content;
-  }
-}
-
-// Only for tablet and desktop width.
-@mixin tablet-and-desktop-only {
-  @media (min-width: ($screen-sm)) {
-    @content;
-  }
-}
-
+@import "mixin";
 
 body {
   padding-top: 20px;
@@ -154,7 +102,21 @@ body {
   }
 
   .movies-wrapper {
-    height: 551px;
+
+    // set height for LArge-desktop
+    @include large-desktop-only {
+      height: 570px;
+    }
+
+    // set height for Medium-desktop
+    @include medium-desktop-only {
+      height: 470px;
+    }
+
+    // set height for tablet
+    @include tablet-only {
+      height: 540px;
+    }
 
     .preview {
       cursor: pointer;

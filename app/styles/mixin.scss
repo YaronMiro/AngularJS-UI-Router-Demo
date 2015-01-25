@@ -1,0 +1,45 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/transition";
+@import "compass/css3/opacity";
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// Override default bootstrap variables.
+$grid-gutter-width: 0px;
+
+// Colors.
+$gray: #777777;
+$darkGray: #1e1e1e;
+$blue: #337ab7;
+
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+
+// Only the desktop width.
+@mixin large-desktop-only {
+  @media (min-width: $screen-lg-min) {
+    @content;
+  }
+}
+
+// Only the desktop width.
+@mixin medium-desktop-only {
+  @media (min-width: $screen-md-min) and (max-width: ($screen-md-max)) {
+    @content;
+  }
+}
+
+// Only for tablet width.
+@mixin tablet-only {
+  @media (min-width: $screen-sm-min) and (max-width: ($screen-sm-max)) {
+    @content;
+  }
+}
+
+// Only for mobile width.
+@mixin mobile-only {
+  @media (max-width: ($screen-xs-max)) {
+    @content;
+  }
+}
