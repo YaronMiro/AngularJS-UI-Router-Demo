@@ -192,6 +192,34 @@ body {
       }
     }
   }
+
+  .full {
+    margin-top: 40px;
+
+    h3 {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $blue;
+    }
+
+    .image-container {
+      position: relative;
+    }
+
+    .reflection {
+      position: relative;
+      overflow: hidden;
+      height: 110px;
+      width: 400px;
+      @include rotateX(180deg);
+
+      img {
+        position: absolute;
+        top: -490px;
+        left: 0px;
+      }
+    }
+  }
 }
 
 // ngAnimate css
