@@ -2,15 +2,18 @@
   <!-- Image -->
   <div class="col-xs-4">
     <div class="image-container">
-      <img ng-src="{{ movies[$stateParams.position].artworkUrl600 }}" alt="{{ movies[$stateParams.position].trackName }}-poster image"/>
-      <div class="reflection">
-        <img ng-src="{{ movies[$stateParams.position].artworkUrl600 }}" alt="{{ movies[$stateParams.position].trackName }}-poster image"/>
-      </div>
+      <img class="img-responsive" ng-src="{{ movies[$stateParams.position].artworkUrl600 }}" alt="{{ movies[$stateParams.position].trackName }}-poster image"/>
     </div>
   </div>
   <!-- Info -->
   <div class="col-xs-8">
-    <!-- Title -->
-    <h3>{{ movies[$stateParams.position].trackName }}</h3>
+    <div class="info-container">
+      <!-- Title -->
+      <h3>{{ movies[$stateParams.position].trackName }}
+        <span class="separator"> | </span>
+        <span class="date">{{ movies[$stateParams.position].releaseDate | date:'longDate' }}</span>
+      </h3>
+      <div class="description">{{ movies[$stateParams.position].longDescription }}</div>
+    </div>
   </div>
 </div>

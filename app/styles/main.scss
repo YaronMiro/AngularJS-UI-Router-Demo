@@ -194,29 +194,36 @@ body {
   }
 
   .full {
-    margin-top: 40px;
+    margin: 30px 0px;
 
     h3 {
       font-weight: bold;
       text-transform: uppercase;
       color: $blue;
+
+      .separator {
+        font-weight: normal;
+        color: white;
+      }
+
+      .date {
+        color: $gray;
+        font-weight: normal;
+        text-transform: capitalize;
+      }
     }
 
     .image-container {
-      position: relative;
+      padding: 20px;
+      border-right: 1px $blue solid;
     }
 
-    .reflection {
-      position: relative;
-      overflow: hidden;
-      height: 110px;
-      width: 400px;
-      @include rotateX(180deg);
+    .info-container{
+      padding: 0px 20px;
 
-      img {
-        position: absolute;
-        top: -490px;
-        left: 0px;
+      .description {
+        color: rgba(255, 255, 255, 0.88);
+        text-align: justify;
       }
     }
   }
