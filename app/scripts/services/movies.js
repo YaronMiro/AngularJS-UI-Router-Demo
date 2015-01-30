@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', function ($http, $q) {
+  .factory('Movies', ['$http', '$q', '$sce', function ($http, $q, $sce) {
 
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
@@ -78,6 +78,34 @@ angular.module('myApp')
 
         // Return promise object.
         return deferred.promise;
+      },
+
+      /**
+       * Generates "youtube" movie trailer url.
+       *
+       * @param movieName
+       *  The search query.
+       * @param movieData
+       *  The movie data (config data).
+       *
+       * @returns {string}
+       */
+
+      gettingMovieTrailerUrl: function(movieName, movieData) {
+
+        // Prepare the query string with the movie params.
+        var params = [];
+        angular.forEach(movieData.params, function(value, param){
+          this.push(param + '=' + value);
+        },params);
+
+        params = '&' + params.join('&');
+        var searchQuery = movieName + ' trailer';
+
+        //todo url encode!!
+        var trailerUrl = 'http://www.youtube.com/embed/?listType=search&list=' + searchQuery + params
+        return  $sce.trustAsResourceUrl(trailerUrl)
+
       }
     };
   }]);

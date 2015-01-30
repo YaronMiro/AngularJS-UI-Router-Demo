@@ -15,8 +15,7 @@
       </h3>
       <div class="description">{{ selectedMovie.longDescription }}</div>
       <div class="movie-trailer">
-        <!--<iframe type="text/html" ng-src="http://www.youtube.com/embed/?listType=search&list={{ selectedMovie.trackName }}%20trailer&controls=2&modestbranding=1&rel=0&showinfo=0&autoplay=1&hd=1" frameborder="0" allowfullscreen/>-->
-        <iframe type="text/html" ng-src="http://www.youtube.com/embed/?listType=search&list=%22gone%20girl%22%20trailer&controls=2&modestbranding=1&rel=0&showinfo=0&autoplay=1&hd=1" frameborder="0" allowfullscreen/>
+        <iframe type="text/html" ng-src="{{ movieTrailerUrl }}" frameborder="0" allowfullscreen/>
       </div>
     </div>
   </div>

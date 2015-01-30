@@ -8,10 +8,10 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MovieCtrl', ['$scope','$stateParams', '$state', 'selectedMovie', function ($scope, $stateParams, $state, selectedMovie) {
+  .controller('MovieCtrl', ['$scope', '$sce', '$stateParams', '$state', 'Movies', 'selectedMovie', function ($scope, $sce, $stateParams, $state, Movies, selectedMovie) {
 
     // Selected movie.
     $scope.selectedMovie = selectedMovie;
-    var movieParams = $state.current.data;
-    console.log(movieParams);
+    $scope.movieTrailerUrl = Movies.gettingMovieTrailerUrl(selectedMovie.trackName, $state.current.data.movie);
+
   }]);

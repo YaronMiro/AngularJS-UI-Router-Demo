@@ -104,14 +104,16 @@ angular
           $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
         },
         data: {
-          movieParams: {
+          movie: {
             basePath: 'http://www.youtube.com/embed/?listType=search&list=',
-            controls: 2,
-            modestbranding: 1,
-            rel: 0,
-            showinfo: 0,
-            autoplay: 1,
-            hd: 1
+            params: {
+              controls: 2,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0,
+              autoplay: 1,
+              hd: 1
+            }
           }
         }
       })
