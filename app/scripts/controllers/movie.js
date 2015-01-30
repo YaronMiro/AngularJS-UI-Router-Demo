@@ -8,8 +8,10 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MovieCtrl', ['$scope','$stateParams', 'selectedMovie', function ($scope, $stateParams, selectedMovie) {
+  .controller('MovieCtrl', ['$scope','$stateParams', '$state', 'selectedMovie', function ($scope, $stateParams, $state, selectedMovie) {
+
     // Selected movie.
-//    $scope.selectedMovie = selectedMovie;
-//    console.log(selectedMovie);
+    $scope.selectedMovie = selectedMovie;
+    var movieParams = $state.current.data;
+    console.log(movieParams);
   }]);
