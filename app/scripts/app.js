@@ -79,7 +79,14 @@ angular
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
-            controller: 'MoviesCtrl'
+            controller: 'MovieCtrl'
+          }
+        },
+        resolve: {
+          // Example showing injection of service into resolve function.
+          // Service then returns a promise.
+          selectedMovie: function(Movies, $stateParam){
+            return Movies[$stateParam.position];
           }
         },
         onEnter: function($stateParams) {
@@ -98,11 +105,6 @@ angular
           }
         }
        });
-
-      // Configuration of the loading bar.
-      //cfpLoadingBarProvider.includeSpinner = false;
-      //cfpLoadingBarProvider.latencyThreshold = 1000;
-
   }])
   .run([ '$rootScope', '$state', '$stateParams', '$log', 'Config', function ($rootScope, $state, $stateParams, $log, Config) {
     // It's very handy to add references to $state and $stateParams to the

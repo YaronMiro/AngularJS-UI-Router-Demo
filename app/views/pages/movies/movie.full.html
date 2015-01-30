@@ -2,20 +2,20 @@
   <!-- Image -->
   <div class="col-sm-4 col-xs-12">
     <div class="image-container">
-      <img class="img-responsive" ng-src="{{ movies[$stateParams.position].artworkUrl600 }}" alt="{{ movies[$stateParams.position].trackName }}-poster image"/>
+      <img class="img-responsive" ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
     </div>
   </div>
   <!-- Info -->
   <div class="col-sm-8 col-xs-12">
     <div class="info-container">
       <!-- Title -->
-      <h3>{{ movies[$stateParams.position].trackName }}
+      <h3>{{ selectedMovie.trackName }}
         <span class="separator"> | </span>
-        <span class="date">{{ movies[$stateParams.position].releaseDate | date:'longDate' }}</span>
+        <span class="date">{{ selectedMovie.releaseDate | date:'longDate' }}</span>
       </h3>
-      <div class="description">{{ movies[$stateParams.position].longDescription }}</div>
+      <div class="description">{{ selectedMovie.longDescription }}</div>
       <div class="movie-trailer">
-        <!--<iframe type="text/html" ng-src="http://www.youtube.com/embed/?listType=search&list={{ movies[$stateParams.position].trackName }}%20trailer&controls=2&modestbranding=1&rel=0&showinfo=0&autoplay=1&hd=1" frameborder="0" allowfullscreen/>-->
+        <!--<iframe type="text/html" ng-src="http://www.youtube.com/embed/?listType=search&list={{ selectedMovie.trackName }}%20trailer&controls=2&modestbranding=1&rel=0&showinfo=0&autoplay=1&hd=1" frameborder="0" allowfullscreen/>-->
         <iframe type="text/html" ng-src="http://www.youtube.com/embed/?listType=search&list=%22gone%20girl%22%20trailer&controls=2&modestbranding=1&rel=0&showinfo=0&autoplay=1&hd=1" frameborder="0" allowfullscreen/>
       </div>
     </div>
