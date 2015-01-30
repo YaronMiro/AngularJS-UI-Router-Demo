@@ -99,12 +99,10 @@ angular.module('myApp')
           this.push(param + '=' + value);
         },params);
 
-        // Join the params.
+        // Joining the params.
         params = '&' + params.join('&');
-        // create the search query
-        var searchQuery = movieName + ' trailer';
-        // Making sure the url is valid
-        return  $sce.trustAsResourceUrl(encodeURI('http://www.youtube.com/embed/?listType=search&list=' + searchQuery + params))
+        // Making sure the url is valid and trusted.
+        return  $sce.trustAsResourceUrl(encodeURI(movieData.basePath + movieName + ' ' + 'trailer' + params))
       }
     };
   }]);
