@@ -10,5 +10,6 @@
 angular.module('myApp')
   .controller('MovieCtrl', ['$scope','$stateParams', 'selectedMovie', function ($scope, $stateParams, selectedMovie) {
     // Selected movie.
-    $scope.selectedMovie = selectedMovie;
+//    $scope.selectedMovie = selectedMovie;
+//    console.log(selectedMovie);
   }]);

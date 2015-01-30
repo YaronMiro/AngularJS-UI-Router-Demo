@@ -16,7 +16,7 @@ angular
     'angular-loading-bar',
     'LocalStorageModule',
   ])
-  .config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider){
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
     // Default url route.
     $urlRouterProvider.otherwise('/movies');
@@ -83,18 +83,29 @@ angular
           }
         },
         resolve: {
-          // Example showing injection of service into resolve function.
-          // Service then returns a promise.
-          selectedMovie: function(Movies, $stateParam){
-            return Movies[$stateParam.position];
+          // Example showing injection of a "parent" resolve object
+          // into it's hild resolve function
+          selectedMovie: function(movies, $stateParams){
+            return movies[$stateParams.position];
           }
         },
-        onEnter: function($stateParams) {
+        onEnter: function($stateParams, selectedMovie) {
+          console.log(selectedMovie);
           // pretty url - we will replace it with a cleaner structure.
           // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1
           $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
+        },
+        data: {
+          movieParams: {
+            controls: 2,
+            modestbranding: 1,
+            rel: 0,
+            showinfo: 0,
+            autoplay: 1,
+            hd: 1
+          }
         }
-       })
+      })
 
       // My movies.
       .state('main.myMovies',{
