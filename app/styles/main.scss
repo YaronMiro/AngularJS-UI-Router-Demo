@@ -104,19 +104,16 @@ body {
 
   .movies-wrapper {
 
-    // set height for LArge-desktop
     @include large-desktop-only {
       height: 570px;
     }
 
-    // set height for Medium-desktop
     @include medium-desktop-only {
       height: 470px;
     }
 
-    // set height for tablet
     @include tablet-only {
-      height: 540px;
+      height: 360px;
     }
 
     .preview {
@@ -190,6 +187,13 @@ body {
         &:hover {
           color: $blue;
           border-color: $gray;
+        }
+
+        &.trailer {
+          // set height for tablet
+          @include tablet-only {
+            width: 150px;
+          }
         }
       }
     }

@@ -4,14 +4,13 @@
   <div class="wrapper">
     <div><strong>Genre: </strong> {{ movie.primaryGenreName }}</div>
     <div><strong>Release date: </strong><span>{{ movie.releaseDate | date:'longDate' }}</span></div>
-    <div class="description hidden-xs">{{ movie.longDescription | limitTo: 500 }}...</div>
-    <div class="description visible-xs">{{ movie.longDescription | limitTo: 200 }}...</div>
-    <div><strong>{{ movie.artistName }}</strong></div>
+    <div class="description hidden-sm hidden-xs">{{ movie.longDescription | limitTo: 500 }}...</div>
+    <div class="description visible-sm visible-xs">{{ movie.longDescription | limitTo: 150 }}...</div>
+    <div class="hidden-sm hidden-xs"><strong>{{ movie.artistName }}</strong></div>
     <button class="btn" ng-click="viewMode.value = !viewMode.value">
-      <span class="glyphicon glyphicon-circle-arrow-left"></span>
-      Back
+      <span class="glyphicon glyphicon-picture"></span>
     </button>
-    <button class="btn" ng-click="$state.go('main.movies.full', {'name': movie.trackName, 'position': $index})">
+    <button class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.trackName, 'position': $index})">
       <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span> Watch the Trailer
     </button>
   </div>
