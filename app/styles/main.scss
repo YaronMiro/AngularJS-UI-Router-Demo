@@ -54,6 +54,11 @@ body {
 
     .nav-pills {
       li {
+
+        @include mobile-only {
+          float: none;
+        }
+
         &.active {
           a {
             border: 1px solid $blue;

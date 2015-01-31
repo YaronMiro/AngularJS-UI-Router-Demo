@@ -4,7 +4,7 @@
   <div class="wrapper">
     <div><strong>Genre: </strong> {{ movie.primaryGenreName }}</div>
     <div><strong>Release date: </strong><span>{{ movie.releaseDate | date:'longDate' }}</span></div>
-    <div class="description hidden-sm hidden-xs">{{ movie.longDescription | limitTo: 500 }}...</div>
+    <div class="description visible-lg visible-md">{{ movie.longDescription }}</div>
     <div class="description visible-sm visible-xs">{{ movie.longDescription | limitTo: 150 }}...</div>
     <div class="hidden-sm hidden-xs"><strong>{{ movie.artistName }}</strong></div>
     <button class="btn" ng-click="viewMode.value = !viewMode.value">
