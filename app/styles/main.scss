@@ -196,8 +196,6 @@ body {
   }
 
   .full {
-    margin-top: 31px;
-    margin-bottom: 10px;
 
     h3 {
       font-weight: bold;
@@ -218,7 +216,6 @@ body {
     }
 
     .image-container {
-      position: relative;
 //      @include perspective(140em);
 
       img {
@@ -226,27 +223,27 @@ body {
       }
 
       .overlay-gradient {
-        border-right: 1px $blue solid;
-
         z-index: 1;
         height: 100%;
-        width: 50px;
+        width: 170px;
         position: absolute;
         top: 0px;
-        right: -34px;
+        right: -8px;
         background: rgba(209,209,209,0);
-        background: -moz-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56%);
-        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(209,209,209,0)), color-stop(0%, rgba(0,0,0,0)), color-stop(56%, rgba(0,0,0,1)));
-        background: -webkit-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56%);
-        background: -o-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56%);
-        background: -ms-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56%);
-        background: linear-gradient(to right, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 56%);
+        background: -moz-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 86%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(209,209,209,0)), color-stop(0%, rgba(0,0,0,0)), color-stop(86%, rgba(0,0,0,1)));
+        background: -webkit-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 86%);
+        background: -o-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 86%);
+        background: -ms-linear-gradient(left, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 86%);
+        background: linear-gradient(to right, rgba(209,209,209,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 86%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1d1d1', endColorstr='#000000', GradientType=1 );
       }
     }
 
     .info-container{
-      padding: 0px 20px;
+      background: rgba(0,0,0,1);
+      padding: 0px 20px 0px 10px;
+//      border-left: 1px #337ab7 solid;
 
       .description {
         color: rgba(255, 255, 255, 0.88);
