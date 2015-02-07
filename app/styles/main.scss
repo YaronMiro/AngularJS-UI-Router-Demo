@@ -231,6 +231,20 @@ body {
 //        @include rotateY(40deg);
       }
 
+      .popularity-ranking {
+        top: 0px;
+        left: 50%;
+        position: absolute;
+        z-index: 3;
+        margin: 0 auto;
+        background: $blue;
+        color: white;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        @include border-radius(50%);
+      }
+
       .overlay-gradient {
         z-index: 1;
         height: 100%;

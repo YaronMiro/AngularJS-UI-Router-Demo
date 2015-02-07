@@ -8,7 +8,7 @@
     <a ui-sref="main.myMovies">My movies</a>
   </li>
   <!--Movie full view -->
-  <li ng-class="{ 'active': $state.current.name == 'main.movies.full'}" ng-show="$state.current.name == 'main.movies.full'">
+  <li ng-class="{ 'active': $state.current.name == 'main.movies.full'}"ng-show="$state.current.name == 'main.movies.full'">
     <a ui-sref="main.movies">{{ $stateParams.name }} trailer</a>
   </li>
 </ul>

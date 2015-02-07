@@ -12,7 +12,11 @@ angular.module('myApp')
 
     // Selected movie.
     $scope.selectedMovie = selectedMovie;
-    // Movie trailer.
-    $scope.movieTrailerUrl = Movies.gettingMovieTrailerUrl(selectedMovie.trackName, $state.current.data.movie);
+
+    // Verify that we have the data object declared.
+    if (angular.isDefined($state.current.data)) {
+      // Movie trailer.
+      $scope.movieTrailerUrl = Movies.gettingMovieTrailerUrl(selectedMovie.trackName, $state.current.data.movie);
+    }
 
   }]);

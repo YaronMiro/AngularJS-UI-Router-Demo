@@ -2,6 +2,7 @@
   <!-- Image -->
   <div class="col-sm-5 col-xs-12 image-container">
     <img class="img-responsive" ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
+    <div class="popularity-ranking">{{ $index + 1 }}</div>
     <div class="overlay-gradient"></div>
   </div>
   <!-- Info -->
@@ -12,8 +13,5 @@
       <span class="date">{{ selectedMovie.releaseDate | date:'longDate' }}</span>
     </h3>
     <div class="description">{{ selectedMovie.longDescription }}</div>
-    <div class="col-xs-12 movie-trailer">
-      <iframe type="text/html" ng-src="{{ movieTrailerUrl }}" frameborder="0" allowfullscreen/>
-    </div>
   </div>
 </div>

@@ -102,6 +102,41 @@ angular
           // pretty url - we will replace it with a cleaner structure.
           // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1.
           $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
+        }
+      })
+
+      // Single movie state.
+      .state('main.movies.trailer',{
+        // The "^" character excludes the parent prefix url format ("movies")
+        // from this child state url, instead of "movies/movie-details/:name"
+        // it will become "movie-details/:name".
+        url: '^/trailer/{name}/{position:int}',
+        views: {
+          'content@': {
+            templateUrl: 'views/pages/movies/movie.trailer.html',
+            controller: 'MovieCtrl'
+          }
+        },
+        resolve: {
+          // Example showing injection of a "parent" resolve object
+          // into it's child resolve function.
+          selectedMovie: function(movies, $stateParams){
+            return movies[$stateParams.position];
+          }
+        },
+        onEnter: function($stateParams, $state, selectedMovie) {
+
+          // The logic for the redirect is done here and not on the
+          // resolve function.
+          if (!angular.isDefined(selectedMovie)) {
+            // if the movie doesn't exist then redirect to the "parent" state.
+            // in our case it's the main "movies" state.
+            $state.go('^');
+          }
+
+          // pretty url - we will replace it with a cleaner structure.
+          // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1.
+          $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
         },
         data: {
           movie: {
