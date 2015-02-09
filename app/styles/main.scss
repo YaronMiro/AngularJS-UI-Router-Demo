@@ -230,24 +230,30 @@ body {
     }
 
     .image-container {
-//      @include perspective(140em);
+      position: relative;
 
       img {
-//        @include rotateY(40deg);
+        position: relative;
       }
 
-      .popularity-ranking {
-        top: 0px;
-        left: 50%;
+      .play-button {
+        text-align: center;
+        top: 20%;
+        left: 20%;
         position: absolute;
-        z-index: 3;
-        margin: 0 auto;
-        background: $blue;
+        background: rgba(20, 38, 53, 0.46);
         color: white;
-        line-height: 30px;
-        width: 30px;
-        height: 30px;
-        @include border-radius(50%);
+        width: 60%;
+        height: 40%;
+        @include border-radius(10%);
+
+        span {
+          color: white;
+          position: absolute;
+          font-size: 70px;
+          top: 38%;
+          left: 36%;
+        }
       }
 
       .overlay-gradient {

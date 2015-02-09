@@ -102,7 +102,7 @@ angular.module('myApp')
         // Joining the params.
         params = '&' + params.join('&');
         // Making sure the url is valid and trusted.
-        return  $sce.trustAsResourceUrl(encodeURI(movieData.basePath + movieName + ' ' + 'trailer' + params))
+        return $sce.trustAsResourceUrl(encodeURI(movieData.basePath + movieName + ' ' + 'trailer' + params))
       }
     };
   }]);
