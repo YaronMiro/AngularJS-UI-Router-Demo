@@ -61,16 +61,23 @@ body {
 
         &.active {
           a {
-            border: 1px solid $blue;
+            border-color: $blue;
+            color: $blue;
           }
+        }
+
+        &:nth-child(n+1) {
+          margin-right: 10px;
         }
 
         a {
           color: white;
           background: transparent;
+          border: 1px solid white;
 
           &:hover {
             color: $blue;
+            border-color: $blue
           }
         }
       }
@@ -181,20 +188,22 @@ body {
         .description {
           font-size: 12px;
         }
-      }
 
-      button {
-        background: transparent;
-        background: #1e1e1e;
-        width: 70px;
-        height: 70px;
-        @include border-radius(50%);
-        font-size: 27px;
+        .links {
+          margin-top: 20px;
 
+          button {
+            background: transparent;
+            background: #1e1e1e;
+            width: 70px;
+            height: 70px;
+            @include border-radius(50%);
+            font-size: 27px;
 
-        &:hover {
-          color: $blue;
-          border-color: $blue;
+            &:hover {
+              color: $blue;
+            }
+          }
         }
       }
     }
@@ -259,7 +268,7 @@ body {
       }
     }
 
-    .info-container{
+    .info-container {
       background: rgba(0,0,0,1);
       padding: 0px 20px 0px 10px;
 //      border-left: 1px #337ab7 solid;
@@ -268,15 +277,13 @@ body {
         color: rgba(255, 255, 255, 0.88);
         text-align: justify;
       }
+    }
+  }
 
-      .movie-trailer {
-        margin-top: 20px;
-
-        iframe {
-          width: 100%;
-          height: 320px;
-        }
-      }
+  .movie-trailer {
+    iframe {
+      width: 100%;
+      height: 500px;
     }
   }
 }
