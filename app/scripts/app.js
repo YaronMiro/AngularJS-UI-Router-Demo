@@ -159,4 +159,12 @@ angular
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-  }]);
+    $rootScope.$stateParams = $stateParams;
+
+  }])
+  .filter('textReplace', function(){
+    var self = this;
+    return function(self){
+      return self.replace(/-/g, ' ');
+    };
+  });

@@ -5,6 +5,6 @@
   </li>
   <!--Movie full view -->
   <li ng-class="{ 'active': $state.is('main.movies.trailer') }" ng-show="$state.is('main.movies.trailer')">
-    <a ui-sref="main.movies.full({'name': $stateParams.name, 'position': $stateParams.position})">{{ $stateParams.name }} </a>
+    <a ui-sref="main.movies.full({'name': $stateParams.name, 'position': $stateParams.position})">{{ $stateParams.name | textReplace }} </a>
   </li>
 </ul>
