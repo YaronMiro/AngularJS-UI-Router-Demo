@@ -233,26 +233,27 @@ body {
       position: relative;
 
       img {
+        width: 100%;
         position: relative;
       }
 
       .play-button {
         text-align: center;
-        top: 20%;
-        left: 20%;
+        top: 40%;;
+        left: 35%;
         position: absolute;
         background: rgba(20, 38, 53, 0.46);
         color: white;
-        width: 60%;
-        height: 40%;
+        padding: 13%;
         @include border-radius(10%);
+        @include box-shadow(black 0 0 25px, white 0 0 1px 1px inset);
 
         span {
           color: white;
           position: absolute;
           font-size: 70px;
-          top: 38%;
-          left: 36%;
+          top: 22%;
+          left: 21%;
         }
       }
 
@@ -294,7 +295,7 @@ body {
   }
 }
 
-// ngAnimate css
+// Fade effects.
 .fadein,
 .fadeout {
   @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.4s);
@@ -310,11 +311,11 @@ body {
   opacity: 1;
 }
 
+// ui-view change fade effect.
 .slide {
-  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.3s);
+  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.1s);
 }
 
-// ui-view "main" fade animation.
 .slide.ng-enter {
   opacity: 0;
 }
