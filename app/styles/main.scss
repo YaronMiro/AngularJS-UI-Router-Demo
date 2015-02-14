@@ -266,6 +266,40 @@ body {
         color: rgba(255, 255, 255, 0.88);
         text-align: justify;
       }
+
+      .wrapper {
+        margin-top: 7px;
+        color: rgba(255, 255, 255, 0.61);
+
+        label {
+          font-size: 16px;
+          color: $blue;
+        }
+        
+        .border {
+          background: $blue;
+          margin-top: 10px;
+          height: 1px;
+          background: -moz-linear-gradient(left,  rgba(51,122,183,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+          background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(51,122,183,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(left,  rgba(51,122,183,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+          background: -o-linear-gradient(left,  rgba(51,122,183,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+          background: -ms-linear-gradient(left,  rgba(51,122,183,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+          background: linear-gradient(to right,  rgba(51,122,183,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6337ab7', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+        }
+
+        &> * {
+          font-size: 13px;
+        }
+
+        .pill {
+          padding: 6px;
+          border: 1px solid;
+          @include border-radius(8px);
+          margin-right: 5px;
+        }
+      }
     }
   }
 

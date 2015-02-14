@@ -18,9 +18,32 @@
     <div class="description">{{ selectedMovie.longDescription }}</div>
     <!-- Details -->
     <div class="wrapper">
-      <label> Some label </label>
-      <div>My custom text here will go</div>
+      <label>Primary genre</label>
+      <div>{{ selectedMovie.primaryGenreName }}</div>
+      <div class="border"></div>
     </div>
-
+    <div class="wrapper">
+      <label>Artist name</label>
+      <div>{{ selectedMovie.artistName }}</div>
+      <div class="border"></div>
+    </div>
+    <div class="wrapper">
+      <label>Prices</label>
+      <div>
+        <span class="pill">HD: {{ selectedMovie.collectionHdPrice }} $</span>
+        <span class="pill">Regular: {{ selectedMovie.collectionPrice }} $</span>
+      </div>
+      <div class="border"></div>
+    </div>
+    <div class="wrapper">
+      <label>Content rating: </label>
+      <span>{{ selectedMovie.contentAdvisoryRating }}</span>
+      <div class="border"></div>
+    </div>
+    <div class="wrapper">
+      <label>Original link</label>
+      <a href="{{ selectedMovie.trackViewUrl }}">Itunes movie page</a>
+      <div class="border"></div>
+    </div>
   </div>
 </div>
