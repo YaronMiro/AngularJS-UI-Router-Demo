@@ -11,39 +11,42 @@
   <!-- Info -->
   <div class="col-sm-7 col-xs-12 info-container">
     <!-- Title -->
-    <h3>{{ selectedMovie.trackName }}
-      <span class="separator"> | </span>
-      <span class="date">{{ selectedMovie.releaseDate | date:'longDate' }}</span>
-    </h3>
+    <h3>{{ selectedMovie.trackName }}</h3>
     <div class="description">{{ selectedMovie.longDescription }}</div>
     <!-- Details -->
     <div class="wrapper">
-      <label>Primary genre</label>
+      <label><i class="fa fa-calendar"></i> Release date</label>
+      <div>{{ selectedMovie.releaseDate | date:'longDate' }}</div>
+      <div class="border"></div>
+    </div>
+    <div class="wrapper">
+      <label><i class="fa fa-tag"></i> Primary genre</label>
       <div>{{ selectedMovie.primaryGenreName }}</div>
       <div class="border"></div>
     </div>
     <div class="wrapper">
-      <label>Artist name</label>
+      <label><i class="fa fa-user"></i> Director</label>
       <div>{{ selectedMovie.artistName }}</div>
       <div class="border"></div>
     </div>
     <div class="wrapper">
-      <label>Prices</label>
+      <label><i class="fa fa-money"></i> Prices</label>
       <div>
-        <span class="pill">HD: {{ selectedMovie.collectionHdPrice }} $</span>
-        <span class="pill">Regular: {{ selectedMovie.collectionPrice }} $</span>
+        <span class="pill"><span>Buy HD:</span> {{ selectedMovie.collectionHdPrice }} $</span>
+        <span class="pill"><span>Rental HD:</span> {{ selectedMovie.trackHdRentalPrice }} $</span>
+        <span class="pill"><span>Buy Regular:</span> {{ selectedMovie.collectionPrice }} $</span>
+        <span class="pill"><span>Rental Regular:</span> {{ selectedMovie.trackRentalPrice }} $</span>
       </div>
       <div class="border"></div>
     </div>
     <div class="wrapper">
-      <label>Content rating: </label>
+      <label><i class="fa fa-video-camera"></i> Content rating:</label>
       <span>{{ selectedMovie.contentAdvisoryRating }}</span>
       <div class="border"></div>
     </div>
     <div class="wrapper">
-      <label>Original link</label>
-      <a href="{{ selectedMovie.trackViewUrl }}">Itunes movie page</a>
-      <div class="border"></div>
+      <label><i class="fa fa-apple"></i> Original link</label>
+      <div> <a href="{{ selectedMovie.trackViewUrl }}">Itunes movie page</a> </div>
     </div>
   </div>
 </div>

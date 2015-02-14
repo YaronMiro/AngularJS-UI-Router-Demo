@@ -263,6 +263,7 @@ body {
       padding: 0px 20px 0px 10px;
 
       .description {
+        margin-bottom: 30px;
         color: rgba(255, 255, 255, 0.88);
         text-align: justify;
       }
@@ -273,9 +274,20 @@ body {
 
         label {
           font-size: 16px;
+        }
+
+        i, .pill span {
           color: $blue;
         }
-        
+
+        a {
+          color: rgba(255, 255, 255, 0.61);
+        }
+
+        i:after {
+          content: " | ";
+        }
+
         .border {
           background: $blue;
           margin-top: 10px;
@@ -294,6 +306,7 @@ body {
         }
 
         .pill {
+          display: inline-block;
           padding: 6px;
           border: 1px solid;
           @include border-radius(8px);
