@@ -2,11 +2,6 @@
   <!-- Image -->
     <div class="col-sm-5 col-xs-12 image-container">
       <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
-      <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })">
-        <div class="play-button">
-          <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-        </div>
-      </a>
     </div>
   <!-- Info -->
   <div class="col-sm-7 col-xs-12 info-container">
@@ -32,9 +27,9 @@
     <div class="wrapper">
       <label><i class="fa fa-money"></i> Prices</label>
       <div>
-        <span class="pill"><span>Buy HD:</span> {{ selectedMovie.collectionHdPrice }} $</span>
+        <span class="pill"><span>HD:</span> {{ selectedMovie.collectionHdPrice }} $</span>
         <span class="pill"><span>Rental HD:</span> {{ selectedMovie.trackHdRentalPrice }} $</span>
-        <span class="pill"><span>Buy Regular:</span> {{ selectedMovie.collectionPrice }} $</span>
+        <span class="pill"><span>Regular:</span> {{ selectedMovie.collectionPrice }} $</span>
         <span class="pill"><span>Rental Regular:</span> {{ selectedMovie.trackRentalPrice }} $</span>
       </div>
       <div class="border"></div>
@@ -47,6 +42,12 @@
     <div class="wrapper">
       <label><i class="fa fa-apple"></i> Original link</label>
       <div> <a href="{{ selectedMovie.trackViewUrl }}">Itunes movie page</a> </div>
+      <div class="border"></div>
+    </div>
+    <div class="wrapper">
+      <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })">
+        <div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>
+      </a>
     </div>
   </div>
 </div>
