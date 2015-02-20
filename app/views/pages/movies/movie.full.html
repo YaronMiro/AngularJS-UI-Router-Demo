@@ -27,10 +27,10 @@
     <div class="wrapper">
       <label><i class="fa fa-money"></i> Prices</label>
       <div>
-        <span class="pill"><span>HD:</span> {{ selectedMovie.collectionHdPrice }} $</span>
-        <span class="pill"><span>Rental HD:</span> {{ selectedMovie.trackHdRentalPrice }} $</span>
-        <span class="pill"><span>Regular:</span> {{ selectedMovie.collectionPrice }} $</span>
-        <span class="pill"><span>Rental Regular:</span> {{ selectedMovie.trackRentalPrice }} $</span>
+        <span ng-show="selectedMovie.collectionHdPrice" class="pill"><span>HD:</span> {{ selectedMovie.collectionHdPrice }} $</span>
+        <span ng-show="selectedMovie.trackHdRentalPrice" class="pill"><span>Rental HD:</span> {{ selectedMovie.trackHdRentalPrice }} $</span>
+        <span ng-show="selectedMovie.collectionPrice" class="pill"><span>Regular:</span> {{ selectedMovie.collectionPrice }} $</span>
+        <span ng-show="selectedMovie.trackRentalPrice" class="pill"><span>Rental Regular:</span> {{ selectedMovie.trackRentalPrice }} $</span>
       </div>
       <div class="border"></div>
     </div>
@@ -45,6 +45,7 @@
       <div class="border"></div>
     </div>
     <div class="wrapper">
+      <label><i class="fa fa-apple"></i> Movie trailer</label>
       <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })">
         <div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>
       </a>
