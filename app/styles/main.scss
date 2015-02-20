@@ -264,6 +264,9 @@ body {
       padding: 0px 20px 0px 10px;
 
       .description {
+        max-height: 75px;
+        overflow-y: scroll;
+        padding-right: 20px;
         margin-bottom: 30px;
         color: rgba(255, 255, 255, 0.88);
         text-align: justify;
