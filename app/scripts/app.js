@@ -14,7 +14,6 @@ angular
     'ngAnimate',
     'config',
     'angular-loading-bar',
-    'LocalStorageModule',
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
