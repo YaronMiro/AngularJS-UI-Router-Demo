@@ -15,10 +15,10 @@
       <button title="movie poster" class="btn" ng-click="viewMode.value = !viewMode.value">
         <span class="glyphicon glyphicon-picture"></span>
       </button>
-      <button title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.trackName, 'position': $index})">
+      <button title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
         <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
       </button>
-      <button title="movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.trackName, 'position': $index})">
+      <button title="movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
         <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
       </button>
     </div>

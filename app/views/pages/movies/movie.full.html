@@ -1,7 +1,7 @@
 <div class="row full">
   <!-- Image -->
   <div class="col-sm-5 col-sm-push-7 col-xs-12 image-container">
-    <a ui-sref="main.movies.trailer({'name': selectedMovie.trackName})">
+    <a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias})">
       <div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>
     </a>
     <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>

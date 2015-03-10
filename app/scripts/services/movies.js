@@ -48,10 +48,16 @@ angular.module('myApp')
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
           angular.forEach(movies.results, function(movie, index) {
+
             // Adding index for each movie.
-            movie.index = index;
+            movie.index = index + 1;
+
             // Ad an extra movie image size 600px width.
             movie.artworkUrl600 = movie.artworkUrl100.replace('100x100', "600x600");
+
+            // pretty url - we will replace it with a cleaner structure.
+            // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1.
+            movie.urlAlias = movie.trackName.replace(/ /g, '-').toLowerCase();
           });
 
           deferred.resolve(movies.results);

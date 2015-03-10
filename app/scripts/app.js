@@ -18,6 +18,40 @@ angular
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
+
+    /**
+     * Redirect a user to homepage.
+     *
+     * @param $state
+     *   The ui-router state.
+     * @param $selectedMovie
+     *   The target movie.
+     */
+    var redirect = function($state, selectedMovie) {
+      if (!angular.isDefined(selectedMovie)) {
+        // if the movie doesn't exist then redirect to the "parent" state.
+        // in our case it's the main "movies" state.
+        $state.go('main.movies');
+      }
+    };
+
+    /**
+     * Redirect a user to homepage.
+     *
+     * @param movies
+     *   Array of movie {*}.
+     * @param $stateParams
+     *   The state url params {*}.
+     * @param $filter
+     *  The $filter service {*}.
+     *
+     *  Return the target movie {*}.
+     */
+    var gettingSelectedMovie = function(movies, $stateParams, $filter){
+      var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
+      return selectedMovie[0];
+    };
+
     // Default url route.
     $urlRouterProvider.otherwise('/movies');
 
@@ -85,25 +119,9 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: function(movies, $stateParams, $filter){
-            var selectedMovie = $filter('filter')(movies, {trackName: $stateParams.name});
-            return selectedMovie[0];
-          }
+          selectedMovie: gettingSelectedMovie
         },
-        onEnter: function($stateParams, $state, selectedMovie) {
-
-          // The logic for the redirect is done here and not on the
-          // resolve function.
-          if (!angular.isDefined(selectedMovie)) {
-            // if the movie doesn't exist then redirect to the "parent" state.
-            // in our case it's the main "movies" state.
-            $state.go('^');
-          }
-
-          // pretty url - we will replace it with a cleaner structure.
-          // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1.
-          $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
-        }
+        onEnter: redirect
       })
 
       // Single movie state.
@@ -121,25 +139,9 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: function(movies, $stateParams, $filter){
-            var selectedMovie = $filter('filter')(movies, {trackName: $stateParams.name});
-            return selectedMovie[0];
-          }
+          selectedMovie: gettingSelectedMovie
         },
-        onEnter: function($stateParams, $state, selectedMovie) {
-
-          // The logic for the redirect is done here and not on the
-          // resolve function.
-          if (!angular.isDefined(selectedMovie)) {
-            // if the movie doesn't exist then redirect to the "parent" state.
-            // in our case it's the main "movies" state.
-            $state.go('^');
-          }
-
-          // pretty url - we will replace it with a cleaner structure.
-          // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1.
-          $stateParams.name = $stateParams.name.replace(/ /g, '-').toLowerCase();
-        },
+        onEnter: redirect,
         data: {
           movie: {
             basePath: 'http://www.youtube.com/embed/?listType=search&list=',
@@ -163,9 +165,3 @@ angular
     $rootScope.$stateParams = $stateParams;
 
   }])
-  .filter('textReplace', function(){
-    var self = this;
-    return function(self){
-      return self.replace(/-/g, ' ');
-    };
-  });

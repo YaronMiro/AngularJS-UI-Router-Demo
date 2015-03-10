@@ -1,12 +1,12 @@
 <!--Non Mobile -->
 <div class="preview hidden-xs" ng-click="viewMode.value = !viewMode.value;">
   <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
-  <div class="popularity-ranking">{{ $index + 1 }}</div>
+  <div class="popularity-ranking">{{ movie.index }}</div>
 </div>
   <!--Mobile -->
-<a class="visible-xs" ui-sref="main.movies.full({'name': movie.trackName, 'position': $index})">
+<a class="visible-xs" ui-sref="main.movies.full({'name': movie.trackName, 'position': movie.urlAlias})">
   <div class="preview">
     <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
-    <div class="popularity-ranking">{{ $index + 1 }}</div>
+    <div class="popularity-ranking">{{ movie.index }}</div>
   </div>
 </a>
