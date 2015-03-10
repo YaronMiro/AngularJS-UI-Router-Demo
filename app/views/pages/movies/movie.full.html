@@ -1,7 +1,7 @@
 <div class="row full">
   <!-- Image -->
   <div class="col-sm-5 col-sm-push-7 col-xs-12 image-container">
-    <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })">
+    <a ui-sref="main.movies.trailer({'name': selectedMovie.trackName})">
       <div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>
     </a>
     <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
@@ -43,8 +43,7 @@
       <div class="border"></div>
     </div>
     <div class="wrapper">
-      <label><i class="fa fa-apple"></i> Original link</label>
-      <div> <a href="{{ selectedMovie.trackViewUrl }}">Itunes movie page</a> </div>
+        <label> <a href="{{ selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
     </div>
     <!--<div class="wrapper">-->
       <!--<label><i class="fa fa-film"></i> Movie trailer</label>-->

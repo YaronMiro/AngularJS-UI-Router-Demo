@@ -4,7 +4,7 @@
     <a ui-sref="main.movies">Movies</a>
   </li>
   <!--Movie full view -->
-  <li ng-if="$state.is('main.movies.trailer')" ng-class="{ 'active': $state.is('main.movies.trailer') }" ng-show="$state.is('main.movies.trailer')">
-    <a ui-sref="main.movies.full({'name': $stateParams.name, 'position': $stateParams.position})">{{ $stateParams.name | textReplace }} </a>
+  <li ng-if="$state.is('main.movies.trailer')">
+    <a ui-sref="main.movies.full({'name': $stateParams.name, 'position': $stateParams.position})">Read more</a>
   </li>
 </ul>

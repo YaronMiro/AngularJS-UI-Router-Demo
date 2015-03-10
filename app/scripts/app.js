@@ -75,7 +75,7 @@ angular
         // The "^" character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name".
-        url: '^/movie-info/{name}/{position:int}',
+        url: '^/movie-info/{name}',
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
@@ -85,8 +85,9 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: function(movies, $stateParams){
-            return movies[$stateParams.position];
+          selectedMovie: function(movies, $stateParams, $filter){
+            var selectedMovie = $filter('filter')(movies, {trackName: $stateParams.name});
+            return selectedMovie[0];
           }
         },
         onEnter: function($stateParams, $state, selectedMovie) {
@@ -110,7 +111,7 @@ angular
         // The "^" character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name".
-        url: '^/trailer/{name}/{position:int}',
+        url: '^/trailer/{name}',
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.trailer.html',
@@ -120,8 +121,9 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: function(movies, $stateParams){
-            return movies[$stateParams.position];
+          selectedMovie: function(movies, $stateParams, $filter){
+            var selectedMovie = $filter('filter')(movies, {trackName: $stateParams.name});
+            return selectedMovie[0];
           }
         },
         onEnter: function($stateParams, $state, selectedMovie) {
@@ -158,7 +160,6 @@ angular
     // $rootScope so that you can access them from any scope within your
     // applications.
     $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
     $rootScope.$stateParams = $stateParams;
 
   }])
