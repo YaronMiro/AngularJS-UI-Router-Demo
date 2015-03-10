@@ -163,5 +163,4 @@ angular
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-
   }])
