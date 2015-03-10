@@ -1,13 +1,13 @@
 <div class="row full">
   <!-- Image -->
-    <div class="col-sm-5 col-xs-12 image-container">
-      <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
-    </div>
+  <div class="col-sm-5 col-sm-push-7 col-xs-12 image-container">
+    <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
+  </div>
   <!-- Info -->
-  <div class="col-sm-7 col-xs-12 info-container">
+  <div class="col-sm-7 col-sm-pull-5 col-xs-12 info-container">
     <!-- Title -->
     <h3>{{ selectedMovie.trackName }}</h3>
-    <div class="description">{{ selectedMovie.longDescription }}</div>
+    <div scrollbar max-height="75" class="description">{{ selectedMovie.longDescription }}</div>
     <!-- Details -->
     <div class="wrapper">
       <label><i class="fa fa-calendar"></i> Release date</label>
@@ -52,3 +52,4 @@
     </div>
   </div>
 </div>
+<!--<script>$('.description').mCustomScrollbar();</script>-->

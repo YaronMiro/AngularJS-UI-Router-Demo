@@ -13,8 +13,6 @@ angular.module('myApp')
     // Selected movie.
     $scope.selectedMovie = selectedMovie;
 
-    console.log($scope.selectedMovie);
-
     // Verify that we have the data object declared.
     if (angular.isDefined($state.current.data)) {
       // Movie trailer.
