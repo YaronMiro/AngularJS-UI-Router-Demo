@@ -4,7 +4,7 @@
     <a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias})">
       <div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>
     </a>
-    <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
+    <img class="ps-top-to-bottom" ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
   </div>
   <!-- Info -->
   <div class="col-sm-7 col-sm-pull-5 col-xs-12 info-container">
@@ -32,8 +32,6 @@
       <div>
         <span ng-show="selectedMovie.collectionHdPrice" class="pill"><span>HD:</span> {{ selectedMovie.collectionHdPrice }} $</span>
         <span ng-show="selectedMovie.trackHdRentalPrice" class="pill"><span>Rental HD:</span> {{ selectedMovie.trackHdRentalPrice }} $</span>
-        <span ng-show="selectedMovie.collectionPrice" class="pill"><span>Regular:</span> {{ selectedMovie.collectionPrice }} $</span>
-        <span ng-show="selectedMovie.trackRentalPrice" class="pill"><span>Rental Regular:</span> {{ selectedMovie.trackRentalPrice }} $</span>
       </div>
       <div class="border"></div>
     </div>

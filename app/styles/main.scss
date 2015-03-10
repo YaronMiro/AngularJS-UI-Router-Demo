@@ -236,6 +236,19 @@ body {
       img {
         width: 100%;
         position: relative;
+        padding: 20px;
+        border-width: 1px;
+        border-style: solid;
+        -webkit-border-image:
+          -webkit-gradient(linear, 0 0, 0 100%, from(black), to($blue)) 1 100%;
+        -webkit-border-image:
+          -webkit-linear-gradient(black, $blue) 1 100%;
+        -moz-border-image:
+          -moz-linear-gradient(black, $blue) 1 100%;
+        -o-border-image:
+          -o-linear-gradient(black, $blue) 1 100%;
+        border-image:
+          linear-gradient(to bottom, black, $blue) 1 100%;
       }
 
       .play-button {
@@ -336,6 +349,10 @@ body {
           left: 21%;
         }
       }
+    }
+
+    .info-container, .image-container {
+      padding: 30px;
     }
   }
 
