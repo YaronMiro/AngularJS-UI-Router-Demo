@@ -16,16 +16,14 @@ angular.module('myApp')
         scope.changeSelectedMovie = function() {
           var index = scope.selectedMovieIndex;
 
-          function next() {
-            return index == (length -1) ? scope.selectedMovieIndex : scope.selectedMovieIndex + 1;
-          };
-          function previous() {
-            return index == 0 ? scope.selectedMovieIndex :  scope.selectedMovieIndex - 1;
-          };
-          scope.operator == '>' ? console.log(next()): console.log(previous());
+          if (index != length && scope.operator == '>') {
+            console.log(index + 1);
+          }
+          else if (index && scope.operator == '<') {
+            console.log(index -1 );
+          }
+          console.log(scope.selectedMovie);
         }
-
-
       }
     };
   });
