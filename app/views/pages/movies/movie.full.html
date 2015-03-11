@@ -1,8 +1,4 @@
 <div class="row full">
-  <div class="col-xs-12">
-    <div next-previous-movie operator="<" selected-movie-index="selectedMovie.index" class="pull-left"></div>
-    <div next-previous-movie operator=">" selected-movie-index="selectedMovie.index"  class="pull-right"></div>
-  </div>
   <!-- Image -->
   <div class="col-sm-5 col-sm-push-7 col-xs-12 image-container">
     <!--<a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias})">-->
@@ -52,7 +48,7 @@
      <div class="wrapper text-center trailer">
        <div class="border"></div>
         <label>
-          <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })"><i class="fa fa-play-circle"></i> Watch the trailer</a>
+          <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })"><i class="fa fa-film"></i> Watch the trailer</a>
         </label>
        <div class="border"></div>
      </div>
