@@ -5,9 +5,9 @@
   </div>
   <!-- Image -->
   <div class="col-sm-5 col-sm-push-7 col-xs-12 image-container">
-    <a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias})">
-      <div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>
-    </a>
+    <!--<a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias})">-->
+      <!--<div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>-->
+    <!--</a>-->
     <img ng-src="{{ selectedMovie.artworkUrl600 }}" alt="{{ selectedMovie.trackName }}-poster image"/>
     <div class="rating-wrapper"><div class="rating text-center"><i class="fa fa-star"></i> {{ selectedMovie.index }} <i class="fa fa-star"></i></div></div>
   </div>
@@ -43,18 +43,19 @@
      </div>
      <div class="wrapper">
        <label><i class="fa fa-video-camera"></i> Content rating:</label>
-       <span>{{ selectedMovie.contentAdvisoryRating }}</span>
+       <div>{{ selectedMovie.contentAdvisoryRating }}</div>
        <div class="border"></div>
      </div>
      <div class="wrapper">
        <label> <a href="{{ selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
      </div>
-     <!--<div class="wrapper">-->
-     <!--<label><i class="fa fa-film"></i> Movie trailer</label>-->
-     <!--<a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })">-->
-     <!--<div class="play-button"><span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span></div>-->
-     <!--</a>-->
-     <!--</div>-->
+     <div class="wrapper text-center trailer">
+       <div class="border"></div>
+        <label>
+          <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })"><i class="fa fa-play-circle"></i> Watch the trailer</a>
+        </label>
+       <div class="border"></div>
+     </div>
    </div>
   </div>
 </div>
