@@ -223,26 +223,26 @@ body {
   }
 
   .full {
+    padding-left: 30px;
+    padding-right: 30px;
 
-    h3 {
-      font-weight: bold;
-      color: $blue;
+    .title {
 
-      .separator {
-        font-weight: normal;
-        color: white;
+      h3 {
+        margin: 13px 0px;
+        font-weight: bold;
+        color: $blue;
       }
 
-      .date {
-        font-size: 16px;
-        color: $gray;
-        font-weight: normal;
-        text-transform: capitalize;
+      .border {
+        height: 2px;
       }
     }
 
     .image-container {
       position: relative;
+      padding-left: 30px;
+
 
       img {
         width: 100%;
@@ -304,18 +304,7 @@ body {
 
     .info-container {
       background: rgba(0,0,0,1);
-      padding: 0px 50px 0px 0px;
-
-      .title {
-
-        h3 {
-          margin: 13px 0px;
-        }
-
-        .border {
-          height: 2px;
-        }
-      }
+      padding-right: 30px;
 
       .description {
         margin-top: 15px;
@@ -394,21 +383,21 @@ body {
               color: $blue;
             }
 
-//            .border:last-child {
-//              margin-top: 4px;
-//            }
-
             i:after {
               content: "";
             }
           }
         }
-
       }
     }
 
     .info-container, .image-container {
-      padding: 30px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+
+      @include mobile-only {
+        padding: 30px;
+      }
     }
   }
 
@@ -418,6 +407,28 @@ body {
       height: 500px;
     }
   }
+}
+
+.movie-links {
+
+  .link {
+    font-size: 20px;
+    color: $blue;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: 2E538B;
+    }
+
+    &.next {
+      padding-right: 0px;
+    }
+    &.previous {
+      padding-right: 0px;
+    }
+  }
+  
 }
 
 // Fade effects.

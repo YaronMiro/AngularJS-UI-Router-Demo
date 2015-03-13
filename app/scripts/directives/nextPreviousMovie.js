@@ -1,34 +1,35 @@
 'use strict';
 
 angular.module('myApp')
-  .directive('nextPreviousMovie', function (Movies) {
+  .directive('nextPreviousMovie', function ($state) {
     return {
-      template: '<div ng-click="changeSelectedMovie()" class="{{ class }}"></div>',
+      template: '<div ng-click="changeSelectedMovie()" class="link {{ class }}"></div>',
       replace: true,
+      scope: {
+        operator: '@',
+        selectedMovieIndex: '=',
+        movies: '=',
+        viewName: '='
+      },
       link: function (scope, element, attrs) {
-        scope.class =  scope.operator == '>' ? 'fa fa-chevron-circle-right' : 'fa fa-chevron-circle-left';
-        var length = 30;
 
-        console.log(scope.selectedMovie);
-        console.log(scope.movies);
-
-        Movies.gettingMovies(30).then(function(data){
-          var movies = data
-          console.log(movies);
-
-        });
-        return;
+        // Defaults.
+        scope.class =  scope.operator == '>' ? 'fa fa-chevron-circle-right next' : 'fa fa-chevron-circle-left previous';
+        var index = scope.selectedMovieIndex;
 
         scope.changeSelectedMovie = function() {
-          var index = scope.selectedMovie.index;
 
-          if (index != length && scope.operator == '>') {
-            console.log(index + 1);
+          // Proceed to next movie if it exists.
+          if (index != scope.movies.length && scope.operator == '>') {
+           index = index + 1;
           }
+          // Proceed to previous movie if it exists.
           else if (index && scope.operator == '<') {
-            console.log(index -1 );
+            index = index -1;
           }
-          console.log(scope.selectedMovie);
+
+          var url = scope.movies[index].urlAlias;
+          $state.go(scope.viewName, {'name': url})
         }
       }
     };
