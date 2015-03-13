@@ -9,8 +9,6 @@
  */
 angular.module('myApp')
   .controller('MoviesCtrl', ['$scope','$stateParams', 'movies', function ($scope, $stateParams, movies) {
-
       // Movies data.
       $scope.movies = movies;
-
   }]);

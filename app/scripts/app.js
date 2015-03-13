@@ -14,9 +14,42 @@ angular
     'ngAnimate',
     'config',
     'angular-loading-bar',
-    'LocalStorageModule',
   ])
-  .config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider', function($stateProvider, $urlRouterProvider, cfpLoadingBarProvider){
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+
+
+    /**
+     * Redirect a user to homepage.
+     *
+     * @param $state
+     *   The ui-router state.
+     * @param $selectedMovie
+     *   The target movie.
+     */
+    var redirect = function($state, selectedMovie) {
+      if (!angular.isDefined(selectedMovie)) {
+        // if the movie doesn't exist then redirect to the "parent" state.
+        // in our case it's the main "movies" state.
+        $state.go('main.movies');
+      }
+    };
+
+    /**
+     * Redirect a user to homepage.
+     *
+     * @param movies
+     *   Array of movie {*}.
+     * @param $stateParams
+     *   The state url params {*}.
+     * @param $filter
+     *  The $filter service {*}.
+     *
+     *  Return the target movie {*}.
+     */
+    var gettingSelectedMovie = function(movies, $stateParams, $filter){
+      var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
+      return selectedMovie[0];
+    };
 
     // Default url route.
     $urlRouterProvider.otherwise('/movies');
@@ -28,35 +61,35 @@ angular
         abstract: true,
         views: {
           // Absolutely targets the 'header' view in this state.
-          // <div ui-view="header"/> within index.html
+          // <div ui-view="header"/> within index.html.
           'header': {
             templateUrl: 'views/main/header.html'
           },
           // Absolutely targets the 'footer' view in this state.
-          // <div ui-view="footer"/> within index.html
+          // <div ui-view="footer"/> within index.html.
           'footer': {
             templateUrl: 'views/main/footer.html'
           }
         }
        })
 
-      // Movies.
+      // Movies state.
       .state('main.movies',{
         url: 'movies',
         views: {
           // Relatively targets the 'content' view in this state parent state,
-          // 'main'. <div ui-view='content'/> within index.html
+          // 'main'. <div ui-view='content'/> within index.html.
           'content@': {
             templateUrl: 'views/pages/movies/movies.html',
             controller: 'MoviesCtrl'
           },
           // Absolutely targets the 'preview' view in this state.
-          // <div ui-view="preview"/> within movies.html
+          // <div ui-view="preview"/> within movies.html.
           'preview@main.movies': {
             templateUrl: 'views/pages/movies/movie.preview.html'
           },
           // Absolutely targets the 'summary' view in this state.
-          // <div ui-view="summary"/> within movies.html
+          // <div ui-view="summary"/> within movies.html.
           'summary@main.movies': {
             templateUrl: 'views/pages/movies/movie.summary.html'
           }
@@ -70,37 +103,58 @@ angular
         }
        })
 
-      // Movie full.
+      // Single movie state.
       .state('main.movies.full',{
-        url: '^/movie-details/:name',
-        params: {name: 'default', position: -1},
+        // The "^" character excludes the parent prefix url format ("movies")
+        // from this child state url, instead of "movies/movie-details/:name"
+        // it will become "movie-details/:name".
+        url: '^/movie-info/{name}',
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
-            controller: 'MoviesCtrl'
+            controller: 'MovieCtrl'
           }
         },
-        onEnter: function($state, $stateParams) {
-          // pretty url (e.g) movie%20name => movie-name
-          var cleanParam = $stateParams.name.replace(/ /g, '-').toLowerCase();
-          $stateParams.name = cleanParam;
-        }
-       })
+        resolve: {
+          // Example showing injection of a "parent" resolve object
+          // into it's child resolve function.
+          selectedMovie: gettingSelectedMovie
+        },
+        onEnter: redirect
+      })
 
-      // My movies.
-      .state('main.myMovies',{
-        url: 'my-movies',
+      // Single movie state.
+      .state('main.movies.trailer',{
+        // The "^" character excludes the parent prefix url format ("movies")
+        // from this child state url, instead of "movies/movie-details/:name"
+        // it will become "movie-details/:name".
+        url: '^/trailer/{name}',
         views: {
           'content@': {
-            templateUrl: 'views/pages/about.html'
+            templateUrl: 'views/pages/movies/movie.trailer.html',
+            controller: 'MovieCtrl'
+          }
+        },
+        resolve: {
+          // Example showing injection of a "parent" resolve object
+          // into it's child resolve function.
+          selectedMovie: gettingSelectedMovie
+        },
+        onEnter: redirect,
+        data: {
+          movie: {
+            basePath: 'http://www.youtube.com/embed/?listType=search&list=',
+            params: {
+              controls: 2,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0,
+              autoplay: 1,
+              hd: 1
+            }
           }
         }
-       });
-
-      // Configuration of the loading bar.
-      //cfpLoadingBarProvider.includeSpinner = false;
-      //cfpLoadingBarProvider.latencyThreshold = 1000;
-
+      })
   }])
   .run([ '$rootScope', '$state', '$stateParams', '$log', 'Config', function ($rootScope, $state, $stateParams, $log, Config) {
     // It's very handy to add references to $state and $stateParams to the
@@ -108,30 +162,4 @@ angular
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-
-    return;
-
-    if (!!Config.debugUiRouter) {
-      $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-        $log.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
-      });
-
-      $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams) {
-        $log.log('$stateChangeError - fired when an error occurs during transition.');
-        $log.log(arguments);
-      });
-
-      $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-        $log.log('$stateChangeSuccess to ' + toState.name + '- fired once the state transition is complete.');
-      });
-
-      $rootScope.$on('$viewContentLoaded', function (event) {
-        $log.log('$viewContentLoaded - fired after dom rendered', event);
-      });
-
-      $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
-        $log.log('$stateNotFound ' + unfoundState.to + '  - fired when a state cannot be found by its name.');
-        $log.log(unfoundState, fromState, fromParams);
-      });
-    }
-  }]);
+  }])

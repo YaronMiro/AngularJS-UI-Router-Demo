@@ -1,6 +1,6 @@
 <article id="movies" class="row">
-  <div class="col-xs-6 col-md-4 movies-wrapper" ng-repeat="movie in movies" ng-init="viewMode = false">
-    <section ng-show="!viewMode" ui-view="preview" class="fadein fadeout"></section>
-    <section ng-show="viewMode" ui-view="summary" class="fadein fadeout"></section>
+  <div class="col-xs-6 col-sm-4 movies-wrapper" ng-repeat="movie in movies" ng-init="viewMode = {value: false}">
+    <section ng-show="!viewMode.value" ui-view="preview" class="fadein fadeout"></section>
+    <section ng-show="viewMode.value" ui-view="summary" class="fadein fadeout"></section>
   </div>
 </article>

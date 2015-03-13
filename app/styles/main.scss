@@ -1,24 +1,23 @@
-@import "compass/css3/border-radius";
-@import "compass/css3/transition";
-@import "compass/css3/opacity";
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-
-// Override default bootstrap variables.
-$grid-gutter-width: 0px;
-
-// Colors.
-$gray: #777777;
-$darkGray: #1e1e1e;
-$blue: #337ab7;
-
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
+@import "mixin";
 
 body {
+  font-size: 13px;
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
   background: black;
+}
+
+.border {
+  background: $blue;
+  height: 1px;
+  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(41, 137, 216, 0.51) 50%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(41, 137, 216, 0.51)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
 #main {
@@ -67,18 +66,31 @@ body {
 
     .nav-pills {
       li {
+        cursor: pointer;
+
+        @include mobile-only {
+          float: none;
+        }
+
         &.active {
           a {
-            border: 1px solid $blue;
+            border-color: $blue;
+            color: $blue;
           }
+        }
+
+        &:nth-child(n+1) {
+          margin-right: 10px;
         }
 
         a {
           color: white;
           background: transparent;
+          border: 1px solid white;
 
           &:hover {
             color: $blue;
+            border-color: $blue
           }
         }
       }
@@ -92,32 +104,42 @@ body {
       @include border-bottom-right-radius(6px);
     }
 
-    a {
-      color: white;
+    .links{
+      margin-top: 15px;
+      a {
+        color: white;
 
-      &:hover {
-        text-decoration: none;
-        color: #337ab7;
+        &:hover {
+          text-decoration: none;
+          color: #337ab7;
+        }
+
+        span {
+          color: $gray;
+        }
       }
 
-      span {
+      .divider {
         color: $gray;
+        display: inline-block;
+        margin: 0px 3px;
       }
-    }
-
-    .divider {
-      color: $gray;
-      display: inline-block;
-      margin: 0px 3px;
-    }
-
-    .back-to-top {
-      text-transform: uppercase;
     }
   }
 
   .movies-wrapper {
-    height: 551px;
+
+    @include large-desktop-only {
+      height: 570px;
+    }
+
+    @include medium-desktop-only {
+      height: 470px;
+    }
+
+    @include tablet-only {
+      height: 360px;
+    }
 
     .preview {
       cursor: pointer;
@@ -170,33 +192,235 @@ body {
       .wrapper {
         padding-right: 20px;
         padding-left: 20px;
-        text-align: left;
+        text-align: center;
 
         &> * {
           margin-top: 7px;
         }
 
         .description {
-          font-size: 12px;
+          color: rgba(255, 255, 255, 0.61);
         }
-      }
 
-      button {
-        margin-top: 10px;
-        color: $gray;
-        background: transparent;
-        border: 1px solid $gray;
+        .links {
+          margin-top: 20px;
 
-        &:hover {
-          color: $blue;
-          border-color: $gray;
+          button {
+            background: transparent;
+            background: #1e1e1e;
+            width: 70px;
+            height: 70px;
+            @include border-radius(50%);
+            font-size: 27px;
+
+            &:hover {
+              color: $blue;
+            }
+          }
         }
       }
     }
   }
+
+  .full {
+
+    h3 {
+      font-weight: bold;
+      color: $blue;
+
+      .separator {
+        font-weight: normal;
+        color: white;
+      }
+
+      .date {
+        font-size: 16px;
+        color: $gray;
+        font-weight: normal;
+        text-transform: capitalize;
+      }
+    }
+
+    .image-container {
+      position: relative;
+
+      img {
+        width: 100%;
+        position: relative;
+        padding: 20px;
+        border-width: 1px;
+        border-style: solid;
+        -webkit-border-image:
+          -webkit-gradient(linear, 0 0, 0 100%, from(black), to($blue)) 1 100%;
+        -webkit-border-image:
+          -webkit-linear-gradient(black, $blue) 1 100%;
+        -moz-border-image:
+          -moz-linear-gradient(black, $blue) 1 100%;
+        -o-border-image:
+          -o-linear-gradient(black, $blue) 1 100%;
+        border-image:
+          linear-gradient(to bottom, black, $blue) 1 100%;
+      }
+
+      .rating-wrapper {
+        color: #ffffff;
+        font-weight: bold;
+        position: relative;
+        border-top: 1px solid $blue;
+
+
+        .rating {
+          position: absolute;
+          top: -15px;
+          left: calc(50% + -19px);
+          padding: 5px;
+          display: inline-block;
+          @include border-radius(5px);
+          background: $blue;
+        }
+      }
+
+      .play-button {
+        z-index: 100;
+        text-align: center;
+        top: 40%;;
+        left: 35%;
+        position: absolute;
+        background: rgba(20, 38, 53, 0.46);
+        color: white;
+        padding: 60px;
+        @include border-radius(10%);
+        @include box-shadow(black 0 0 25px, white 0 0 1px 1px inset);
+
+        span {
+          color: white;
+          position: absolute;
+          font-size: 70px;
+          top: 22%;
+          left: 21%;
+        }
+      }
+    }
+
+    .info-container {
+      background: rgba(0,0,0,1);
+      padding: 0px 50px 0px 0px;
+
+      .title {
+
+        h3 {
+          margin: 13px 0px;
+        }
+
+        .border {
+          height: 2px;
+        }
+      }
+
+      .description {
+        margin-top: 15px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $blue;
+        color: rgba(255, 255, 255, 0.88);
+        text-align: justify;
+      }
+
+      .details {
+
+        width: 100%;
+        position: relative;
+        padding: 20px;
+        border-width: 1px;
+        border-style: solid;
+        -webkit-border-image:
+          -webkit-gradient(linear, 0 0, 0 100%, from($blue), to(black)) 1 100%;
+        -webkit-border-image:
+          -webkit-linear-gradient($blue, black) 1 100%;
+        -moz-border-image:
+          -moz-linear-gradient($blue, black) 1 100%;
+        -o-border-image:
+          -o-linear-gradient($blue, black) 1 100%;
+        border-image:
+          linear-gradient(to top, black, $blue) 1 100%;
+
+        &:before {
+          content: '';
+          border: 1x solid $blue;
+        }
+
+
+        .wrapper {
+          margin-top: 7px;
+          color: rgba(255, 255, 255, 0.61);
+
+          label {
+            font-size: 16px;
+          }
+
+          .data {
+            margin-bottom: 10px;
+          }
+
+          i{
+            &:after {
+              content: " | ";
+            }
+          }
+
+          a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.61);
+            margin-top: 5px;
+            display: block;
+          }
+
+          &> * {
+            font-size: 13px;
+          }
+
+          &.trailer {
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 20px;
+            background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.14) 51%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(51%,rgba(255,255,255,0.14)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* IE10+ */
+            background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+
+            a {
+              color: $blue;
+            }
+
+//            .border:last-child {
+//              margin-top: 4px;
+//            }
+
+            i:after {
+              content: "";
+            }
+          }
+        }
+
+      }
+    }
+
+    .info-container, .image-container {
+      padding: 30px;
+    }
+  }
+
+  .movie-trailer {
+    iframe {
+      width: 100%;
+      height: 500px;
+    }
+  }
 }
 
-// ngAnimate css
+// Fade effects.
 .fadein,
 .fadeout {
   @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.4s);
@@ -212,11 +436,11 @@ body {
   opacity: 1;
 }
 
+// ui-view change fade effect.
 .slide {
-  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.3s);
+  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.1s);
 }
 
-// ui-view "main" fade animation.
 .slide.ng-enter {
   opacity: 0;
 }
@@ -227,4 +451,12 @@ body {
 
 .slide.ng-leave.ng-leave-active {
   opacity: 0;
+}
+
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: #174277;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: $blue;
 }

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', function ($http, $q) {
+  .factory('Movies', ['$http', '$q', '$sce', function ($http, $q, $sce) {
 
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
@@ -19,7 +19,7 @@ angular.module('myApp')
       })
       .success(function(data) {
           var moviesIds = [];
-          // Get the top 25 movies IDs.
+          // Get the top 30 movies IDs.
           angular.forEach(data.feed.entry, function(movie) {
             moviesIds.push(movie.id.attributes['im:id']);
           });
@@ -47,10 +47,17 @@ angular.module('myApp')
       var deferred = $q.defer();
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
-          // Ad an extra movie image sizes 300px | 600px width.
-          angular.forEach(movies.results, function(movie) {
-            var artworkUrl600 = movie.artworkUrl100.replace('100x100', "600x600");
-            movie.artworkUrl600 = artworkUrl600;
+          angular.forEach(movies.results, function(movie, index) {
+
+            // Adding index for each movie.
+            movie.index = index + 1;
+
+            // Ad an extra movie image size 600px width.
+            movie.artworkUrl600 = movie.artworkUrl100.replace('100x100', "600x600");
+
+            // pretty url - we will replace it with a cleaner structure.
+            // (e.g) movie-info/movie%20name/1 => movie-info/movie-name/1.
+            movie.urlAlias = movie.trackName.replace(/ /g, '-').toLowerCase();
           });
 
           deferred.resolve(movies.results);
@@ -78,6 +85,31 @@ angular.module('myApp')
 
         // Return promise object.
         return deferred.promise;
+      },
+
+      /**
+       * Generates "youtube" movie trailer url.
+       *
+       * @param movieName
+       *  The search query.
+       * @param movieData
+       *  The movie data (config data).
+       *
+       * @returns {string}
+       */
+
+      gettingMovieTrailerUrl: function(movieName, movieData) {
+
+        // Prepare the query string with the movie params.
+        var params = [];
+        angular.forEach(movieData.params, function(value, param){
+          this.push(param + '=' + value);
+        },params);
+
+        // Joining the params.
+        params = '&' + params.join('&');
+        // Making sure the url is valid and trusted.
+        return $sce.trustAsResourceUrl(encodeURI(movieData.basePath + movieName + ' ' + 'trailer' + params))
       }
     };
   }]);
