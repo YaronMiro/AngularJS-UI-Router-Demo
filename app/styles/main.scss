@@ -8,6 +8,18 @@ body {
   background: black;
 }
 
+.border {
+  background: $blue;
+  height: 1px;
+  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(41, 137, 216, 0.51) 50%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(41, 137, 216, 0.51)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
 #main {
 
   #main-header,
@@ -214,7 +226,6 @@ body {
 
     h3 {
       font-weight: bold;
-      text-transform: uppercase;
       color: $blue;
 
       .separator {
@@ -295,7 +306,19 @@ body {
       background: rgba(0,0,0,1);
       padding: 0px 50px 0px 0px;
 
+      .title {
+
+        h3 {
+          margin: 13px 0px;
+        }
+
+        .border {
+          height: 2px;
+        }
+      }
+
       .description {
+        margin-top: 15px;
         padding-bottom: 20px;
         border-bottom: 1px solid $blue;
         color: rgba(255, 255, 255, 0.88);
@@ -334,6 +357,10 @@ body {
             font-size: 16px;
           }
 
+          .data {
+            margin-bottom: 10px;
+          }
+
           i{
             &:after {
               content: " | ";
@@ -349,14 +376,6 @@ body {
 
           &> * {
             font-size: 13px;
-          }
-
-          .pill {
-            display: inline-block;
-            padding: 6px;
-            border: 1px solid;
-            @include border-radius(8px);
-            margin-right: 5px;
           }
 
           &.trailer {
@@ -375,9 +394,9 @@ body {
               color: $blue;
             }
 
-            .border:last-child {
-              margin-top: 4px;
-            }
+//            .border:last-child {
+//              margin-top: 4px;
+//            }
 
             i:after {
               content: "";
@@ -399,19 +418,6 @@ body {
       height: 500px;
     }
   }
-}
-
-.border {
-  background: $blue;
-  margin-top: 10px;
-  height: 1px;
-  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(41, 137, 216, 0.51) 50%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(41, 137, 216, 0.51)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
 }
 
 // Fade effects.
