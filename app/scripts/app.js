@@ -14,6 +14,7 @@ angular
     'ngAnimate',
     'config',
     'angular-loading-bar',
+    'anim-in-out'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
