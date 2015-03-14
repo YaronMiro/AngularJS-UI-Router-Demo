@@ -13,6 +13,7 @@ angular.module('myApp')
     // Selected movie.
     $scope.selectedMovie = selectedMovie;
     $scope.movies = movies;
+    $scope.test = 1;
 
     // Verify that we have the data object declared.
     if (angular.isDefined($state.current.data)) {

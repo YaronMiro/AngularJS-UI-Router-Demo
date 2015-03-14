@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('myApp')
-  .directive('nextPreviousMovie', function ($state) {
+  .directive('nextPreviousMovie', ['$state', '$filter', function ($state, $filter) {
     return {
-      template: '<div ng-click="changeSelectedMovie()" class="link {{ class }}"></div>',
+      template: '<button class="btn" ng-click="changeSelectedMovie()" class="link {{ class }}"></button>',
       replace: true,
       scope: {
         operator: '@',
@@ -21,16 +21,19 @@ angular.module('myApp')
 
           // Proceed to next movie if it exists.
           if (index != scope.movies.length && scope.operator == '>') {
-           index = index + 1;
+            console.log(index);
+            console.log(scope.movies);
+            index = index + 1;
           }
           // Proceed to previous movie if it exists.
           else if (index && scope.operator == '<') {
             index = index -1;
           }
 
-          var url = scope.movies[index].urlAlias;
-          $state.go(scope.viewName, {'name': url})
+          var selectedMovie = $filter('filter')(scope.movies, {index: index});
+          var selectedMovie = selectedMovie[0];
+          $state.go(scope.viewName, {'name': selectedMovie.urlAlias})
         }
       }
     };
-  });
+  }]);
