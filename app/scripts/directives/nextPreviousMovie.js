@@ -3,7 +3,7 @@
 angular.module('myApp')
   .directive('nextPreviousMovie', ['$state', '$filter', function ($state, $filter) {
     return {
-      template: '<button ng-click="changeSelectedMovie()" class="link {{ class }}"></button>',
+      template: '<div class="{{ class.wrapper }}"><button ng-click="changeSelectedMovie()" class="link {{ class.icon }}"></button></div>',
       replace: true,
       scope: {
         operator: '@',
@@ -14,7 +14,9 @@ angular.module('myApp')
       link: function (scope, element, attrs) {
 
         // Defaults.
-        scope.class =  scope.operator == '>' ? 'fa fa-chevron-circle-right next' : 'fa fa-chevron-circle-left previous';
+        scope.class =  {};
+        scope.class.wrapper = scope.operator == '>' ? 'pull-right next' : 'pull-left previous';
+        scope.class.icon =  scope.operator == '>' ? 'fa fa-chevron-circle-right' : 'fa fa-chevron-circle-left';
         var index = scope.selectedMovieIndex;
 
         scope.changeSelectedMovie = function() {
