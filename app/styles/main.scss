@@ -135,10 +135,6 @@ body {
 
   .movies-wrapper {
 
-    @include exclude-mobile-only {
-      position: relative;
-    }
-
     @include large-desktop-only {
       height: 570px;
     }
@@ -152,13 +148,6 @@ body {
     }
 
     .preview {
-
-      @include exclude-mobile-only {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-      }
 
       cursor: pointer;
       @include transition(opacity 0.5s ease-in-out);
@@ -180,14 +169,6 @@ body {
     }
 
     .summary {
-
-      @include exclude-mobile-only {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-      }
-
       color: #ffffff;
       text-align: center;
 
@@ -465,29 +446,10 @@ body {
   }
 }
 
-// Fade effects.
-//.fadein,
-//.fadeout {
-//  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.4s);
-//}
-//
-//.fadein.ng-hide-remove,
-//.fadeout.ng-hide-add.ng-hide-add-active {
-//  opacity: 0;
-//}
-//
-//.fadeout.ng-hide-add,
-//.fadein.ng-hide-remove.ng-hide-remove-active {
-//  opacity: 1;
-//}
+.fadein,
+.fadeout {
 
-
-//
-
-// Fade effect for the "content" main transition.
-.fadein, .fadeout {
-
-  &.ng-enter {
+  &.ng-enter, &.ng-hide-remove  {
     opacity: 0;
     -webkit-transition: opacity 1.4s ease;
     -moz-transition: opacity 1.4s ease;
@@ -495,12 +457,16 @@ body {
     transition: opacity 1.4s ease;
   }
 
-  &.ng-enter-active {
+  &.ng-enter-active, &.ng-hide-remove-active {
     opacity: 1;
   }
 
-  &.ng-leave-active {
+  &.ng-leave-active, &.ng-hide-add-active {
     opacity: 0;
   }
 }
+
+
+
+
 
