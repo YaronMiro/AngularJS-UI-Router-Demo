@@ -135,6 +135,10 @@ body {
 
   .movies-wrapper {
 
+    @include exclude-mobile-only {
+      position: relative;
+    }
+
     @include large-desktop-only {
       height: 570px;
     }
@@ -148,6 +152,14 @@ body {
     }
 
     .preview {
+
+      @include exclude-mobile-only {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+      }
+
       cursor: pointer;
       @include transition(opacity 0.5s ease-in-out);
 
@@ -168,6 +180,14 @@ body {
     }
 
     .summary {
+
+      @include exclude-mobile-only {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+      }
+
       color: #ffffff;
       text-align: center;
 

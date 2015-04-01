@@ -43,7 +43,15 @@ $blue: rgb(51, 122, 183);
 
 // Only for mobile width.
 @mixin mobile-only {
-  @media (max-width: ($screen-xs-max)) {
+  @media (max-width: $screen-xs-max) {
+    @content;
+  }
+}
+
+
+// Not for mobile width only.
+@mixin exclude-mobile-only {
+  @media (min-width: $screen-sm-min)  {
     @content;
   }
 }
