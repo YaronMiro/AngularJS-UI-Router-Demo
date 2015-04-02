@@ -451,10 +451,10 @@ body {
 
   &.ng-enter, &.ng-hide-remove  {
     opacity: 0;
-    -webkit-transition: opacity 1.4s ease;
-    -moz-transition: opacity 1.4s ease;
-    -o-transition: opacity 1.4s ease;
-    transition: opacity 1.4s ease;
+    -webkit-transition: opacity 1.7s ease;
+    -moz-transition: opacity 1.7s ease;
+    -o-transition: opacity 1.7s ease;
+    transition: opacity 1.7s ease;
   }
 
   &.ng-enter-active, &.ng-hide-remove-active {
