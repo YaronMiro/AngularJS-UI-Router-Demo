@@ -394,19 +394,21 @@ body {
           }
 
           &.trailer {
-            width: 70%;
+            width: 50%;
             margin: 0 auto;
             margin-top: 20px;
-            background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.14) 51%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(51%,rgba(255,255,255,0.14)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-            background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* IE10+ */
-            background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
-
+            padding: 4px;
+            color: #337ab7;
+            background: transparent;
+            border: 1px solid #337ab7;
+            @include border-radius(8px);
+            
+            .border {
+              height: 2px;
+            }
+            
             a {
-              color: $blue;
+              color: rgba(255, 255, 255, 0.61);
             }
 
             i:after {
@@ -415,6 +417,22 @@ body {
           }
         }
       }
+    }
+  }
+}
+
+.trailer {
+
+  .title {
+    margin-bottom: 30px;
+
+    h3 {
+      margin: 13px 0px;
+      color: white;
+    }
+    
+    .border {
+      height: 2px;
     }
   }
 
@@ -431,6 +449,22 @@ body {
   border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 30px;
+
+  span {
+    color: rgba(255, 255, 255, 0.39);
+
+    &.previous{
+      position: absolute;
+      right: 31px;
+      top: 9px;
+    }
+
+    &.next{
+      position: absolute;
+      left: 31px;
+      top: 9px;
+    }
+  }
 
   .link {
     font-size: 20px;

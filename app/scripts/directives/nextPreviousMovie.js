@@ -8,8 +8,7 @@ angular.module('myApp')
       scope: {
         operator: '@',
         selectedMovieIndex: '=',
-        movies: '=',
-        viewName: '='
+        movies: '='
       },
       link: function (scope, element, attrs) {
 
@@ -18,6 +17,7 @@ angular.module('myApp')
         scope.class.wrapper = scope.operator == '>' ? 'pull-right next' : 'pull-left previous';
         scope.class.icon =  scope.operator == '>' ? 'fa fa-chevron-circle-right' : 'fa fa-chevron-circle-left';
         var index = scope.selectedMovieIndex;
+        var viewName = $state.current.name;
 
         scope.changeSelectedMovie = function() {
 
@@ -32,7 +32,7 @@ angular.module('myApp')
 
           var selectedMovie = $filter('filter')(scope.movies, {index: index});
           var selectedMovie = selectedMovie[0];
-          $state.go(scope.viewName, {'name': selectedMovie.urlAlias})
+          $state.go(viewName, {'name': selectedMovie.urlAlias})
         }
       }
     };
