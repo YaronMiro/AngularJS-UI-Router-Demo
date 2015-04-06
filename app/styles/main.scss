@@ -394,25 +394,34 @@ body {
           }
 
           &.trailer {
-            width: 50%;
+            width: 70%;
             margin: 0 auto;
             margin-top: 20px;
             padding: 4px;
             color: #337ab7;
-            background: transparent;
-            border: 1px solid #337ab7;
-            @include border-radius(8px);
-            
-            .border {
-              height: 2px;
-            }
-            
-            a {
-              color: rgba(255, 255, 255, 0.61);
+
+            &:hover {
+              a {
+                color: #337ab7;
+              }
             }
 
-            i:after {
-              content: "";
+            a {
+              margin: 0px;
+              color: rgba(255, 255, 255, 0.61);
+
+              .border {
+                height: 2px;
+              }
+            }
+
+            i {
+              font-size: 30px;
+              padding: 6px 0px;
+
+              &:after {
+                content: "";
+              }
             }
           }
         }

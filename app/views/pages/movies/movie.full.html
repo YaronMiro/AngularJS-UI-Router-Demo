@@ -65,11 +65,11 @@
        <label> <a href="{{ selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
      </div>
      <div class="wrapper text-center trailer">
-       <div class="border"></div>
-        <label>
-          <a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias })"><i class="fa fa-film"></i> Watch the trailer</a>
-        </label>
-       <div class="border"></div>
+        <a ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias })">
+          <div class="border"></div>
+          <i class="fa fa-youtube-play"></i>
+          <div class="border"></div>
+        </a>
      </div>
    </div>
   </div>
