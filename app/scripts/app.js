@@ -13,7 +13,7 @@ angular
     'ui.router',
     'ngAnimate',
     'config',
-    'angular-loading-bar',
+    'angular-loading-bar'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
