@@ -90,11 +90,14 @@ body {
         a {
           color: white;
           background: transparent;
-          border: 1px solid white;
+          font-size: 22px;
+
+          @include mobile-only {
+            text-align: center;
+          }
 
           &:hover {
             color: $blue;
-            border-color: $blue
           }
         }
       }
@@ -398,11 +401,11 @@ body {
             margin: 0 auto;
             margin-top: 20px;
             padding: 4px;
-            color: #337ab7;
+            color: $blue;
 
             &:hover {
               a {
-                color: #337ab7;
+                color: $blue;
               }
             }
 
