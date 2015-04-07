@@ -57,12 +57,12 @@
        <label> <a href="{{ selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
      </div>
      <div class="wrapper text-center trailer">
-        <a class="color-effect" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
+        <div class="color-effect link" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
           <label class="color-effect">Watch the movie trailer</label>
           <div class="border"></div>
           <i class="fa fa-youtube-play"></i>
           <div class="border"></div>
-        </a>
+        </div>
      </div>
    </div>
   </div>

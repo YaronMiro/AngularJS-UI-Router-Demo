@@ -388,12 +388,12 @@ body {
             padding: 4px;
 
             &:hover {
-              a, a label {
+              .link, .link label {
                 color: $blue;
               }
             }
 
-            a {
+            .link {
               margin: 0px;
               color: $transparentGray;
 
@@ -416,6 +416,7 @@ body {
             }
 
             i {
+              cursor: pointer;
               font-size: 30px;
               padding: 6px 0px;
 
