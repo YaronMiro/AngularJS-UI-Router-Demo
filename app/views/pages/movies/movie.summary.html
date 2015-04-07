@@ -16,15 +16,15 @@
   </div>
   <div class="links">
     <div class="border"></div>
-    <button title="Movie poster" class="btn" ng-click="viewMode.value = !viewMode.value">
+    <button class="color-effect" title="Movie poster" class="btn" ng-click="viewMode.value = !viewMode.value">
       <span class="glyphicon glyphicon-picture"></span>
     </button>
     <div class="border"></div>
-    <button title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
+    <button class="color-effect" title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
       <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
     </button>
     <div class="border"></div>
-    <button title="Movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
+    <button class="color-effect" title="Movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
       <span class="fa fa-info-circle" aria-hidden="true"></span>
     </button>
     <div class="border"></div>

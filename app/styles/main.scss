@@ -43,6 +43,7 @@ body {
     text-transform: uppercase;
 
     .top {
+      margin-top: 15px;
       @include border-top-left-radius(6px);
       @include border-top-right-radius(6px);
     }
@@ -67,7 +68,7 @@ body {
       margin-bottom: 0;
       line-height: 40px;
     }
-
+    
     .nav-pills {
       li {
         cursor: pointer;
@@ -90,14 +91,17 @@ body {
         a {
           color: white;
           background: transparent;
+          border: 1px solid white;
           font-size: 22px;
 
           @include mobile-only {
             text-align: center;
+            border: none;
           }
 
           &:hover {
             color: $blue;
+            border-color: $blue
           }
         }
       }
@@ -201,7 +205,7 @@ body {
         background: $blue;
 
         i {
-          color: rgba(255, 255, 255, 0.5);
+          color: $lightGray;
         }
       }
 
@@ -219,6 +223,8 @@ body {
         margin-top: 7px;
 
         button {
+          border: none;
+          outline: none;
           background: transparent;
           width: 70px;
           height: 70px;
@@ -300,35 +306,14 @@ body {
           background: $blue;
 
           i {
-            color: rgba(255, 255, 255, 0.5);
+            color: $lightGray;
           }
-        }
-      }
-
-      .play-button {
-        z-index: 100;
-        text-align: center;
-        top: 40%;;
-        left: 35%;
-        position: absolute;
-        background: rgba(20, 38, 53, 0.46);
-        color: white;
-        padding: 60px;
-        @include border-radius(10%);
-        @include box-shadow(black 0 0 25px, white 0 0 1px 1px inset);
-
-        span {
-          color: white;
-          position: absolute;
-          font-size: 70px;
-          top: 22%;
-          left: 21%;
         }
       }
     }
 
     .info-container {
-      background: rgba(0,0,0,1);
+      background: black;
       padding-right: 30px;
 
       @include mobile-only {
@@ -339,7 +324,7 @@ body {
         margin-top: 15px;
         padding-bottom: 20px;
         border-bottom: 1px solid $blue;
-        color: rgba(255, 255, 255, 0.88);
+        color: $transparentGray;
         text-align: justify;
       }
 
@@ -369,7 +354,7 @@ body {
 
         .wrapper {
           margin-top: 7px;
-          color: rgba(255, 255, 255, 0.61);
+          color: $transparentGray;
 
           label {
             font-size: 16px;
@@ -387,7 +372,7 @@ body {
 
           a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.61);
+            color: $transparentGray;
             margin-top: 5px;
             display: block;
           }
@@ -397,21 +382,33 @@ body {
           }
 
           &.trailer {
-            width: 70%;
+            width: 53%;
             margin: 0 auto;
             margin-top: 20px;
             padding: 4px;
-            color: $blue;
 
             &:hover {
-              a {
+              a, a label {
                 color: $blue;
               }
             }
 
             a {
               margin: 0px;
-              color: rgba(255, 255, 255, 0.61);
+              color: $transparentGray;
+
+              label {
+                cursor: pointer;
+                color: $transparentGray;
+                margin: 0px;
+                font-size: 12px;
+                text-transform: uppercase;
+                display: inline-block;
+                padding: 5px 8px;
+                border: 1px solid $blue;
+                @include border-radius( 6px 6px 0px 0px);
+                border-bottom: none;
+              }
 
               .border {
                 height: 2px;
@@ -457,13 +454,13 @@ body {
 }
 
 .movie-links {
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 6px;
   margin-top: 10px;
   margin-bottom: 30px;
 
   span {
-    color: rgba(255, 255, 255, 0.39);
+    color: rgba(255, 255, 255, 0.32);
 
     &.previous{
       position: absolute;
@@ -512,6 +509,9 @@ body {
   }
 }
 
+.color-effect {
+  @include color-change-effect();
+}
 
 
 

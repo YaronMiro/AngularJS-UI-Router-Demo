@@ -13,12 +13,24 @@ $grid-gutter-width: 0px;
 // Colors.
 $gray: #777777;
 $darkGray: #1e1e1e;
+$lightGray: rgba(255, 255, 255, 0.5);
+$transparentGray: rgba(255, 255, 255, 0.61);
 $blue: rgb(51, 122, 183);
+
+// Default transition
+$effect: ease-in;
 
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+
+// Color change transition
+@mixin color-change-effect {
+  @include transition-property(color, border);
+  @include transition-duration(0.3s);
+  @include transition-timing-function($effect);
+}
 
 // Only the desktop width.
 @mixin large-desktop-only {

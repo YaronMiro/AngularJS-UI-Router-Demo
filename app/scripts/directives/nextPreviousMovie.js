@@ -3,7 +3,7 @@
 angular.module('myApp')
   .directive('nextPreviousMovie', ['$state', '$filter', function ($state, $filter) {
     return {
-      template: '<button ng-click="changeSelectedMovie()" class="link {{ class.icon }}"></button>',
+      template: '<button ng-click="changeSelectedMovie()" class="link color-effect {{ class.icon }}"></button>',
       replace: true,
       scope: {
         operator: '@',
