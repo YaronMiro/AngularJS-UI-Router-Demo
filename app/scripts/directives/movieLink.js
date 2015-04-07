@@ -30,7 +30,11 @@ angular.module('myApp')
 
           $state.go(viewName, {'name': selectedMovie.urlAlias});
         }
+
+        // Update element.
         element.bind('click', changeSelectedMovie);
+        element.text(scope.movieLink);
+        element.addClass(scope.movieLink);
       }
     };
   }]);

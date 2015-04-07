@@ -459,32 +459,38 @@ body {
   margin-top: 10px;
   margin-bottom: 30px;
 
-  span {
+  button.icon {
+    padding: 8px;
     color: rgba(255, 255, 255, 0.32);
+    background: transparent;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+
+    &:hover {
+      color: $blue;
+    }
 
     &.previous{
-      position: absolute;
-      right: 31px;
-      top: 9px;
+      &:before {
+        color: $blue;
+        margin-right: 4px;
+        content: "\f137";
+      }
     }
 
     &.next{
-      position: absolute;
-      left: 31px;
-      top: 9px;
-    }
-  }
-
-  .link {
-    font-size: 20px;
-    color: $blue;
-    padding: 8px;
-    background: none;
-    border: none;
-    outline: none;
-
-    &:hover {
-      color: #2E538B;
+      &:after {
+        color: $blue;
+        content: "\f138";
+        margin-left: 4px;
+      }
     }
   }
 }
