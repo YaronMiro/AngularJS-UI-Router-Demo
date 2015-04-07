@@ -26,7 +26,9 @@ angular
      * @param $selectedMovie
      *   The target movie.
      */
-    var redirect = function($state, selectedMovie) {
+    var redirect = function($state, selectedMovie, $document) {
+      $document.title = 'yaron';
+
       if (!angular.isDefined(selectedMovie)) {
         // if the movie doesn't exist then redirect to the "parent" state.
         // in our case it's the main "movies" state.

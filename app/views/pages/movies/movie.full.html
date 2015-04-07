@@ -21,7 +21,7 @@
       <h3 class="text-center">{{ selectedMovie.trackName }}</h3>
       <div class="border"></div>
     </div>
-    <div scrollbar max-height="85" class="description">{{ selectedMovie.longDescription }}</div>
+    <div scrollbar class="description">{{ selectedMovie.longDescription }}</div>
     <!-- Details -->
    <div class="details">
      <div class="wrapper">
@@ -57,7 +57,7 @@
        <label> <a href="{{ selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
      </div>
      <div class="wrapper text-center trailer">
-        <a class="color-effect" ui-sref="main.movies.trailer({'name': selectedMovie.urlAlias })">
+        <a class="color-effect" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
           <label class="color-effect">Watch the movie trailer</label>
           <div class="border"></div>
           <i class="fa fa-youtube-play"></i>
