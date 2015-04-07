@@ -9,7 +9,11 @@ angular.module('myApp')
       link: function(scope, element) {
 
         // Adding scrollbar js library.
-        element.mCustomScrollbar({setHeight: scope.maxHeight});
+        element.mCustomScrollbar({
+          setHeight: scope.maxHeight,
+          theme: 'light-thick',
+          scrollButtons: {enable: true}
+        });
       }
     };
   });
