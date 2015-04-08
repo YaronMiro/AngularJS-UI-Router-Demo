@@ -1,10 +1,8 @@
 <div class="row full">
-  <div class="col-xs-12 movie-links">
-    <div next-previous-movie operator="<" selected-movie-index="selectedMovie.index" movies="movies" view-name="$state.current.name" class="pull-left"></div>
-    <div next-previous-movie operator=">" selected-movie-index="selectedMovie.index" movies="movies" view-name="$state.current.name" class="pull-right"></div>
-  </div>
+  <!--Navigation movies links-->
+  <div ng-include="'views/includes/movie-navigation.html'"></div>
   <!-- Image -->
-  <div class="col-sm-5 col-sm-push-7 col-xs-12 image-container">
+  <div class="col-xs-12 col-sm-6 col-sm-push-6 col-md-6 col-md-push-6 col-lg-5 col-lg-push-7 image-container">
     <div class="visible-xs">
       <div class="title">
         <div class="border"></div>
@@ -16,14 +14,14 @@
     <div class="rating-wrapper"><div class="rating text-center"><i class="fa fa-star"></i> {{ selectedMovie.index }} <i class="fa fa-star"></i></div></div>
   </div>
   <!-- Info -->
-  <div class="col-sm-7 col-sm-pull-5 col-xs-12 info-container">
+  <div class="col-xs-12 col-sm-6 col-sm-pull-6 col-md-6 col-md-pull-6 col-lg-7 col-lg-pull-5 info-container">
     <!-- Title -->
     <div class="hidden-xs title">
       <div class="border"></div>
       <h3 class="text-center">{{ selectedMovie.trackName }}</h3>
       <div class="border"></div>
     </div>
-    <div scrollbar max-height="75" class="description">{{ selectedMovie.longDescription }}</div>
+    <div scrollbar class="description">{{ selectedMovie.longDescription }}</div>
     <!-- Details -->
    <div class="details">
      <div class="wrapper">
@@ -59,11 +57,12 @@
        <label> <a href="{{ selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
      </div>
      <div class="wrapper text-center trailer">
-       <div class="border"></div>
-        <label>
-          <a ui-sref="main.movies.trailer({'name': $stateParams.name, 'position': $stateParams.position })"><i class="fa fa-film"></i> Watch the trailer</a>
-        </label>
-       <div class="border"></div>
+        <div class="color-effect link" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
+          <label class="color-effect">Watch the movie trailer</label>
+          <div class="border"></div>
+          <i class="fa fa-youtube-play"></i>
+          <div class="border"></div>
+        </div>
      </div>
    </div>
   </div>

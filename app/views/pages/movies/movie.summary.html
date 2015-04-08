@@ -1,26 +1,32 @@
-<!--Desktop -->
 <div class="summary">
-  <h3>{{ movie.trackName }}</h3>
-  <div class="popularity-ranking">{{ $index + 1 }}</div>
-  <div class="wrapper">
+  <div class="title">
+    <div class="border"></div>
+    <h3>{{ movie.trackName }}</h3>
+    <div class="border"></div>
+  </div>
+  <div class="rating text-center"><i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i></div>
+  <div class="wrapper hidden-sm">
+    <div class="border"></div>
     <div>
-      <strong>Genre: &nbsp;</strong>
-      <span>{{ movie.primaryGenreName }}</span>
+      <label>
+        <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
+        <span>{{ movie.releaseDate | date:'longDate' }}</span>
+      </label>
     </div>
-    <div>
-      <strong>Release date: &nbsp;</strong>
-      <span>{{ movie.releaseDate | date:'longDate' }}</span>
-    </div>
-    <div class="links">
-      <button title="movie poster" class="btn" ng-click="viewMode.value = !viewMode.value">
-        <span class="glyphicon glyphicon-picture"></span>
-      </button>
-      <button title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
-        <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-      </button>
-      <button title="movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
-        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-      </button>
-    </div>
+  </div>
+  <div class="links">
+    <div class="border"></div>
+    <button class="color-effect" title="Movie poster" class="btn" ng-click="viewMode.value = !viewMode.value">
+      <span class="glyphicon glyphicon-picture"></span>
+    </button>
+    <div class="border"></div>
+    <button class="color-effect" title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
+      <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+    </button>
+    <div class="border"></div>
+    <button class="color-effect" title="Movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
+      <span class="fa fa-info-circle" aria-hidden="true"></span>
+    </button>
+    <div class="border"></div>
   </div>
 </div>

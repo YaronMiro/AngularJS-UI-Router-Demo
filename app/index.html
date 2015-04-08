@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Itunes top 30 movies</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!--Google fonts -->
@@ -10,6 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:700,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+    <link rel="icon" href="favicon.png" type="image/png" />
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
@@ -22,8 +23,8 @@
   <body ng-app="myApp">
     <!-- Add your site or application content here -->
     <div id="main" class="container">
-      <header id="main-header" name="main-header"  ui-view="header"></header>
-      <main id="main-content" ui-view="content" class="slide"></main>
+      <header id="main-header" name="main-header" ui-view="header"></header>
+      <main id="main-content" ui-view="content" class="fadein fadeout"></main>
       <footer id="main-footer" ui-view="footer"></footer>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -69,14 +70,14 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/config.js"></script>
-        <script src="scripts/controllers/movies.js"></script>
-        <script src="scripts/controllers/movie.js"></script>
-        <script src="scripts/services/movies.js"></script>
-        <script src="scripts/directives/scrollbar.js"></script>
-        <script src="scripts/directives/nextPreviousMovie.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/controllers/movies.js"></script>
+    <script src="scripts/controllers/movie.js"></script>
+    <script src="scripts/services/movies.js"></script>
+    <script src="scripts/directives/scrollbar.js"></script>
+    <script src="scripts/directives/movieLink.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

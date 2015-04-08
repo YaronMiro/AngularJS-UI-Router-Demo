@@ -22,6 +22,10 @@ body {
 
 #main {
 
+  @include mobile-only {
+    padding: 0px 30px;
+  }
+
   #main-header,
   #main-footer {
 
@@ -39,6 +43,7 @@ body {
     text-transform: uppercase;
 
     .top {
+      margin-top: 15px;
       @include border-top-left-radius(6px);
       @include border-top-right-radius(6px);
     }
@@ -63,7 +68,7 @@ body {
       margin-bottom: 0;
       line-height: 40px;
     }
-
+    
     .nav-pills {
       li {
         cursor: pointer;
@@ -87,6 +92,12 @@ body {
           color: white;
           background: transparent;
           border: 1px solid white;
+          font-size: 22px;
+
+          @include mobile-only {
+            text-align: center;
+            border: none;
+          }
 
           &:hover {
             color: $blue;
@@ -105,7 +116,9 @@ body {
     }
 
     .links{
+
       margin-top: 15px;
+
       a {
         color: white;
 
@@ -142,6 +155,7 @@ body {
     }
 
     .preview {
+
       cursor: pointer;
       @include transition(opacity 0.5s ease-in-out);
 
@@ -165,57 +179,59 @@ body {
       color: #ffffff;
       text-align: center;
 
-      strong {
-        color: $gray;
+      .title {
+          margin-top: 14px;
+
+        h3 {
+          text-transform: uppercase;
+          color: white;
+          margin: 14px 0px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .border {
+          width: 85%;
+          height: 2px;
+        }
       }
 
-      h3 {
-        text-transform: uppercase;
-        color: white;
-        border-top: 1px solid $blue;
-        border-bottom: 1px solid $blue;
-        padding: 9px 4px 9px 4px;
-        font-size: 16px;
-        font-weight: bold;
-      }
+      .rating {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 5px;
+        display: inline-block;
+        @include border-radius(5px);
+        background: $blue;
 
-      .popularity-ranking {
-        margin: 0 auto;
-        background: $darkGray;
-        color: white;
-        line-height: 30px;
-        width: 30px;
-        height: 30px;
-        @include border-radius(50%);
+        i {
+          color: $lightGray;
+        }
       }
 
       .wrapper {
         padding-right: 20px;
         padding-left: 20px;
-        text-align: center;
+        color: $gray;
 
-        &> * {
+        label {
           margin-top: 7px;
         }
+      }
 
-        .description {
-          color: rgba(255, 255, 255, 0.61);
-        }
+      .links {
+        margin-top: 7px;
 
-        .links {
-          margin-top: 20px;
+        button {
+          border: none;
+          outline: none;
+          background: transparent;
+          width: 70px;
+          height: 70px;
+          font-size: 27px;
 
-          button {
-            background: transparent;
-            background: #1e1e1e;
-            width: 70px;
-            height: 70px;
-            @include border-radius(50%);
-            font-size: 27px;
-
-            &:hover {
-              color: $blue;
-            }
+          &:hover {
+            color: $blue;
           }
         }
       }
@@ -231,7 +247,7 @@ body {
       h3 {
         margin: 13px 0px;
         font-weight: bold;
-        color: $blue;
+        color: white;
       }
 
       .border {
@@ -239,15 +255,23 @@ body {
       }
     }
 
+    .info-container, .image-container {
+      padding-bottom: 30px;
+
+      @include mobile-only {
+        padding: 30px;
+      }
+    }
+
     .image-container {
       position: relative;
       padding-left: 30px;
-
 
       img {
         width: 100%;
         position: relative;
         padding: 20px;
+        padding-top: 0px;
         border-width: 1px;
         border-style: solid;
         -webkit-border-image:
@@ -260,6 +284,10 @@ body {
           -o-linear-gradient(black, $blue) 1 100%;
         border-image:
           linear-gradient(to bottom, black, $blue) 1 100%;
+
+        @include mobile-only {
+          padding-top: 30px;
+        }
       }
 
       .rating-wrapper {
@@ -267,7 +295,6 @@ body {
         font-weight: bold;
         position: relative;
         border-top: 1px solid $blue;
-
 
         .rating {
           position: absolute;
@@ -277,40 +304,27 @@ body {
           display: inline-block;
           @include border-radius(5px);
           background: $blue;
-        }
-      }
 
-      .play-button {
-        z-index: 100;
-        text-align: center;
-        top: 40%;;
-        left: 35%;
-        position: absolute;
-        background: rgba(20, 38, 53, 0.46);
-        color: white;
-        padding: 60px;
-        @include border-radius(10%);
-        @include box-shadow(black 0 0 25px, white 0 0 1px 1px inset);
-
-        span {
-          color: white;
-          position: absolute;
-          font-size: 70px;
-          top: 22%;
-          left: 21%;
+          i {
+            color: $lightGray;
+          }
         }
       }
     }
 
     .info-container {
-      background: rgba(0,0,0,1);
+      background: black;
       padding-right: 30px;
+
+      @include mobile-only {
+        padding-top: 0px;
+      }
 
       .description {
         margin-top: 15px;
         padding-bottom: 20px;
         border-bottom: 1px solid $blue;
-        color: rgba(255, 255, 255, 0.88);
+        color: $transparentGray;
         text-align: justify;
       }
 
@@ -340,7 +354,7 @@ body {
 
         .wrapper {
           margin-top: 7px;
-          color: rgba(255, 255, 255, 0.61);
+          color: $transparentGray;
 
           label {
             font-size: 16px;
@@ -358,7 +372,7 @@ body {
 
           a {
             text-decoration: none;
-            color: rgba(255, 255, 255, 0.61);
+            color: $transparentGray;
             margin-top: 5px;
             display: block;
           }
@@ -368,36 +382,67 @@ body {
           }
 
           &.trailer {
-            width: 70%;
+            width: 53%;
             margin: 0 auto;
             margin-top: 20px;
-            background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.14) 51%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(51%,rgba(255,255,255,0.14)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-            background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* IE10+ */
-            background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.14) 51%,rgba(255,255,255,0) 100%); /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+            padding: 4px;
 
-            a {
-              color: $blue;
+            &:hover {
+              .link, .link label {
+                color: $blue;
+              }
             }
 
-            i:after {
-              content: "";
+            .link {
+              margin: 0px;
+              color: $transparentGray;
+
+              label {
+                cursor: pointer;
+                color: $transparentGray;
+                margin: 0px;
+                font-size: 12px;
+                text-transform: uppercase;
+                display: inline-block;
+                padding: 5px 8px;
+                border: 1px solid $blue;
+                @include border-radius( 6px 6px 0px 0px);
+                border-bottom: none;
+              }
+
+              .border {
+                height: 2px;
+              }
+            }
+
+            i {
+              cursor: pointer;
+              font-size: 30px;
+              padding: 6px 0px;
+
+              &:after {
+                content: "";
+              }
             }
           }
         }
       }
     }
+  }
+}
 
-    .info-container, .image-container {
-      padding-top: 30px;
-      padding-bottom: 30px;
+.trailer {
 
-      @include mobile-only {
-        padding: 30px;
-      }
+  .title {
+    margin-bottom: 30px;
+
+    h3 {
+      margin: 13px 0px;
+      color: white;
+    }
+    
+    .border {
+      height: 2px;
     }
   }
 
@@ -410,64 +455,77 @@ body {
 }
 
 .movie-links {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 
-  .link {
-    font-size: 20px;
-    color: $blue;
+  button.icon {
     padding: 8px;
-    cursor: pointer;
+    color: rgba(255, 255, 255, 0.32);
+    background: transparent;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
 
     &:hover {
-      background: 2E538B;
+      color: $blue;
     }
 
-    &.next {
-      padding-right: 0px;
+    &.previous{
+      &:before {
+        color: $blue;
+        margin-right: 4px;
+        content: "\f137";
+      }
     }
-    &.previous {
-      padding-right: 0px;
+
+    &.next{
+      &:after {
+        color: $blue;
+        content: "\f138";
+        margin-left: 4px;
+      }
     }
   }
-  
 }
 
-// Fade effects.
+
+// Scrollbar theme
+.mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail, .mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {
+  background-color: rgba(2, 194, 255, 0.24);
+}
+
 .fadein,
 .fadeout {
-  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.4s);
+
+  &.ng-enter, &.ng-hide-remove  {
+    opacity: 0;
+    -webkit-transition: opacity 1.7s ease;
+    -moz-transition: opacity 1.7s ease;
+    -o-transition: opacity 1.7s ease;
+    transition: opacity 1.7s ease;
+  }
+
+  &.ng-enter-active, &.ng-hide-remove-active {
+    opacity: 1;
+  }
+
+  &.ng-leave-active, &.ng-hide-add-active {
+    opacity: 0;
+  }
 }
 
-.fadein.ng-hide-remove,
-.fadeout.ng-hide-add.ng-hide-add-active {
-  opacity: 0;
+.color-effect {
+  @include color-change-effect();
 }
 
-.fadeout.ng-hide-add,
-.fadein.ng-hide-remove.ng-hide-remove-active {
-  opacity: 1;
-}
 
-// ui-view change fade effect.
-.slide {
-  @include transition(all,cubic-bezier(0.250, 0.460, 0.450, 0.940), 0.1s);
-}
 
-.slide.ng-enter {
-  opacity: 0;
-}
 
-.slide.ng-enter.ng-enter-active, .slide.ng-leave {
-  opacity: 1;
-}
-
-.slide.ng-leave.ng-leave-active {
-  opacity: 0;
-}
-
-.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
-  background-color: #174277;
-}
-
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-  background-color: $blue;
-}
