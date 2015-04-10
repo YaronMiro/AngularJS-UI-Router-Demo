@@ -8,15 +8,17 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MovieCtrl', ['$scope', '$stateParams', '$state', 'Movies', 'selectedMovie', 'movies', function ($scope, $stateParams, $state, Movies, selectedMovie, movies) {
+  .controller('movieController', ['$scope', '$stateParams', '$state', 'Movies', 'selectedMovie', 'movies', function ($scope, $stateParams, $state, Movies, selectedMovie, movies) {
+
+    var self = this;
 
     // Selected movie.
-    $scope.selectedMovie = selectedMovie;
-    $scope.movies = movies;
+    self.selectedMovie = selectedMovie;
+    self.movies = movies;
 
     // Verify that we have the data object declared.
     if (angular.isDefined($state.current.data)) {
       // Movie trailer.
-      $scope.movieTrailerUrl = Movies.gettingMovieTrailerUrl(selectedMovie.trackName, $state.current.data.movie);
+      self.movieTrailerUrl = Movies.gettingMovieTrailerUrl(self.selectedMovie.trackName, $state.current.data.movie);
     }
   }]);

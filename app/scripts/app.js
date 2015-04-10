@@ -114,7 +114,8 @@ angular
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.full.html',
-            controller: 'MovieCtrl'
+            controller: 'movieController',
+            controllerAs: 'movie'
           }
         },
         resolve: {
@@ -134,7 +135,8 @@ angular
         views: {
           'content@': {
             templateUrl: 'views/pages/movies/movie.trailer.html',
-            controller: 'MovieCtrl'
+            controller: 'movieController',
+            controllerAs: 'movie'
           }
         },
         resolve: {
