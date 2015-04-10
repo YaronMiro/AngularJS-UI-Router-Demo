@@ -82,7 +82,8 @@ angular
           // 'main'. <div ui-view='content'/> within index.html.
           'content@': {
             templateUrl: 'views/pages/movies/movies.html',
-            controller: 'MoviesCtrl'
+            controller: 'moviesController',
+            controllerAs: 'movies'
           },
           // Absolutely targets the 'preview' view in this state.
           // <div ui-view="preview"/> within movies.html.
