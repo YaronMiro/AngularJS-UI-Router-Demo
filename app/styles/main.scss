@@ -163,15 +163,23 @@ body {
         @include opacity(0.6);
       }
 
-      .popularity-ranking {
+      .popularity-ranking, .bookmarked {
         position: absolute;
-        bottom: 0px;
-        right: 0px;
-        background: rgba(0, 0, 0, 0.25);
         padding: 10px;
-        color: white;
+        bottom: 0px;
         font-weight: bold;
         @include border-top-left-radius(6px);
+        background: rgba(0, 0, 0, 0.25);
+      }
+
+      .popularity-ranking {
+        right: 0px;
+        color: white;
+      }
+
+      .bookmarked {
+        left: 0px;
+        color: #19ff24;
       }
     }
 

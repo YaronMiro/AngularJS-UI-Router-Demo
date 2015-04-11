@@ -2,6 +2,7 @@
 <div class="preview hidden-xs" ng-click="movie.viewMode.value = !movie.viewMode.value;">
   <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
   <div class="popularity-ranking">{{ movie.index }}</div>
+  <span ng-hide="$state.is('main.bookmarks')" class="bookmarked"><i class="fa fa-check-square"></i></span>
 </div>
   <!--Mobile -->
 <a class="visible-xs" ui-sref="main.movies.full({'name': movie.urlAlias})">
