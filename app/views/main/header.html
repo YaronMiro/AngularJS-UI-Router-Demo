@@ -18,29 +18,19 @@
   <div class="mobile-menu col-xs-12 visible-xs">
     <div id="navbarCollapse" class="collapse navbar-collapse" ng-include="'views/includes/navigation.html'"></div>
   </div>
-  <div class="col-xs-12">
+  <div class="col-xs-12" ng-init="notification = true">
     <!--Bookmarks notification -->
-    <div ng-show="$state.is('main.bookmarks')" class="bookmarks-notification text-lowercase">
+    <div ng-show="$state.is('main.bookmarks') && notification" class="bookmarks-notification text-lowercase fadein fadeout">
       <div class="border m-top"></div>
       <div class="text-center">
-
-
-        <div class="alert alert-info alert-dismissable">
-          <button type="button" class="close" data-dismiss="alert"
-                  aria-hidden="true">
-            &times;
-          </button>
-          Info! take this info.
-        </div>
-
-
-        <i class="fa fa-exclamation-circle"></i>
-        <span ng-show="!localStorageService.isSupported">
+        <span class="text fa fa-exclamation-circle" ng-show="!localStorageService.isSupported">
           In order to use this feature you must enable your browser - <u>local storage capability</u>
         </span>
-        <span ng-show="localStorageService.isSupported">
-          Bookmarked movies are stored on your <u>browser local storage </u> deleting the relevant data on the browser local storage will delete all of the bookmarks!
+        <span class="text fa fa-exclamation-circle" ng-show="localStorageService.isSupported">
+          Bookmarked movies are stored on your <u>browser local storage </u
         </span>
+        <span type="button" ng-click="notification = false" class="fa fa-times-circle btn-close" ></span>
+
       </div>
       <div class="border m-bottom"></div>
     </div>

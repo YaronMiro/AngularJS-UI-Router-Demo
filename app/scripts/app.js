@@ -132,10 +132,10 @@ angular
           }
         },
         resolve: {
-          // Example showing injection of service into resolve function.
-          // Service then returns a promise.
-          movies: function(Movies){
-            return Movies.gettingMovies(3)
+          movies: function(Bookmarks){
+            console.log(Bookmarks.getMovies());
+//            return Bookmarks.getMovies();
+            return new Array();
           }
         }
        })

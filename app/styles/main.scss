@@ -514,11 +514,17 @@ body {
 }
 
 .bookmarks-notification {
-   span {
+  .text {
       display: inline-block;
       color: $lightGray;
       margin: 10px 0px;
     }
+
+  .btn-close {
+    cursor: pointer;
+    margin-left: 5px;
+    color: rgba(51, 122, 183, 0.59);;
+  }
 }
 
 // Scrollbar theme
