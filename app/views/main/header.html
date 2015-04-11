@@ -1,6 +1,7 @@
 <div class="row">
-  <div class="col-sm-6 col-xs-10">
-    <h1> Itunes <span class="text-muted">top 30 movies</span> </h1>
+  <div  class="col-sm-6 col-xs-10">
+    <h1 ng-show="$state.is('main.movies')"> Itunes <span class="text-muted">top 30 movies</span> </h1>
+    <h1 ng-show="$state.is('main.bookmarks')"> My <span class="text-muted">bookmarks</span> </h1>
   </div>
   <div class="col-sm-6 col-xs-2 pull-left">
     <nav role="navigation" class="navbar pull-right">
@@ -30,7 +31,6 @@
           Bookmarked movies are stored on your <u>browser local storage </u
         </span>
         <span type="button" ng-click="notification = false" class="fa fa-times-circle btn-close" ></span>
-
       </div>
       <div class="border m-bottom"></div>
     </div>

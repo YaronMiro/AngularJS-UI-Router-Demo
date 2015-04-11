@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Bookmarks', ['localStorageService', function (localStorageService) {
+  .factory('Bookmarks', ['localStorageService', '$filter', function (localStorageService, $filter) {
 
     return {
 
@@ -27,20 +27,23 @@ angular.module('myApp')
     },
 
       /**
-       * Save a movie to the local storage  "movies" array.
-       * On success return true else return false.
+       * Remove a movie to the local storage  "movies" array.
        *
        * @param movie
-       *  The movie object {*}.
+       *  The target movie to exclude object {*}.
        *
-       * @returns bool
        */
       removeFromBookmarks: function(movie) {
+
         // Get array of movies.
         var movies = localStorageService.get('bookmarks');
 
-        // Add movie to the array.
-        movies.push(movie);
+        // Find the target movie from with in the movies array.
+        var targetMovie = $filter('filter')(movies, {id: movie.id});
+
+        // Remove movie from array of movies by it's (index value - 1).
+        movies.splice((targetMovie[0].index -1), 1);
+
         // Update the local storage value.
         return localStorageService.set('bookmarks', movies);
     },

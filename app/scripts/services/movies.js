@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', '$sce', function ($http, $q, $sce) {
+  .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
 
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
@@ -47,6 +47,9 @@ angular.module('myApp')
       var deferred = $q.defer();
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
+
+          var bookmarkedMovies = Bookmarks.getMovies();
+
           angular.forEach(movies.results, function(movie, index) {
 
             // Adding unique id for each movie.

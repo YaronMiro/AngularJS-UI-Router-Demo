@@ -18,7 +18,7 @@ angular.module('myApp')
     }
 
     self.removeFromBookmarks = function(movie) {
-      Bookmarks.addToBookmarks(movie);
+      Bookmarks.removeFromBookmarks(movie);
     }
 
 
