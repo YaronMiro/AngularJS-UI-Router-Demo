@@ -4,8 +4,3 @@
     <section ng-show="movie.viewMode.value" ui-view="summary" class="fadein fadeout"></section>
   </div>
 </article>
-<div class="no-local-storage" ng-show="$state.is('main.bookmarks') && !localStorageService.isSupported">
-  <div class="border m-top"></div>
-  <p class="text-center"> In order to use this feature you must enable your browser - <u class="">local storage capability</u> </p>
-  <div class="border m-bottom"></div>
-</div>
