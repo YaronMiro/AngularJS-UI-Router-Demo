@@ -20,15 +20,16 @@
   </div>
   <div class="col-xs-12">
     <!--Bookmarks notification -->
-    <div class="bookmarks-notification text-lowercase">
+    <div ng-show="$state.is('main.bookmarks')" class="bookmarks-notification text-lowercase">
       <div class="border m-top"></div>
       <div class="text-center">
-        <p ng-show="$state.is('main.bookmarks') && !localStorageService.isSupported">
-          In order to use this feature you must enable your browser - <u class="">local storage capability</u>
-        </p>
-        <p ng-show="$state.is('main.bookmarks') && localStorageService.isSupported">
-          Bookmarks data is stored on your <u class="">local storage </u> deleting the relevant data on the local storage will delete all of the bookmarks!
-        </p>
+        <i class="fa fa-exclamation-circle"></i>
+        <span ng-show="!localStorageService.isSupported">
+          In order to use this feature you must enable your browser - <u>local storage capability</u>
+        </span>
+        <span ng-show="localStorageService.isSupported">
+          Bookmarked movies are stored on your <u>browser local storage </u> deleting the relevant data on the browser local storage will delete all of the bookmarks!
+        </span>
       </div>
       <div class="border m-bottom"></div>
     </div>
