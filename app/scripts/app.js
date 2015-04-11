@@ -133,9 +133,7 @@ angular
         },
         resolve: {
           movies: function(Bookmarks){
-            console.log(Bookmarks.getMovies());
-//            return Bookmarks.getMovies();
-            return new Array();
+            return Bookmarks.getMovies();
           }
         }
        })

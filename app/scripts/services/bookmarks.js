@@ -6,8 +6,6 @@ angular.module('myApp')
     // A private cache key.
     var movies = [];
 
-    console.log(localStorageService.keys());
-
     return {
 
       /**
@@ -21,7 +19,7 @@ angular.module('myApp')
        */
       addToBookmarks: function(movie) {
       movies.push(movie);
-      return localStorageService.set(bookmarks, movies);
+      return localStorageService.set('bookmarks', movies);
     },
 
     /**
@@ -32,7 +30,7 @@ angular.module('myApp')
      * @returns bool
      */
     getMovies: function() {
-      return localStorageService.get(bookmarks);
+      return localStorageService.get('bookmarks');
     }
 
    }
