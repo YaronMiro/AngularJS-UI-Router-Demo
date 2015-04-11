@@ -18,6 +18,14 @@ body {
   background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
   background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+  &.m-top {
+    margin-top: 10px;
+  }
+
+  &.m-bottom {
+    margin-bottom: 10px;
+  }
 }
 
 #main {
@@ -359,7 +367,6 @@ body {
           border: 1x solid $blue;
         }
 
-
         .wrapper {
           margin-top: 7px;
           color: $transparentGray;
@@ -504,6 +511,12 @@ body {
   }
 }
 
+.no-local-storage {
+  p {
+    color: $lightGray;
+    margin: 10px 0px;
+  }
+}
 
 // Scrollbar theme
 .mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail, .mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {

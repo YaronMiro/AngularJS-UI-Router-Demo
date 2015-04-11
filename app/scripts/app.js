@@ -13,10 +13,14 @@ angular
     'ui.router',
     'ngAnimate',
     'config',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'LocalStorageModule'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+  .config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function($stateProvider, $urlRouterProvider, localStorageServiceProvider){
 
+    // Setting a local storage "prefix" to avoid overwriting another data.
+    // on the local storage.
+    localStorageServiceProvider.setPrefix('myApp')
 
     /**
      * Redirect a user to homepage.
@@ -191,10 +195,21 @@ angular
         }
       })
   }])
-  .run([ '$rootScope', '$state', '$stateParams', '$log', 'Config', function ($rootScope, $state, $stateParams, $log, Config) {
+  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', function ($rootScope, $state, $stateParams, localStorageService) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+
+    // Access local storage service from any scope.
+    $rootScope.localStorageService = localStorageService;
+
+    if (localStorageService.isSupported) {
+      console.log('Support ', localStorageService.getStorageType());
+    }
+    else {
+      console.log('No support!', localStorageService.getStorageType());
+    }
+
   }])
