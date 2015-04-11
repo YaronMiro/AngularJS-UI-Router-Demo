@@ -49,6 +49,9 @@ angular.module('myApp')
         .success(function(movies) {
           angular.forEach(movies.results, function(movie, index) {
 
+            // Adding unique id for each movie.
+            movie.id = ids[index];
+
             // Adding index for each movie.
             movie.index = index + 1;
 
