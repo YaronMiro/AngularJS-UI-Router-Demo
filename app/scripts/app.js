@@ -131,21 +131,7 @@ angular
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
           movies: function(Movies){
-            return Movies.gettingMovies(4).then(function(movies){
-              var length = movies.length;
-
-              if ((length % 3) != 0) {
-                if ((length + 1) % 3 == 0) {
-                  movies.push({"artworkUrl600": 'http://www.hdwallpapers.in/walls/the_avengers_movie_2012-HD.jpg'})
-                }
-                else {
-                  movies.push({"artworkUrl600": 'http://www.hdwallpapers.in/walls/the_avengers_movie_2012-HD.jpg'})
-                  movies.push({"artworkUrl600": 'http://www.hdwallpapers.in/walls/the_avengers_movie_2012-HD.jpg'})
-                }
-
-              }
-              return movies;
-            });
+            return Movies.gettingMovies(3)
           }
         }
        })
