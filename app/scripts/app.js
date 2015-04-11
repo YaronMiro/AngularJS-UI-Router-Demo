@@ -105,6 +105,51 @@ angular
         }
        })
 
+      // Bookmarks Movies state.
+      .state('main.bookmarks',{
+        url: 'bookmarks',
+        views: {
+          // Relatively targets the 'content' view in this state parent state,
+          // 'main'. <div ui-view='content'/> within index.html.
+          'content@': {
+            templateUrl: 'views/pages/movies/movies.html',
+            controller: 'moviesController',
+            controllerAs: 'movies'
+          },
+          // Absolutely targets the 'preview' view in this state.
+          // <div ui-view="preview"/> within movies.html.
+          'preview@main.bookmarks': {
+            templateUrl: 'views/pages/movies/movie.preview.html'
+          },
+          // Absolutely targets the 'summary' view in this state.
+          // <div ui-view="summary"/> within movies.html.
+          'summary@main.bookmarks': {
+            templateUrl: 'views/pages/movies/movie.summary.html'
+          }
+        },
+        resolve: {
+          // Example showing injection of service into resolve function.
+          // Service then returns a promise.
+          movies: function(Movies){
+            return Movies.gettingMovies(4).then(function(movies){
+              var length = movies.length;
+
+              if ((length % 3) != 0) {
+                if ((length + 1) % 3 == 0) {
+                  movies.push({"artworkUrl600": 'http://www.hdwallpapers.in/walls/the_avengers_movie_2012-HD.jpg'})
+                }
+                else {
+                  movies.push({"artworkUrl600": 'http://www.hdwallpapers.in/walls/the_avengers_movie_2012-HD.jpg'})
+                  movies.push({"artworkUrl600": 'http://www.hdwallpapers.in/walls/the_avengers_movie_2012-HD.jpg'})
+                }
+
+              }
+              return movies;
+            });
+          }
+        }
+       })
+
       // Single movie state.
       .state('main.movies.full',{
         // The "^" character excludes the parent prefix url format ("movies")

@@ -8,10 +8,8 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('moviesController', ['$scope','$stateParams', 'movies', '$document', function ($scope, $stateParams, movies, $document) {
-
+  .controller('moviesController', ['$scope','$stateParams', '$state', 'movies', '$document', function ($scope, $stateParams, $state, movies) {
     var self = this;
-
     // Movies data.
     self.data = movies;
   }]);
