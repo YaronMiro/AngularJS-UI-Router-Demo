@@ -17,19 +17,22 @@
   <div class="links">
     <div class="border"></div>
     <button class="color-effect" title="Movie poster" class="btn" ng-click="movie.viewMode.value = !movie.viewMode.value">
-      <span class="glyphicon glyphicon-picture"></span>
+      <span class="fa fa-picture-o"></span>
     </button>
     <div class="border"></div>
-    <button class="color-effect" title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
-      <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+    <button class="color-effect" title="Movie trailer" class="btn" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
+      <span class="fa fa-play-circle" aria-hidden="true"></span>
     </button>
     <div class="border"></div>
-    <button class="color-effect" title="Movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
+    <button class="color-effect" title="Movie information" class="btn" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
       <span class="fa fa-info-circle" aria-hidden="true"></span>
     </button>
     <div class="border"></div>
-    <button class="color-effect" title="Add to bookmarks" class="btn bookmark" ng-click="movies.addToBookmarks(movie)">
-      <span class="fa fa-info-circle" aria-hidden="true"></span>
+    <button class="color-effect" ng-show="!movie.isBookmarked" title="Add to bookmarks" class="btn add" ng-click="movies.addToBookmarks(movie)">
+      <span class="fa fa-plus-circle" aria-hidden="true"></span>
+    </button>
+    <button class="color-effect" ng-hide="!movie.isBookmarked" title="Remove from bookmarks" class="btn remove" ng-click="movies.removeFromBookmarks(movie)">
+      <span class="fa fa-trash-o" aria-hidden="true"></span>
     </button>
     <div class="border"></div>
   </div>

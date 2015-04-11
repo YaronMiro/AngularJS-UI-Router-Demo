@@ -15,7 +15,10 @@ angular.module('myApp')
 
     self.addToBookmarks = function(movie) {
       Bookmarks.addToBookmarks(movie);
-      console.log(Bookmarks.getMovies());
+    }
+
+    self.isMovieBookmarked = function(movie) {
+      return Bookmarks.isMovieBookmarked(movie);
     }
 
   }]);

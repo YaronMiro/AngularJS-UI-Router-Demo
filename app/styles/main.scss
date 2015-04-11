@@ -251,6 +251,24 @@ body {
           &:hover {
             color: $blue;
           }
+
+          &.add {
+            font-size: 9px;
+
+            &:hover {
+              color: greenyellow;
+            }
+
+          }
+
+          &.remove {
+            font-size: 9px;
+
+            &:hover {
+              color: red;
+            }
+
+          }
         }
       }
     }
