@@ -187,7 +187,7 @@ body {
 
       .bookmarked-icon {
         left: 0px;
-        color: $blue;
+        color: $green;
         @include border-top-right-radius(6px);
 
       }
@@ -254,7 +254,7 @@ body {
           }
 
           &.add:hover {
-            color: #6aaa2b;
+            color: $green;
           }
 
           &.remove:hover {

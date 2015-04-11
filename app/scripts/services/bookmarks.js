@@ -26,6 +26,25 @@ angular.module('myApp')
         return localStorageService.set('bookmarks', movies);
     },
 
+      /**
+       * Save a movie to the local storage  "movies" array.
+       * On success return true else return false.
+       *
+       * @param movie
+       *  The movie object {*}.
+       *
+       * @returns bool
+       */
+      removeFromBookmarks: function(movie) {
+        // Get array of movies.
+        var movies = localStorageService.get('bookmarks');
+
+        // Add movie to the array.
+        movies.push(movie);
+        // Update the local storage value.
+        return localStorageService.set('bookmarks', movies);
+    },
+
     /**
      * Get all of the movies from the local storage "movies" array.
      * On success return the value from the local storage.
