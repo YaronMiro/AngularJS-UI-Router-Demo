@@ -20,9 +20,6 @@ angular.module('myApp')
         // Set a new index for the incoming movie.
         movie.index = movies.length ? (movies.length + 1) : 1;
 
-        // Flag movie as boomarked.
-        movie.isBookmarked = true;
-
         // Add movie to the array.
         movies.push(movie);
         // Update the local storage value.

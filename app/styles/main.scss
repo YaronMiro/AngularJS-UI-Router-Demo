@@ -240,6 +240,7 @@ body {
       .links {
         margin-top: 7px;
 
+
         button {
           border: none;
           outline: none;
@@ -252,22 +253,12 @@ body {
             color: $blue;
           }
 
-          &.add {
-            font-size: 9px;
-
-            &:hover {
-              color: greenyellow;
-            }
-
+          &.add:hover {
+            color: #6aaa2b;
           }
 
-          &.remove {
-            font-size: 9px;
-
-            &:hover {
-              color: red;
-            }
-
+          &.remove:hover {
+            color: rgb(179, 41, 41);;
           }
         }
       }
