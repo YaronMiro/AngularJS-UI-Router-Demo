@@ -14,6 +14,8 @@ angular.module('myApp')
 
     // Selected movie.
     self.selectedMovie = selectedMovie;
+
+    // Array of movies.
     self.movies = movies;
 
     // Verify that we have the data object declared.

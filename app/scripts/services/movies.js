@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
+  .factory('Movies', ['$http', '$q', '$sce', function ($http, $q, $sce) {
 
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
@@ -48,12 +48,14 @@ angular.module('myApp')
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
 
-          var bookmarkedMovies = Bookmarks.getMovies();
-
           angular.forEach(movies.results, function(movie, index) {
 
             // Adding unique id for each movie.
             movie.id = ids[index];
+
+            // Adding a flag to the movie object to reference it's relationship
+            // to the bookmark type movie.
+            movie.originBookmark = false;
 
             // Adding index for each movie.
             movie.index = index + 1;
