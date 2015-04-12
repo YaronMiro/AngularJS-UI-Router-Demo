@@ -18,6 +18,7 @@ angular.module('myApp')
     // Array of movies.
     self.movies = movies;
 
+
     // Verify that we have the data object declared.
     if (angular.isDefined($state.current.data)) {
       // Movie trailer.

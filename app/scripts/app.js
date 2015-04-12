@@ -154,12 +154,7 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie,
-          movies: function(movies, Bookmarks){
-            //console.log(gettingSelectedMovie(movies, $stateParams, $filter));
-            console.log(movies);
-            return movies;
-          }
+          selectedMovie: gettingSelectedMovie
         },
         onEnter: redirect
       })
