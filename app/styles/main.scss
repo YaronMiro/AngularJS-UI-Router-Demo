@@ -249,7 +249,14 @@ body {
           height: 70px;
           font-size: 27px;
 
-          &:hover {
+
+          @include tablet-only {
+            width: 56px;
+            height: 56px;
+          }
+
+
+        &:hover {
             color: $blue;
           }
 
