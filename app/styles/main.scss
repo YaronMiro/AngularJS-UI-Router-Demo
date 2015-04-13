@@ -398,7 +398,7 @@ body {
 
         width: 100%;
         position: relative;
-        padding: 20px;
+        padding: 9px 20px 20px 20px;
         border-width: 1px;
         border-style: solid;
         list-style: none;
@@ -415,28 +415,20 @@ body {
 
         li {
           position: relative;
-          margin-top: 7px;
+          padding: 7px 0px;
           color: $transparentGray;
 
           &> * {
             font-size: 13px;
           }
 
-          &:after,
-          &:last-child:before {
+          &:not(:first-child):after {
             content: "";
             width: 100%;
             position: absolute;
             left: 0px;
-            @include border(1px);
-          }
-
-          &:last-child:before {
-            bottom: 0px;
-          }
-
-          &:after {
             top: 0px;
+            @include border(1px);
           }
 
           label {
@@ -444,7 +436,7 @@ body {
             font-size: 16px;
           }
 
-          i{
+          i {
             &:after {
               content: " | ";
             }
@@ -465,7 +457,7 @@ body {
           padding: 4px;
 
           &:hover {
-            .link {
+            .link, .link label {
               color: $blue;
             }
           }
