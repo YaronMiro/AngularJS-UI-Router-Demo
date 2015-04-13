@@ -9,7 +9,7 @@
   </li>
   <!--Movie full view -->
   <li ng-if="$state.is('main.movie.trailer')" title="Read more">
-    <a class="color-effect" ui-sref="main.movie.movieInfo({'name': $stateParams.name, 'isBookmarked': movie.isBookmarked})">
+    <a class="color-effect" ui-sref="main.movie.movieInfo({'name': $stateParams.name, 'originBookmark': $stateParams.originBookmark})">
       <i class="fa fa-info"></i>
     </a>
   </li>

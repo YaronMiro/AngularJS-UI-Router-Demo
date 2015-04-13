@@ -52,6 +52,7 @@ angular
      *  Return the target movie {*}.
      */
     var gettingSelectedMovie = function(movies, $stateParams, $filter){
+      console.log(movies);
       var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
       return selectedMovie[0];
     };
@@ -104,7 +105,7 @@ angular
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
           movies: function(Movies){
-            return Movies.gettingMovies(30);
+            return Movies.gettingMovies();
           }
         }
        })
@@ -141,17 +142,15 @@ angular
 
       // Movies state.
       .state('main.movie',{
-        url: 'movie/{name}?isBookmarked',
+        url: 'movie/{name}?originBookmark',
         abstract: true,
-        params: {
-          isBookmarked: false
-        },
         resolve: {
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
-          movies: function(Movies, Bookmarks, $state, $stateParams){
+          movies: function(Movies, Bookmarks, $stateParams){
             console.log($stateParams);
-            return Movies.gettingMovies(30);
+            // Set the data type according to the movie origin.
+            return angular.isDefined($stateParams.originBookmark) ? Bookmarks.getMovies(): Movies.gettingMovies();
           }
         }
       })
@@ -214,35 +213,4 @@ angular
 
     // Access local storage service from any scope.
     $rootScope.localStorageService = localStorageService;
-
-//    if (localStorageService.isSupported) {
-//      console.log('Support ', localStorageService.getStorageType());
-//    }
-//    else {
-//      console.log('No support!', localStorageService.getStorageType());
-//    }
-
-//
-//      $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-//        $log.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
-//      });
-//
-//      $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams) {
-//        $log.log('$stateChangeError - fired when an error occurs during transition.');
-//        $log.log(arguments);
-//      });
-//
-//      $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-//        $log.log('$stateChangeSuccess to ' + toState.name + '- fired once the state transition is complete.');
-//      });
-//
-//      $rootScope.$on('$viewContentLoaded', function (event) {
-//        $log.log('$viewContentLoaded - fired after dom rendered', event);
-//      });
-//
-//      $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
-//        $log.log('$stateNotFound ' + unfoundState.to + '  - fired when a state cannot be found by its name.');
-//        $log.log(unfoundState, fromState, fromParams);
-//      });
-
   }])
