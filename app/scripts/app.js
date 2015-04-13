@@ -20,7 +20,7 @@ angular
 
     // Setting a local storage "prefix" to avoid overwriting another data.
     // on the local storage.
-    localStorageServiceProvider.setPrefix('myApp')
+    localStorageServiceProvider.setPrefix('myApp');
 
     /**
      * Redirect a user to homepage.
@@ -31,7 +31,6 @@ angular
      *   The target movie.
      */
     var redirect = function($state, selectedMovie) {
-
       if (!angular.isDefined(selectedMovie)) {
         // if the movie doesn't exist then redirect to the "parent" state.
         // in our case it's the main "movies" state.
@@ -52,12 +51,8 @@ angular
      *  Return the target movie {*}.
      */
     var gettingSelectedMovie = function(movies, $stateParams, $filter){
-      console.log(movies.length);
       var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
-      console.log('originBookmark:' + selectedMovie[0].originBookmark, 'isBookmarked:' + selectedMovie[0].isBookmarked );
-      console.log(selectedMovie[0]);
       return selectedMovie[0];
-
     };
 
     // Default url route.
@@ -151,25 +146,17 @@ angular
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
           movies: function(Movies, Bookmarks, $stateParams){
-            console.log($stateParams);
             // Set the data type according to the movie origin.
-//            return (angular.isDefined($stateParams.originBookmark) && $stateParams.originBookmark) ? Bookmarks.getMovies(): Movies.gettingMovies();
-
-            if ($stateParams.originBookmark) {
-              console.log('bookmarks');
-            }
-            else {
-              console.log('Itunes');
-
-            }
-
-            return $stateParams.originBookmark ? Bookmarks.getMovies(): Movies.gettingMovies();
+            return (parseInt($stateParams.originBookmark)) ? Bookmarks.getMovies(): Movies.gettingMovies();
           }
         }
       })
 
       // Single movie state.
       .state('main.movie.movieInfo',{
+        // The "^" character excludes the parent prefix url
+        // ("movie/{name}?originBookmark") format from this child state url, it
+        // will become only as "movie/info/{name}".
         url: '^/movie/info/{name}',
         views: {
           'content@': {
@@ -188,6 +175,9 @@ angular
 
       // Single movie state.
       .state('main.movie.trailer',{
+        // The "^" character excludes the parent prefix url
+        // ("movie/{name}?originBookmark") format from this child state url, it
+        // will become only as "movie/trailer/{name}".
         url: '^/movie/trailer/{name}',
         views: {
           'content@': {

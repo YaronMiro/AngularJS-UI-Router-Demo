@@ -58,7 +58,7 @@ angular.module('myApp')
 
             // Adding a flag to the movie object to reference it's relationship
             // to the bookmark type movie.
-            movie.originBookmark = false;
+            movie.originBookmark = 0;
 
             // Adding index for each movie.
             movie.index = index + 1;
