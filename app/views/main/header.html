@@ -16,19 +16,19 @@
   <div class="mobile-menu col-xs-12 visible-xs">
     <div id="navbarCollapse" class="collapse navbar-collapse" ng-include="'views/includes/navigation.html'"></div>
   </div>
-  <div class="col-xs-12" ng-init="notification = true">
+  <div class="col-xs-12">
     <!--Bookmarks notifications -->
     <div ng-show="$state.is('main.bookmarks')" class="bookmarks-notification text-lowercase text-center fadein fadeout">
       <div>
         <span class="text fa fa-exclamation-circle" ng-show="!localStorageService.isSupported">
-          In order to use this feature you must enable your browser - <u>local storage capability</u>
+          In order to use this feature you must enable your browser - local storage capability.
         </span>
       </div>
       <div>
-        <span class="text fa fa-exclamation-circle" ng-show="localStorageService.isSupported && notification">
-          Bookmarked movies are stored on your <u>browser local storage </u
+        <span class="text fa fa-exclamation-circle fadein fadeout" ng-hide="!localStorageService.isSupported || notificationOff">
+          Bookmarked movies are stored on your browser local storage.
+          <span type="button" ng-click="notificationOff = true" class="fa fa-times-circle btn-close" ></span>
         </span>
-        <span type="button" ng-click="notification = false" class="fa fa-times-circle btn-close" ></span>
       </div>
     </div>
   </div>
