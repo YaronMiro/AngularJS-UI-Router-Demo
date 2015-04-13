@@ -34,9 +34,9 @@ $effect: ease-in;
 }
 
 // Color change transition
-@mixin border {
+@mixin border($height) {
   background: $blue;
-  height: 1px;
+  height: $height;
   background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(41, 137, 216, 0.51) 50%, rgba(0,0,0,0) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(41, 137, 216, 0.51)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
@@ -44,6 +44,26 @@ $effect: ease-in;
   background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
   background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+@mixin borders($height) {
+
+  &:after,
+  &:before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    @include border($height);
+  }
+
+  &::before {
+    bottom: 0px;
+  }
+
+  &:after {
+    top: 0px;
+  }
 }
 
 // Only the desktop width.

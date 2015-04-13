@@ -9,7 +9,11 @@ body {
 }
 
 .border {
-  @include border;
+  @include border(1px);
+
+  &.thick {
+    height: 2px;
+  }
 
   &.m-top {
     margin-top: 10px;
@@ -179,7 +183,7 @@ body {
 
       .bookmarked-icon {
         left: 0px;
-        color: $green;
+        color: white;
         @include border-top-right-radius(6px);
 
       }
@@ -189,25 +193,18 @@ body {
       color: #ffffff;
       text-align: center;
 
-      .title {
-          margin-top: 14px;
-
-        h3 {
-          text-transform: uppercase;
-          color: white;
-          margin: 14px 0px;
-          font-size: 16px;
-          font-weight: bold;
-        }
-
-        .border {
-          width: 85%;
-          height: 2px;
-        }
+      h3 {
+        position: relative;
+        padding: 7px 0px;
+        text-transform: uppercase;
+        color: white;
+        margin: 20px 0px 14px 0px;
+        font-size: 16px;
+        font-weight: bold;
+        @include borders(2px);
       }
 
       .rating {
-        margin-top: 10px;
         margin-bottom: 10px;
         padding: 5px;
         display: inline-block;
@@ -219,14 +216,10 @@ body {
         }
       }
 
-      .wrapper {
-        padding-right: 20px;
-        padding-left: 20px;
+      .date {
+        position: relative;
+        padding: 7px 0px;
         color: $gray;
-
-        label {
-          margin-top: 7px;
-        }
       }
 
       .links {
@@ -247,7 +240,7 @@ body {
             width: 100%;
             position: absolute;
             left: 0px;
-            @include border;
+            @include border(1px);
           }
 
           &:last-child:before {

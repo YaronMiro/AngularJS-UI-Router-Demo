@@ -1,18 +1,11 @@
-<div class="summary">
-  <div class="title">
-    <div class="border"></div>
-    <h3>{{ movie.trackName }}</h3>
-    <div class="border"></div>
+<div class="summary text-center">
+  <h3>{{ movie.trackName }}</h3>
+  <div class="rating">
+    <i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i>
   </div>
-  <div class="rating text-center"><i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i></div>
-  <div class="wrapper hidden-sm">
-    <div class="border"></div>
-    <div>
-      <label>
-        <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
-        <span>{{ movie.releaseDate | date:'longDate' }}</span>
-      </label>
-    </div>
+  <div class="date hidden-sm">
+    <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
+    <span>{{ movie.releaseDate | date:'longDate' }}</span>
   </div>
   <ul class="links">
     <li class="color-effect" ng-click="movie.viewMode.value = !movie.viewMode.value">
@@ -28,10 +21,10 @@
         <div class="title">Read more</div>
     </li>
     <li class="add" ng-if="localStorageService.isSupported && !movie.isBookmarked" ng-click="movies.addToBookmarks(movie)">
-      <div class="icon fa fa-plus-circle color-effect" aria-hidden="true"></div>
+      <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
       <div class="title">Add to bookmarks</div>
     </li>
-    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movie.isBookmarked = !movie.isBookmarked; movies.removeFromBookmarks(movie)">
+    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movies.removeFromBookmarks(movie)">
       <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
       <div class="title">Remove from bookmarks</div>
     </li>

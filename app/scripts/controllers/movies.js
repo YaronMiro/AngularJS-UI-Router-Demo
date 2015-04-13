@@ -23,7 +23,12 @@ angular.module('myApp')
     }
 
     self.removeFromBookmarks = function(movie) {
-      Bookmarks.removeFromBookmarks(movie);
+      Bookmarks.removeFromBookmarks(movie).then(function(data){
+        if (data.deleted) {
+          movie.isBookmarked = false;
+          console.log(movie);
+        }
+      });;
     }
 
 

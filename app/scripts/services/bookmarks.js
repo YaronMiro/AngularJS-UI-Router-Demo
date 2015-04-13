@@ -60,6 +60,8 @@ angular.module('myApp')
        */
       removeFromBookmarks: function(movie) {
 
+        var deferred = $q.defer();
+
         // Get array of movies.
         var movies = localStorageService.get('bookmarks');
 
@@ -75,7 +77,19 @@ angular.module('myApp')
         });
 
         // Update the local storage value.
-        localStorageService.set('bookmarks', movies);
+        var deleted = localStorageService.set('bookmarks', movies);
+
+        // In case of success.
+        if (deleted) {
+          deferred.resolve({"deleted": deleted, "error": false});
+        }
+        // In case of error.
+        else {
+          deferred.reject({"deleted": deleted, "error": true});
+        }
+
+        // Return promise object.
+        return deferred.promise;
       },
 
       /**
