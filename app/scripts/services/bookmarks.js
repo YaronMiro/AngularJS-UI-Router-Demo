@@ -3,6 +3,10 @@
 angular.module('myApp')
   .factory('Bookmarks', ['localStorageService', '$filter', '$q', function (localStorageService, $filter, $q) {
 
+    // Private data array of movies.
+    var data =[];
+    data = localStorageService.get('bookmarks');
+
     return {
 
       /**
@@ -23,7 +27,7 @@ angular.module('myApp')
         angular.copy(movie, movieCopy);
 
         // Get array of movies.
-        var movies = localStorageService.get('bookmarks') != null ? localStorageService.get('bookmarks') : new Array();
+        var movies = data != null ? data : new Array();
 
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
@@ -33,7 +37,7 @@ angular.module('myApp')
         // Set a new index for the incoming movie.
         movieCopy.index = movies.length ? (movies.length + 1) : 1;
 
-        // Add movie to the array.
+        // Add movie to the data object.
         movies.push(movieCopy);
 
         // Update the local storage value.
@@ -64,7 +68,7 @@ angular.module('myApp')
         var deferred = $q.defer();
 
         // Get array of movies.
-        var movies = localStorageService.get('bookmarks');
+        var movies = data;
 
         // Find the target movie from with in the movies array.
         var targetMovie = $filter('filter')(movies, {id: movie.id});
@@ -101,7 +105,7 @@ angular.module('myApp')
        */
       getMovies: function() {
         var deferred = $q.defer();
-        deferred.resolve(localStorageService.get('bookmarks'));
+        deferred.resolve(data);
         // Return promise object.
         return deferred.promise;
       },
@@ -110,13 +114,16 @@ angular.module('myApp')
      * Check if a movie is bookmarked.
      * if bookmarked then it returns true, else returns false.
      *
-     * @param movie
-     *  The movie object {*}.
+     * @param movieId
+     *  The movie unique id.
      *
      * @returns bool
      */
-    isMovieBookmarked: function(movie) {
-      return movie.isBookmarked ;
+    isMovieBookmarked: function(movieId) {
+      var movies = data;
+      // Find the target movie from with in the movies array.
+      var targetMovie = $filter('filter')(movies, {id: movieId});
+      return targetMovie.length ? true : false;
     }
    }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', '$sce', function ($http, $q, $sce) {
+  .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
 
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
@@ -52,6 +52,9 @@ angular.module('myApp')
 
             // Adding unique id for each movie.
             movie.id = ids[index];
+
+            // Flag to identify if the movie is bookmarked.
+            movie.isBookmarked = Bookmarks.isMovieBookmarked(movie.id);
 
             // Adding a flag to the movie object to reference it's relationship
             // to the bookmark type movie.
