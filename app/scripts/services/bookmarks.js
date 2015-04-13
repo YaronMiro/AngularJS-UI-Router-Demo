@@ -108,15 +108,15 @@ angular.module('myApp')
 
     /**
      * Check if a movie is bookmarked.
-     * On success return the true else return false.
+     * if bookmarked then it returns true, else returns false.
      *
      * @param movie
      *  The movie object {*}.
      *
      * @returns bool
      */
-    isMovieBookmarked: function() {
-      return true;
+    isMovieBookmarked: function(movie) {
+      return movie.isBookmarked ;
     }
    }
 
