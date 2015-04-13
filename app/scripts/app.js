@@ -137,7 +137,6 @@ angular
         }
        })
 
-
       // Movies state.
       .state('main.movie',{
         url: 'movie/{name}?originBookmark',
@@ -156,8 +155,8 @@ angular
       .state('main.movie.movieInfo',{
         // The "^" character excludes the parent prefix url
         // ("movie/{name}?originBookmark") format from this child state url, it
-        // will become only as "movie/info/{name}".
-        url: '^/movie/info/{name}',
+        // will become only as "movie/info/{name}?originBookmark".
+        url: '^/movie/info/{name}?originBookmark',
         views: {
           'content@': {
             templateUrl: 'views/pages/movie/movieInfo.html',
@@ -177,8 +176,8 @@ angular
       .state('main.movie.trailer',{
         // The "^" character excludes the parent prefix url
         // ("movie/{name}?originBookmark") format from this child state url, it
-        // will become only as "movie/trailer/{name}".
-        url: '^/movie/trailer/{name}',
+        // will become only as "movie/trailer/{name}?originBookmark".
+        url: '^/movie/trailer/{name}?originBookmark',
         views: {
           'content@': {
             templateUrl: 'views/pages/movie/trailer.html',
@@ -213,6 +212,7 @@ angular
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+    $rootScope.parseInt = parseInt;
 
     // Access local storage service from any scope.
     $rootScope.localStorageService = localStorageService;

@@ -44,6 +44,7 @@ angular.module('myApp')
       if (!angular.isArray(ids)) {
         return;
       }
+
       var deferred = $q.defer();
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
