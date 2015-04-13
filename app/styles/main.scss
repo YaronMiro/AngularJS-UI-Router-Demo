@@ -459,13 +459,13 @@ body {
         }
 
         .trailer {
-          width: 53%;
+          width: 100%;
           margin: 0 auto;
           margin-top: 20px;
           padding: 4px;
 
           &:hover {
-            .link, .link label {
+            .link {
               color: $blue;
             }
           }
@@ -481,16 +481,20 @@ body {
               font-size: 12px;
               text-transform: uppercase;
               display: inline-block;
-              padding: 11px 8px;
-              @include borders(1px);
             }
           }
 
-          i {
-            cursor: pointer;
-            font-size: 30px;
-            padding: 6px 0px;
+          .wrapper {
+            margin-top: 7px;
+            @include borders(1px);
+
+            i {
+              cursor: pointer;
+              font-size: 30px;
+              padding: 6px 0px;
+            }
           }
+
         }
       }
     }
