@@ -2,11 +2,7 @@
   <!-- Navigation movies links-->
   <div ng-include="'views/includes/movie-navigation.html'"></div>
   <!-- Movie title -->
-  <div class="col-xs-12 title">
-    <div class="border"></div>
-    <h3 class="text-center">{{ movie.selectedMovie.trackName }} - Trailer</h3>
-    <div class="border"></div>
-  </div>
+   <h3 class="col-xs-12 text-center">{{ movie.selectedMovie.trackName }} - Trailer</h3>
   <!-- Embed movie trailer-->
   <div class="col-xs-12 movie-trailer">
     <iframe type="text/html" ng-src="{{ movie.movieTrailerUrl }}" frameborder="0" allowfullscreen/>

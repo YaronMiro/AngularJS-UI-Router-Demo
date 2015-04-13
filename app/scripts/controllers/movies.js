@@ -13,7 +13,10 @@ angular.module('myApp')
     // Movies data.
     self.data = movies;
 
-
+    /**
+     * Add movie to the bookmarks list.
+     * @param movie {*}
+     */
     self.addToBookmarks = function(movie) {
       Bookmarks.addToBookmarks(movie).then(function(data){
         if (data.saved) {
@@ -22,15 +25,16 @@ angular.module('myApp')
       });
     }
 
+    /**
+     * Delete movie from the bookmarks list.
+     * @param movie {*}
+     */
     self.removeFromBookmarks = function(movie) {
       Bookmarks.removeFromBookmarks(movie).then(function(data){
         if (data.deleted) {
           movie.isBookmarked = false;
-          console.log(movie);
         }
       });;
     }
-
-
 
   }]);

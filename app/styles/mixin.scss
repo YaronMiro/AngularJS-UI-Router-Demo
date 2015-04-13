@@ -47,6 +47,7 @@ $effect: ease-in;
 }
 
 @mixin borders($height) {
+  position: relative;
 
   &:after,
   &:before {

@@ -59,8 +59,9 @@ body {
 
         border: 1px solid $blue;
 
-        .icon-bar {
-          background: $blue;
+        .menu-icon {
+          font-size: 18px;
+          color: $blue;
         }
       }
     }
@@ -78,7 +79,26 @@ body {
         cursor: pointer;
 
         @include mobile-only {
+          position: relative;
+          padding: 15px 0px;
           float: none;
+
+          &:after,
+          &:last-child:before {
+            content: "";
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            @include border(1px);
+          }
+
+          &:last-child:before {
+            bottom: 0px;
+          }
+
+          &:after {
+            top: 0px;
+          }
         }
 
         &.active {
@@ -89,7 +109,9 @@ body {
         }
 
         &:nth-child(n+1) {
-          margin-right: 10px;
+          @include exclude-mobile-only {
+            margin-right: 10px;
+          }
         }
 
         a {
@@ -99,6 +121,7 @@ body {
           font-size: 22px;
 
           @include mobile-only {
+            padding: 0px;
             text-align: center;
             border: none;
           }
@@ -194,7 +217,6 @@ body {
       text-align: center;
 
       h3 {
-        position: relative;
         padding: 7px 0px;
         text-transform: uppercase;
         color: white;
@@ -217,7 +239,6 @@ body {
       }
 
       .date {
-        position: relative;
         padding: 7px 0px;
         color: $gray;
       }
@@ -233,6 +254,11 @@ body {
           padding: 7px 0px 9px 0px;
           cursor: pointer;
           font-size: 27px;
+
+          @include tablet-only {
+            padding: 2px 0px 6px 0px;
+            font-size: 24px;
+          }
 
           &:after,
           &:last-child:before {
@@ -258,14 +284,9 @@ body {
             color: $lightGray;
           }
 
-          @include tablet-only {
-
-          }
-
-
-        &:hover {
-            color: $blue;
-          }
+          &:hover {
+              color: $blue;
+            }
 
           &.add:hover {
             color: $green;
@@ -283,17 +304,10 @@ body {
     padding-left: 30px;
     padding-right: 30px;
 
-    .title {
-
-      h3 {
-        margin: 13px 0px;
-        font-weight: bold;
-        color: white;
-      }
-
-      .border {
-        height: 2px;
-      }
+    h3 {
+      margin: 13px 0px;
+      font-weight: bold;
+      color: white;
     }
 
     .info-container, .image-container {
@@ -449,10 +463,6 @@ body {
                 @include border-radius( 6px 6px 0px 0px);
                 border-bottom: none;
               }
-
-              .border {
-                height: 2px;
-              }
             }
 
             i {
@@ -473,17 +483,11 @@ body {
 
 .trailer {
 
-  .title {
-    margin-bottom: 30px;
-
-    h3 {
-      margin: 13px 0px;
-      color: white;
-    }
-    
-    .border {
-      height: 2px;
-    }
+  h3 {
+    padding: 12px 0px;
+    margin: 13px 0px 30px 0px;
+    color: white;
+    @include borders(2px);
   }
 
   .movie-trailer {
@@ -538,16 +542,24 @@ body {
 
 .bookmarks-notification {
   .text {
-      display: inline-block;
-      color: $lightGray;
-      margin: 10px 0px;
+    padding: 13px 0px;
+    display: inline-block;
+    color: $lightGray;
+    margin: 10px 0px;
+    @include borders(1px);
     }
 
   .btn-close {
+    position: absolute;
+    right: -20px;
+    top: 8px;
     cursor: pointer;
-    margin-left: 5px;
-    color: rgba(51, 122, 183, 0.59);;
+    color: rgba(255, 255, 255, 0.21);
   }
+}
+
+.color-effect {
+  @include color-change-effect();
 }
 
 // Scrollbar theme
@@ -575,10 +587,24 @@ body {
   }
 }
 
-.color-effect {
-  @include color-change-effect();
+repeat-animate.ng-move,
+repeat-animate.ng-enter,
+repeat-animate.ng-leave {
+  -webkit-transition: opacity linear 0.5s ease;
+  -moz-transition: opacity linear 0.5s ease;
+  -o-transition: opacity linear 0.5s ease;
+  transition: opacity linear 0.5s ease;
 }
 
+repeat-animate.ng-leave.ng-leave-active,
+repeat-animate.ng-move,
+repeat-animate.ng-enter {
+  opacity:0;
+}
 
-
+repeat-animate.ng-leave,
+repeat-animate.ng-move.ng-move-active,
+repeat-animate.ng-enter.ng-enter-active {
+  opacity:1;
+}
 

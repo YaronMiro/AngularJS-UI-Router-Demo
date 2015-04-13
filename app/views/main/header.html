@@ -1,16 +1,13 @@
 <div class="row">
   <div  class="col-sm-6 col-xs-10">
-    <h1 ng-show="$state.is('main.movies')"> Itunes <span class="text-muted">top 30 movies</span> </h1>
-    <h1 ng-show="$state.is('main.bookmarks')"> My <span class="text-muted">bookmarks</span> </h1>
+    <h1 ng-if="$state.is('main.movies')"> Itunes <span class="text-muted">top 30 movies</span> </h1>
+    <h1 ng-if="$state.is('main.bookmarks')"> My <span class="text-muted">bookmarks</span> </h1>
   </div>
   <div class="col-sm-6 col-xs-2 pull-left">
     <nav role="navigation" class="navbar pull-right">
       <div class="navbar-header">
         <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <i class="menu-icon fa fa-bars"></i>
         </button>
       </div>
       <div class="hidden-xs pull-right"  ng-include="'views/includes/navigation.html'"></div>
@@ -20,19 +17,19 @@
     <div id="navbarCollapse" class="collapse navbar-collapse" ng-include="'views/includes/navigation.html'"></div>
   </div>
   <div class="col-xs-12" ng-init="notification = true">
-    <!--Bookmarks notification -->
-    <div ng-show="$state.is('main.bookmarks') && notification" class="bookmarks-notification text-lowercase fadein fadeout">
-      <div class="border m-top"></div>
-      <div class="text-center">
+    <!--Bookmarks notifications -->
+    <div ng-show="$state.is('main.bookmarks')" class="bookmarks-notification text-lowercase text-center fadein fadeout">
+      <div>
         <span class="text fa fa-exclamation-circle" ng-show="!localStorageService.isSupported">
           In order to use this feature you must enable your browser - <u>local storage capability</u>
         </span>
-        <span class="text fa fa-exclamation-circle" ng-show="localStorageService.isSupported">
+      </div>
+      <div>
+        <span class="text fa fa-exclamation-circle" ng-show="localStorageService.isSupported && notification">
           Bookmarked movies are stored on your <u>browser local storage </u
         </span>
         <span type="button" ng-click="notification = false" class="fa fa-times-circle btn-close" ></span>
       </div>
-      <div class="border m-bottom"></div>
     </div>
   </div>
   <div class="top col-xs-12"></div>
