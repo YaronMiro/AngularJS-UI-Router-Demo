@@ -6,6 +6,8 @@ angular.module('myApp')
     // Private data array of movies.
     var data =[];
     data = localStorageService.get('bookmarks');
+    data = data != null ? data : new Array();
+
 
     return {
 
@@ -27,7 +29,7 @@ angular.module('myApp')
         angular.copy(movie, movieCopy);
 
         // Get array of movies.
-        var movies = data != null ? data : new Array();
+        var movies = data;
 
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.

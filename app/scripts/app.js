@@ -52,9 +52,12 @@ angular
      *  Return the target movie {*}.
      */
     var gettingSelectedMovie = function(movies, $stateParams, $filter){
-      console.log(movies);
+      console.log(movies.length);
       var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
+      console.log('originBookmark:' + selectedMovie[0].originBookmark, 'isBookmarked:' + selectedMovie[0].isBookmarked );
+      console.log(selectedMovie[0]);
       return selectedMovie[0];
+
     };
 
     // Default url route.
@@ -150,7 +153,17 @@ angular
           movies: function(Movies, Bookmarks, $stateParams){
             console.log($stateParams);
             // Set the data type according to the movie origin.
-            return angular.isDefined($stateParams.originBookmark) ? Bookmarks.getMovies(): Movies.gettingMovies();
+//            return (angular.isDefined($stateParams.originBookmark) && $stateParams.originBookmark) ? Bookmarks.getMovies(): Movies.gettingMovies();
+
+            if ($stateParams.originBookmark) {
+              console.log('bookmarks');
+            }
+            else {
+              console.log('Itunes');
+
+            }
+
+            return $stateParams.originBookmark ? Bookmarks.getMovies(): Movies.gettingMovies();
           }
         }
       })
