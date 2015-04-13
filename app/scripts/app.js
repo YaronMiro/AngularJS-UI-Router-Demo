@@ -138,12 +138,25 @@ angular
         }
        })
 
+
+      // Movies state.
+      .state('main.movie',{
+        url: 'movie',
+        abstract: true
+//        resolve: {
+//          // Example showing injection of service into resolve function.
+//          // Service then returns a promise.
+//          movies: function(Movies, Bookmarks, $state){
+//            console.log($state.params);
+//            return Movies.gettingMovies(30);
+//          }
+//        }
+      })
+
+
       // Single movie state.
-      .state('main.movieInfo',{
-        // The "^" character excludes the parent prefix url format ("movies")
-        // from this child state url, instead of "movies/movie-details/:name"
-        // it will become "movie-details/:name".
-        url: 'movie-info/{name}',
+      .state('main.movie.movieInfo',{
+        url: '/info/{name}',
         views: {
           'content@': {
             templateUrl: 'views/pages/movieInfo.html',
@@ -154,23 +167,20 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie,
+          selectedMovie: gettingSelectedMovie
 
-          // Example showing injection of service into resolve function.
-          // Service then returns a promise.
-          movies: function(Movies){
-            return Movies.gettingMovies(30);
-          }
+//          // Example showing injection of service into resolve function.
+//          // Service then returns a promise.
+//          movies: function(Movies){
+//            return Movies.gettingMovies(30);
+//          }
         },
         onEnter: redirect
       })
 
       // Single movie state.
-      .state('main.trailer',{
-        // The "^" character excludes the parent prefix url format ("movies")
-        // from this child state url, instead of "movies/movie-details/:name"
-        // it will become "movie-details/:name".
-        url: 'trailer/{name}',
+      .state('main.movie.trailer',{
+        url: '/trailer/{name}',
         views: {
           'content@': {
             templateUrl: 'views/pages/trailer.html',
@@ -181,13 +191,13 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie,
-
-          // Example showing injection of service into resolve function.
-          // Service then returns a promise.
-          movies: function(Movies){
-            return Movies.gettingMovies(30);
-          }
+          selectedMovie: gettingSelectedMovie
+//
+//          // Example showing injection of service into resolve function.
+//          // Service then returns a promise.
+//          movies: function(Movies){
+//            return Movies.gettingMovies(30);
+//          }
         },
         onEnter: redirect,
         data: {
@@ -215,14 +225,14 @@ angular
     // Access local storage service from any scope.
     $rootScope.localStorageService = localStorageService;
 
-    if (localStorageService.isSupported) {
-      console.log('Support ', localStorageService.getStorageType());
-    }
-    else {
-      console.log('No support!', localStorageService.getStorageType());
-    }
+//    if (localStorageService.isSupported) {
+//      console.log('Support ', localStorageService.getStorageType());
+//    }
+//    else {
+//      console.log('No support!', localStorageService.getStorageType());
+//    }
 
-
+//
 //      $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 //        $log.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
 //      });

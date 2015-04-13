@@ -12,11 +12,11 @@
       <div class="fa fa-picture-o"></div>
        <div class="title">Poster</div>
     </li>
-    <li ng-click="$state.go('main.trailer', {'name': movie.urlAlias})">
+    <li ng-click="$state.go('main.movie.trailer', {'name': movie.urlAlias})">
         <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>
         <div class="title">Trailer</div>
     </li>
-    <li ng-click="$state.go('main.movieInfo', {'name': movie.urlAlias})">
+    <li ng-click="$state.go('main.movie.movieInfo', {'name': movie.urlAlias})">
         <div class="icon fa fa-info-circle color-effect" aria-hidden="true"></div>
         <div class="title">Read more</div>
     </li>
