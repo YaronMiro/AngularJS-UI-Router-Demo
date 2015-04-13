@@ -30,6 +30,15 @@ body {
     padding: 0px 30px;
   }
 
+  #movies {
+    .movies-notification {
+      margin: 8px 0px;
+      padding: 10px 0px;
+      color: $lightGray;
+      @include borders(1px);
+    }
+  }
+
   #main-header,
   #main-footer {
 

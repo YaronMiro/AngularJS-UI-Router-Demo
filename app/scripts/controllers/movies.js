@@ -23,7 +23,7 @@ angular.module('myApp')
           movie.isBookmarked = true;
         }
       });
-    }
+    };
 
     /**
      * Delete movie from the bookmarks list.
@@ -31,10 +31,20 @@ angular.module('myApp')
      */
     self.removeFromBookmarks = function(movie) {
       Bookmarks.removeFromBookmarks(movie).then(function(data){
+
+        // In case movie was deleted.
         if (data.deleted) {
           movie.isBookmarked = false;
+
+          // if movie was removed from the bookmarks state.
+          if (movie.originBookmark) {
+            // Then update the bookmarks state movies.
+            Bookmarks.getMovies().then(function(movies){
+             self.data = movies;
+            });
+          }
         }
       });;
-    }
+    };
 
   }]);

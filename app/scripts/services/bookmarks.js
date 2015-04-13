@@ -28,6 +28,7 @@ angular.module('myApp')
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
         movieCopy.originBookmark = true;
+        movieCopy.isBookmarked = true;
 
         // Set a new index for the incoming movie.
         movieCopy.index = movies.length ? (movies.length + 1) : 1;
