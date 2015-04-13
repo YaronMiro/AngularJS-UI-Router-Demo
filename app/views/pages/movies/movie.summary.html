@@ -14,33 +14,26 @@
       </label>
     </div>
   </div>
-  <div class="links">
-    <div class="border"></div>
-    <button class="color-effect" class="btn" ng-click="movie.viewMode.value = !movie.viewMode.value">
+  <ul class="links">
+    <li class="color-effect" ng-click="movie.viewMode.value = !movie.viewMode.value">
       <div class="fa fa-picture-o"></div>
-      <div class="title">Poster</div>
-    </button>
-    <div class="border"></div>
-    <button ng-click="$state.go('main.trailer', {'name': movie.urlAlias})">
-      <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>
-      <div class="title">Trailer</div>
-    </button>
-    <div class="border"></div>
-    <button ng-click="$state.go('main.movieInfo', {'name': movie.urlAlias})">
-      <div class="icon fa fa-info-circle color-effect" aria-hidden="true"></div>
-      <div class="title">Read more</div>
-    </button>
-    <div ng-show="localStorageService.isSupported">
-      <div class="border"></div>
-      <button class="add" ng-show="!movie.isBookmarked" ng-click="movies.addToBookmarks(movie)">
-        <div class="icon fa fa-plus-circle color-effect" aria-hidden="true"></div>
-        <div class="title">Add to bookmarks</div>
-      </button>
-      <button class="remove" ng-show="movie.isBookmarked" title="Remove from bookmarks" ng-click="movie.isBookmarked = !movie.isBookmarked; movies.removeFromBookmarks(movie)">
-        <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
-        <div class="title">Remove from bookmarks</div>
-      </button>
-    </div>
-    <div class="border"></div>
-  </div>
+       <div class="title">Poster</div>
+    </li>
+    <li ng-click="$state.go('main.trailer', {'name': movie.urlAlias})">
+        <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>
+        <div class="title">Trailer</div>
+    </li>
+    <li ng-click="$state.go('main.movieInfo', {'name': movie.urlAlias})">
+        <div class="icon fa fa-info-circle color-effect" aria-hidden="true"></div>
+        <div class="title">Read more</div>
+    </li>
+    <li class="add" ng-if="localStorageService.isSupported && !movie.isBookmarked" ng-click="movies.addToBookmarks(movie)">
+      <div class="icon fa fa-plus-circle color-effect" aria-hidden="true"></div>
+      <div class="title">Add to bookmarks</div>
+    </li>
+    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movie.isBookmarked = !movie.isBookmarked; movies.removeFromBookmarks(movie)">
+      <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
+      <div class="title">Remove from bookmarks</div>
+    </li>
+  </ul>
 </div>

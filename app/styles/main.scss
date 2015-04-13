@@ -9,15 +9,7 @@ body {
 }
 
 .border {
-  background: $blue;
-  height: 1px;
-  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(41, 137, 216, 0.51) 50%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(41, 137, 216, 0.51)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+  @include border;
 
   &.m-top {
     margin-top: 10px;
@@ -238,15 +230,33 @@ body {
       }
 
       .links {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
         margin-top: 7px;
 
-
-        button {
-          border: none;
-          outline: none;
-          background: transparent;
-          padding: 6px 0px 9px 0px;
+        li {
+          position: relative;
+          padding: 7px 0px 9px 0px;
+          cursor: pointer;
           font-size: 27px;
+
+          &:after,
+          &:last-child:before {
+            content: "";
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            @include border;
+          }
+
+          &:last-child:before {
+            bottom: 0px;
+          }
+
+          &:after {
+            top: 0px;
+          }
 
           .title {
             margin: 0px;
