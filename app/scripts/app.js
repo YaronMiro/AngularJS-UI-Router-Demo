@@ -141,22 +141,22 @@ angular
 
       // Movies state.
       .state('main.movie',{
-        url: 'movie',
-        abstract: true
-//        resolve: {
-//          // Example showing injection of service into resolve function.
-//          // Service then returns a promise.
-//          movies: function(Movies, Bookmarks, $state){
-//            console.log($state.params);
-//            return Movies.gettingMovies(30);
-//          }
-//        }
+        url: 'movie/{name}',
+        abstract: true,
+        resolve: {
+          // Example showing injection of service into resolve function.
+          // Service then returns a promise.
+          movies: function(Movies, Bookmarks, $state, $stateParams){
+            console.log($stateParams);
+            return Movies.gettingMovies(30);
+          }
+        }
       })
 
 
       // Single movie state.
       .state('main.movie.movieInfo',{
-        url: '/info/{name}',
+        url: '/info/{name}?',
         views: {
           'content@': {
             templateUrl: 'views/pages/movieInfo.html',
@@ -168,12 +168,6 @@ angular
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
           selectedMovie: gettingSelectedMovie
-
-//          // Example showing injection of service into resolve function.
-//          // Service then returns a promise.
-//          movies: function(Movies){
-//            return Movies.gettingMovies(30);
-//          }
         },
         onEnter: redirect
       })
@@ -192,12 +186,6 @@ angular
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
           selectedMovie: gettingSelectedMovie
-//
-//          // Example showing injection of service into resolve function.
-//          // Service then returns a promise.
-//          movies: function(Movies){
-//            return Movies.gettingMovies(30);
-//          }
         },
         onEnter: redirect,
         data: {
