@@ -16,24 +16,31 @@
   </div>
   <div class="links">
     <div class="border"></div>
-    <button class="color-effect" title="Movie poster" class="btn" ng-click="movie.viewMode.value = !movie.viewMode.value">
-      <span class="fa fa-picture-o"></span>
+    <button class="color-effect" class="btn" ng-click="movie.viewMode.value = !movie.viewMode.value">
+      <div class="fa fa-picture-o"></div>
+      <div class="title">Poster</div>
     </button>
     <div class="border"></div>
-    <button title="Movie trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
-      <span class="fa fa-play-circle color-effect" aria-hidden="true"></span>
+    <button ng-click="$state.go('main.trailer', {'name': movie.urlAlias})">
+      <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>
+      <div class="title">Trailer</div>
     </button>
     <div class="border"></div>
-    <button title="Movie information" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
-      <span class="fa fa-info-circle color-effect" aria-hidden="true"></span>
+    <button ng-click="$state.go('main.movieInfo', {'name': movie.urlAlias})">
+      <div class="icon fa fa-info-circle color-effect" aria-hidden="true"></div>
+      <div class="title">Read more</div>
     </button>
-    <div class="border"></div>
-    <button class="add" ng-show="!movie.isBookmarked" title="Add to bookmarks" ng-click="movie.isBookmarked = !movie.isBookmarked; movies.addToBookmarks(movie)">
-      <span class="fa fa-plus-circle color-effect" aria-hidden="true"></span>
-    </button>
-    <button class="remove" ng-show="movie.isBookmarked" title="Remove from bookmarks" ng-click="movie.isBookmarked = !movie.isBookmarked; movies.removeFromBookmarks(movie)">
-      <span class="fa fa-trash-o color-effect" aria-hidden="true"></span>
-    </button>
+    <div ng-show="localStorageService.isSupported">
+      <div class="border"></div>
+      <button class="add" ng-show="!movie.isBookmarked" ng-click="movies.addToBookmarks(movie)">
+        <div class="icon fa fa-plus-circle color-effect" aria-hidden="true"></div>
+        <div class="title">Add to bookmarks</div>
+      </button>
+      <button class="remove" ng-show="movie.isBookmarked" title="Remove from bookmarks" ng-click="movie.isBookmarked = !movie.isBookmarked; movies.removeFromBookmarks(movie)">
+        <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
+        <div class="title">Remove from bookmarks</div>
+      </button>
+    </div>
     <div class="border"></div>
   </div>
 </div>

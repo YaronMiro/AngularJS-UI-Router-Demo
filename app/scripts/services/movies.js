@@ -112,7 +112,7 @@ angular.module('myApp')
         var params = [];
         angular.forEach(movieData.params, function(value, param){
           this.push(param + '=' + value);
-        },params);
+        }, params);
 
         // Joining the params.
         params = '&' + params.join('&');

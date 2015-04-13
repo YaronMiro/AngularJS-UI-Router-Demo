@@ -139,14 +139,14 @@ angular
        })
 
       // Single movie state.
-      .state('main.movies.full',{
+      .state('main.movieInfo',{
         // The "^" character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name".
-        url: '^/movie-info/{name}',
+        url: 'movie-info/{name}',
         views: {
           'content@': {
-            templateUrl: 'views/pages/movies/movie.full.html',
+            templateUrl: 'views/pages/movieInfo.html',
             controller: 'movieController',
             controllerAs: 'movie'
           }
@@ -154,20 +154,26 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie
+          selectedMovie: gettingSelectedMovie,
+
+          // Example showing injection of service into resolve function.
+          // Service then returns a promise.
+          movies: function(Movies){
+            return Movies.gettingMovies(30);
+          }
         },
         onEnter: redirect
       })
 
       // Single movie state.
-      .state('main.movies.trailer',{
+      .state('main.trailer',{
         // The "^" character excludes the parent prefix url format ("movies")
         // from this child state url, instead of "movies/movie-details/:name"
         // it will become "movie-details/:name".
-        url: '^/trailer/{name}',
+        url: 'trailer/{name}',
         views: {
           'content@': {
-            templateUrl: 'views/pages/movies/movie.trailer.html',
+            templateUrl: 'views/pages/trailer.html',
             controller: 'movieController',
             controllerAs: 'movie'
           }
@@ -175,7 +181,13 @@ angular
         resolve: {
           // Example showing injection of a "parent" resolve object
           // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie
+          selectedMovie: gettingSelectedMovie,
+
+          // Example showing injection of service into resolve function.
+          // Service then returns a promise.
+          movies: function(Movies){
+            return Movies.gettingMovies(30);
+          }
         },
         onEnter: redirect,
         data: {
@@ -193,7 +205,7 @@ angular
         }
       })
   }])
-  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', function ($rootScope, $state, $stateParams, localStorageService) {
+  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', '$log', function ($rootScope, $state, $stateParams, localStorageService, $log) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
     // applications.
@@ -209,5 +221,28 @@ angular
     else {
       console.log('No support!', localStorageService.getStorageType());
     }
+
+
+//      $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+//        $log.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
+//      });
+//
+//      $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams) {
+//        $log.log('$stateChangeError - fired when an error occurs during transition.');
+//        $log.log(arguments);
+//      });
+//
+//      $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+//        $log.log('$stateChangeSuccess to ' + toState.name + '- fired once the state transition is complete.');
+//      });
+//
+//      $rootScope.$on('$viewContentLoaded', function (event) {
+//        $log.log('$viewContentLoaded - fired after dom rendered', event);
+//      });
+//
+//      $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
+//        $log.log('$stateNotFound ' + unfoundState.to + '  - fired when a state cannot be found by its name.');
+//        $log.log(unfoundState, fromState, fromParams);
+//      });
 
   }])

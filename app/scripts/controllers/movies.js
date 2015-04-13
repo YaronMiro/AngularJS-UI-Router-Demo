@@ -13,8 +13,13 @@ angular.module('myApp')
     // Movies data.
     self.data = movies;
 
+
     self.addToBookmarks = function(movie) {
-      Bookmarks.addToBookmarks(movie);
+      Bookmarks.addToBookmarks(movie).then(function(data){
+        if (data.saved) {
+          movie.isBookmarked = true;
+        }
+      });
     }
 
     self.removeFromBookmarks = function(movie) {

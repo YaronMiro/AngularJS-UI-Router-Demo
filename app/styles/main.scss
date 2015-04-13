@@ -245,14 +245,18 @@ body {
           border: none;
           outline: none;
           background: transparent;
-          width: 70px;
-          height: 70px;
+          padding: 6px 0px 9px 0px;
           font-size: 27px;
 
+          .title {
+            margin: 0px;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: $lightGray;
+          }
 
           @include tablet-only {
-            width: 56px;
-            height: 56px;
+
           }
 
 

@@ -15,21 +15,40 @@ angular.module('myApp')
        * @returns bool
        */
       addToBookmarks: function(movie) {
+
+        var deferred = $q.defer();
+
+        // Create a deep
+        var movieCopy = {};
+        angular.copy(movie, movieCopy);
+
         // Get array of movies.
         var movies = localStorageService.get('bookmarks') != null ? localStorageService.get('bookmarks') : new Array();
 
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
-        movie.originBookmark = true;
+        movieCopy.originBookmark = true;
 
         // Set a new index for the incoming movie.
-        movie.index = movies.length ? (movies.length + 1) : 1;
+        movieCopy.index = movies.length ? (movies.length + 1) : 1;
 
         // Add movie to the array.
-        movies.push(movie);
+        movies.push(movieCopy);
 
         // Update the local storage value.
-        localStorageService.set('bookmarks', movies);
+        var save = localStorageService.set('bookmarks', movies);
+
+        // In case of success.
+        if (save) {
+          deferred.resolve({"saved": save, "error": false});
+        }
+        // In case of error.
+        else {
+          deferred.reject({"saved": save, "error": true});
+        }
+
+        // Return promise object.
+        return deferred.promise;
       },
 
       /**
@@ -66,7 +85,10 @@ angular.module('myApp')
        * @returns bool
        */
       getMovies: function() {
-        return localStorageService.get('bookmarks');
+        var deferred = $q.defer();
+        deferred.resolve(localStorageService.get('bookmarks'));
+        // Return promise object.
+        return deferred.promise;
       },
 
     /**

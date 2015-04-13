@@ -11,8 +11,8 @@
     <div class="visible-xs border"></div>
   </li>
   <!--Movie full view -->
-  <li ng-if="$state.is('main.movies.trailer')" title="Read more">
-    <a class="color-effect" ui-sref="main.movies.full({'name': $stateParams.name, 'position': $stateParams.position})">
+  <li ng-if="$state.is('main.trailer')" title="Read more">
+    <a class="color-effect" ui-sref="main.movieInfo({'name': $stateParams.name, 'position': $stateParams.position})">
       <i class="fa fa-info"></i>
     </a>
     <div class="visible-xs border"></div>

@@ -5,7 +5,7 @@
   <span ng-hide="$state.is('main.bookmarks') || !localStorageService.isSupported || !movie.isBookmarked" class="bookmarked-icon"><i class="fa fa-check-square"></i></span>
 </div>
   <!--Mobile -->
-<a class="visible-xs" ui-sref="main.movies.full({'name': movie.urlAlias})">
+<a class="visible-xs" ui-sref="main.movieInfo({'name': movie.urlAlias})">
   <div class="preview">
     <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
     <div class="popularity-ranking">{{ movie.index }}</div>
