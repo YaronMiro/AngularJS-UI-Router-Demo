@@ -141,8 +141,11 @@ angular
 
       // Movies state.
       .state('main.movie',{
-        url: 'movie/{name}',
+        url: 'movie/{name}?isBookmarked',
         abstract: true,
+        params: {
+          isBookmarked: false
+        },
         resolve: {
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
@@ -153,13 +156,12 @@ angular
         }
       })
 
-
       // Single movie state.
       .state('main.movie.movieInfo',{
-        url: '/info/{name}?',
+        url: '^/movie/info/{name}',
         views: {
           'content@': {
-            templateUrl: 'views/pages/movieInfo.html',
+            templateUrl: 'views/pages/movie/movieInfo.html',
             controller: 'movieController',
             controllerAs: 'movie'
           }
@@ -174,10 +176,10 @@ angular
 
       // Single movie state.
       .state('main.movie.trailer',{
-        url: '/trailer/{name}',
+        url: '^/movie/trailer/{name}',
         views: {
           'content@': {
-            templateUrl: 'views/pages/trailer.html',
+            templateUrl: 'views/pages/movie/trailer.html',
             controller: 'movieController',
             controllerAs: 'movie'
           }

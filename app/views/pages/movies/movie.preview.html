@@ -7,7 +7,7 @@
   </span>
 </div>
   <!--Mobile -->
-<a class="visible-xs" ui-sref="main.movieInfo({'name': movie.urlAlias})">
+<a class="visible-xs" ui-sref="main.movie.movieInfo({'name': movie.urlAlias, 'isBookmarked': movie.isBookmarked})">
   <div class="preview">
     <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
     <div class="popularity-ranking">{{ movie.index }}</div>

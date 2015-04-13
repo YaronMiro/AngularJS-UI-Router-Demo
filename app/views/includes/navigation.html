@@ -8,8 +8,8 @@
     <a class="color-effect"  ui-sref="main.movies"><i class="glyphicon glyphicon-th"></i></a>
   </li>
   <!--Movie full view -->
-  <li ng-if="$state.is('main.trailer')" title="Read more">
-    <a class="color-effect" ui-sref="main.movieInfo({'name': $stateParams.name, 'position': $stateParams.position})">
+  <li ng-if="$state.is('main.movie.trailer')" title="Read more">
+    <a class="color-effect" ui-sref="main.movie.movieInfo({'name': $stateParams.name, 'isBookmarked': movie.isBookmarked})">
       <i class="fa fa-info"></i>
     </a>
   </li>
