@@ -312,8 +312,6 @@ body {
   .full {
     padding-left: 30px;
     padding-right: 30px;
-    background: green;
-
 
     h3 {
       margin: 0px 0px 13px 0px;
@@ -328,27 +326,30 @@ body {
     }
 
     .image-container {
-      background: yellow;
 
       .image-wrapper {
-        border: 1px solid $blue;
-        padding: 20px;
+        padding: 1px;
+        @include background-image(linear-gradient(black 30%, $blue 70%));
 
         @include exclude-mobile-only {
           margin-left: 30px;
         }
 
-          img {
-            width: 100%;
-          }
+        img {
+          border: 19px solid #000000;
+          border-top: none;
+          width: 100%;
         }
       }
+    }
 
     .info-container {
-      background: red;
 
       .info-wrapper {
         background: black;
+
+        padding: 1px;
+        @include background-image(linear-gradient($blue 30%, black 70%));
 
         @include exclude-mobile-only {
           margin-right: 30px;
@@ -368,7 +369,9 @@ body {
         .details {
           position: relative;
           padding: 9px 20px 20px 20px;
-          border: 1px solid $blue;
+          border: 19px solid #000000;
+          border-bottom: none;
+          background: black;
 
           list-style: none;
 
