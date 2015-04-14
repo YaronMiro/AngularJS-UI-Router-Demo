@@ -82,7 +82,7 @@ body {
       margin-bottom: 0;
       line-height: 40px;
     }
-    
+
     .nav-pills {
       li {
         cursor: pointer;
@@ -215,7 +215,7 @@ body {
 
       .bookmarked-icon {
         left: 0px;
-        color: $green;
+        color: white;
         @include border-top-right-radius(6px);
 
       }
@@ -330,163 +330,120 @@ body {
     }
 
     .image-container {
-      position: relative;
-      padding-left: 30px;
+      background: yellow;
 
-      img {
-        width: 100%;
-        position: relative;
-        padding: 20px;
-        padding-top: 0px;
-        border-width: 1px;
-        border-style: solid;
-        -webkit-border-image:
-          -webkit-gradient(linear, 0 0, 0 100%, from(black), to($blue)) 1 100%;
-        -webkit-border-image:
-          -webkit-linear-gradient(black, $blue) 1 100%;
-        -moz-border-image:
-          -moz-linear-gradient(black, $blue) 1 100%;
-        -o-border-image:
-          -o-linear-gradient(black, $blue) 1 100%;
-        border-image:
-          linear-gradient(to bottom, black, $blue) 1 100%;
+      .image-wrapper {
+        border: 1px solid blue;
+        margin-left: 30px;
 
-        @include mobile-only {
-          padding-top: 30px;
-        }
-      }
+          img {
+            width: 100%;
 
-      .rating-wrapper {
-        color: #ffffff;
-        font-weight: bold;
-        position: relative;
-        border-top: 1px solid $blue;
-
-        .rating {
-          position: absolute;
-          top: -15px;
-          left: calc(50% + -19px);
-          padding: 5px;
-          display: inline-block;
-          @include border-radius(5px);
-          background: $blue;
-
-          i {
-            color: $lightGray;
+            @include mobile-only {
+              padding-top: 30px;
+            }
           }
         }
       }
-    }
 
     .info-container {
-      background: black;
-      padding-right: 30px;
+      background: red;
 
-      @include mobile-only {
-        padding-top: 0px;
-      }
+      .info-wrapper {
+        background: black;
+        margin-right: 30px;
+        border: 1px solid blue;
 
-      .description {
-        margin-top: 15px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid $blue;
-        color: $transparentGray;
-        text-align: justify;
-      }
-
-      .details {
-
-        width: 100%;
-        position: relative;
-        padding: 9px 20px 20px 20px;
-        border-width: 1px;
-        border-style: solid;
-        list-style: none;
-        -webkit-border-image:
-          -webkit-gradient(linear, 0 0, 0 100%, from($blue), to(black)) 1 100%;
-        -webkit-border-image:
-          -webkit-linear-gradient($blue, black) 1 100%;
-        -moz-border-image:
-          -moz-linear-gradient($blue, black) 1 100%;
-        -o-border-image:
-          -o-linear-gradient($blue, black) 1 100%;
-        border-image:
-          linear-gradient(to top, black, $blue) 1 100%;
-
-        li {
-          position: relative;
-          padding: 7px 0px;
-          color: $transparentGray;
-
-          &> * {
-            font-size: 13px;
-          }
-
-          &:not(:first-child):after {
-            content: "";
-            width: 100%;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            @include border(1px);
-          }
-
-          label {
-            font-weight: normal;
-            font-size: 16px;
-          }
-
-          i {
-            &:after {
-              content: " | ";
-            }
-          }
-
-          a {
-            text-decoration: none;
-            color: $transparentGray;
-            margin-top: 5px;
-            display: block;
-          }
+        @include mobile-only {
+          padding-top: 0px;
         }
 
-        .trailer {
+        .description {
+          margin-top: 15px;
+          padding-bottom: 20px;
+          color: $transparentGray;
+          text-align: justify;
+        }
+
+        .details {
           width: 100%;
-          margin: 0 auto;
-          margin-top: 20px;
-          padding: 4px;
+          position: relative;
+          padding: 9px 20px 20px 20px;
+          list-style: none;
 
-          &:hover {
-            .link, .link label {
-              color: $blue;
-            }
-          }
-
-          .link {
-            margin: 0px;
+          li {
+            position: relative;
+            padding: 7px 0px;
             color: $transparentGray;
 
-            label {
-              cursor: pointer;
-              color: $transparentGray;
-              margin: 0px;
-              font-size: 12px;
-              text-transform: uppercase;
-              display: inline-block;
+            &> * {
+              font-size: 13px;
             }
-          }
 
-          .wrapper {
-            margin-top: 7px;
-            @include borders(1px);
+            &:not(:first-child):after {
+              content: "";
+              width: 100%;
+              position: absolute;
+              left: 0px;
+              top: 0px;
+              @include border(1px);
+            }
+
+            label {
+              font-weight: normal;
+              font-size: 16px;
+            }
 
             i {
-              cursor: pointer;
-              font-size: 30px;
-              padding: 6px 0px;
+              &:after {
+                content: " | ";
+              }
+            }
+
+            a {
+              text-decoration: none;
+              color: $transparentGray;
+              margin-top: 5px;
+              display: block;
             }
           }
 
+          .trailer {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding: 4px;
+
+            &:hover {
+              .link, .link label {
+                color: $blue;
+              }
+            }
+
+            .link {
+              cursor: pointer;
+              margin: 0px;
+              color: $transparentGray;
+
+              label {
+                color: $transparentGray;
+                margin: 0px;
+                font-size: 12px;
+                text-transform: uppercase;
+                display: inline-block;
+              }
+            }
+
+            .wrapper {
+              margin-top: 7px;
+              @include borders(1px);
+
+              i {
+                font-size: 30px;
+                padding: 6px 0px;
+              }
+            }
+          }
         }
       }
     }
