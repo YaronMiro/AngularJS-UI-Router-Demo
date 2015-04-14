@@ -140,7 +140,7 @@ body {
             border-color: $blue
           }
         }
-      }
+      }W
     }
   }
 
@@ -152,26 +152,32 @@ body {
     }
 
     .footer-links{
+      list-style: none;
+      margin: 15px 0px 0px 0px;
+      padding: 0px;
 
-      margin-top: 15px;
+      li {
+        display: inline;
+        padding-right: 3px;
 
-      a {
-        color: white;
-
-        &:hover {
-          text-decoration: none;
-          color: #337ab7;
-        }
-
-        span {
+        &:not(:first-child):before {
           color: $gray;
+          content: "|";
+          padding-right: 3px;
         }
-      }
 
-      .divider {
-        color: $gray;
-        display: inline-block;
-        margin: 0px 3px;
+        a {
+          color: white;
+
+          &:hover {
+            text-decoration: none;
+            color: #337ab7;
+          }
+
+          span {
+            color: $gray;
+          }
+        }
       }
     }
   }
