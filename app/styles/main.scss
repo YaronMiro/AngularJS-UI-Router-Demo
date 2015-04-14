@@ -44,9 +44,9 @@ body {
 
     .top,
     .bottom {
-      padding: 20px;
-      text-align: center;
       margin: 0px;
+      height: 42px;
+      text-align: center;
       background: $darkGray;
     }
   }
@@ -316,7 +316,7 @@ body {
 
 
     h3 {
-      margin: 13px 0px;
+      margin: 0px 0px 13px 0px;
       font-weight: bold;
       color: white;
       padding: 12px 0px;
@@ -332,11 +332,14 @@ body {
 
       .image-wrapper {
         border: 1px solid $blue;
-        width: 100%;
+        padding: 20px;
+
+        @include exclude-mobile-only {
+          margin-left: 30px;
+        }
 
           img {
             width: 100%;
-//            padding: 20px;
           }
         }
       }
@@ -346,6 +349,10 @@ body {
 
       .info-wrapper {
         background: black;
+
+        @include exclude-mobile-only {
+          margin-right: 30px;
+        }
 
         @include mobile-only {
           padding-top: 0px;
