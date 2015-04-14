@@ -329,16 +329,20 @@ body {
 
       .image-wrapper {
         padding: 1px;
-        @include background-image(linear-gradient(black 30%, $blue 70%));
+
+        @include background-image(linear-gradient(black 5%, $blue 95%));
 
         @include exclude-mobile-only {
           margin-left: 30px;
         }
 
-        img {
-          border: 19px solid #000000;
-          border-top: none;
-          width: 100%;
+        .background {
+          background: black;
+          padding: 0px 19px 19px 19px;
+
+          img {
+            width: 100%;
+          }
         }
       }
     }
@@ -346,11 +350,6 @@ body {
     .info-container {
 
       .info-wrapper {
-        background: black;
-
-        padding: 1px;
-        @include background-image(linear-gradient($blue 30%, black 70%));
-
         @include exclude-mobile-only {
           margin-right: 30px;
         }
@@ -368,17 +367,15 @@ body {
 
         .details {
           position: relative;
-          padding: 9px 20px 20px 20px;
-          border: 19px solid #000000;
-          border-bottom: none;
-          background: black;
-
+          padding: 1px;
+          @include background-image(linear-gradient($blue 10%, black 90%));
           list-style: none;
 
           li {
             position: relative;
-            padding: 7px 0px;
+            padding: 7px 0px 0px 20px;
             color: $transparentGray;
+            background: black;
 
             &> * {
               font-size: 13px;
@@ -411,41 +408,40 @@ body {
               display: block;
             }
           }
+        }
+        .trailer {
+          width: 100%;
+          margin: 0 auto;
+          margin-top: 20px;
+          padding: 4px;
 
-          .trailer {
-            width: 100%;
-            margin: 0 auto;
-            margin-top: 20px;
-            padding: 4px;
-
-            &:hover {
-              .link, .link label {
-                color: $blue;
-              }
+          &:hover {
+            .link, .link label {
+              color: $blue;
             }
+          }
 
-            .link {
-              cursor: pointer;
-              margin: 0px;
+          .link {
+            cursor: pointer;
+            margin: 0px;
+            color: $transparentGray;
+
+            label {
               color: $transparentGray;
-
-              label {
-                color: $transparentGray;
-                margin: 0px;
-                font-size: 12px;
-                text-transform: uppercase;
-                display: inline-block;
-              }
+              margin: 0px;
+              font-size: 12px;
+              text-transform: uppercase;
+              display: inline-block;
             }
+          }
 
-            .wrapper {
-              margin-top: 7px;
-              @include borders(1px);
+          .wrapper {
+            margin-top: 7px;
+            @include borders(1px);
 
-              i {
-                font-size: 30px;
-                padding: 6px 0px;
-              }
+            i {
+              font-size: 30px;
+              padding: 6px 0px;
             }
           }
         }
