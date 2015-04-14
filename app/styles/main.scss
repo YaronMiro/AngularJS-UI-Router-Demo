@@ -312,6 +312,8 @@ body {
   .full {
     padding-left: 30px;
     padding-right: 30px;
+    background: green;
+
 
     h3 {
       margin: 13px 0px;
@@ -323,25 +325,18 @@ body {
 
     .info-container, .image-container {
       padding-bottom: 30px;
-
-      @include mobile-only {
-        padding: 30px;
-      }
     }
 
     .image-container {
       background: yellow;
 
       .image-wrapper {
-        border: 1px solid blue;
-        margin-left: 30px;
+        border: 1px solid $blue;
+        width: 100%;
 
           img {
             width: 100%;
-
-            @include mobile-only {
-              padding-top: 30px;
-            }
+//            padding: 20px;
           }
         }
       }
@@ -351,8 +346,6 @@ body {
 
       .info-wrapper {
         background: black;
-        margin-right: 30px;
-        border: 1px solid blue;
 
         @include mobile-only {
           padding-top: 0px;
@@ -366,9 +359,10 @@ body {
         }
 
         .details {
-          width: 100%;
           position: relative;
           padding: 9px 20px 20px 20px;
+          border: 1px solid $blue;
+
           list-style: none;
 
           li {
