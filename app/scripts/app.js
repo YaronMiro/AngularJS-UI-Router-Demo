@@ -210,7 +210,7 @@ angular
         }
       })
   }])
-  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', function ($rootScope, $state, $stateParams, localStorageService) {
+  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', 'Bookmarks', function ($rootScope, $state, $stateParams, localStorageService, Bookmarks) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
     // applications.

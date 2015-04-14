@@ -20,11 +20,11 @@
         <div class="icon fa fa-info-circle color-effect" aria-hidden="true"></div>
         <div class="title">Read more</div>
     </li>
-    <li class="add" ng-if="localStorageService.isSupported && !movie.isBookmarked" ng-click="movies.addToBookmarks(movie)">
+    <li class="add" ng-if="localStorageService.isSupported && !movie.isBookmarked" ng-click="movies.bookmarksService.addToBookmarks(movie)">
       <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
       <div class="title">Add to bookmarks</div>
     </li>
-    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movies.removeFromBookmarks(movie)">
+    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movies.bookmarksService.removeFromBookmarks(movie)">
       <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
       <div class="title">Remove from bookmarks</div>
     </li>

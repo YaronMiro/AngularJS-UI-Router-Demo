@@ -8,12 +8,15 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('movieController', ['$state', 'Movies', 'selectedMovie', 'moviesData', function ($state, Movies, selectedMovie, moviesData) {
+  .controller('movieController', ['$state', 'Movies', 'selectedMovie', 'moviesData','Bookmarks', function ($state, Movies, selectedMovie, moviesData, Bookmarks) {
 
     var self = this;
 
     // Array of movies.
     self.movies = moviesData;
+
+    // Bookmarks service object.
+    self.bookmarksService = Bookmarks;
 
     // Selected movie.
     self.selectedMovie = selectedMovie;

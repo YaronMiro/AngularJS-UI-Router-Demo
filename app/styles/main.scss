@@ -284,6 +284,10 @@ body {
 
           .bookmarked-icon {
             left: 50px;
+
+            @include mobile-only {
+              left: 20px;
+            }
           }
 
           img {
@@ -337,6 +341,37 @@ body {
                 left: 0px;
                 top: 0px;
                 @include border(1px);
+              }
+
+              &.add, &.remove {
+                margin-left: -20px;
+                cursor: pointer;
+
+                &:hover {
+                  color: $blue;
+                }
+
+                &.add:hover {
+                  color: $green;
+                }
+
+                &.remove:hover {
+                  color: rgb(179, 41, 41);;
+                }
+              }
+
+              &:last-child {
+                padding: 10px 0px;
+
+                &:before {
+                  content: "";
+                  width: 100%;
+                  position: absolute;
+                  left: 0px;
+                  bottom: 0px;
+                  @include border(1px);
+                }
+
               }
 
               label {

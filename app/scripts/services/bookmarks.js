@@ -8,7 +8,6 @@ angular.module('myApp')
     data = localStorageService.get('bookmarks');
     data = data != null ? data : new Array();
 
-
     return {
 
       /**
@@ -24,6 +23,9 @@ angular.module('myApp')
 
         var deferred = $q.defer();
 
+        // Mark movie as bookmarked.
+        movie.isBookmarked = true;
+
         // Create a deep
         var movieCopy = {};
         angular.copy(movie, movieCopy);
@@ -34,7 +36,6 @@ angular.module('myApp')
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
         movieCopy.originBookmark = 1;
-        movieCopy.isBookmarked = true;
 
         // Set a new index for the incoming movie.
         movieCopy.index = movies.length ? (movies.length + 1) : 1;
@@ -69,6 +70,9 @@ angular.module('myApp')
 
         var deferred = $q.defer();
 
+        // Un-mark movie as bookmarked.
+        movie.isBookmarked = false;
+
         // Get array of movies.
         var movies = data;
 
@@ -78,7 +82,7 @@ angular.module('myApp')
         // Remove movie from array of movies by it's (index value - 1).
         movies.splice((targetMovie[0].index -1), 1);
 
-        // Re-order movies index.
+        // Re-order movies each movie index value.
         angular.forEach(movies, function(movie, index) {
           movie.index = (index + 1);
         });
@@ -127,6 +131,19 @@ angular.module('myApp')
       var targetMovie = $filter('filter')(movies, {id: movieId});
       return targetMovie.length ? true : false;
     }
+
+//    /**
+//     * Check if a movie is bookmarked.
+//     * if bookmarked then it returns true, else returns false.
+//     *
+//     * @param movie
+//     *  The movi.
+//     *
+//     * @returns bool
+//     */
+//    test: function(movie) {
+//      console.log(movie);
+//    }
    }
 
   }]);
