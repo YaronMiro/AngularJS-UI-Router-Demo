@@ -365,86 +365,94 @@ body {
           text-align: justify;
         }
 
-        .details {
-          position: relative;
+        .gradient-wrapper {
           padding: 1px;
-          @include background-image(linear-gradient($blue 10%, black 90%));
-          list-style: none;
+          @include background-image(linear-gradient($blue 10%, black 100%));
 
-          li {
+          .details {
             position: relative;
+            background: black;
+            margin: 0;
             padding: 7px 0px 0px 20px;
-            color: $transparentGray;
+            list-style: none;
+
+            li {
+              position: relative;
+              padding: 7px 0px;
+              color: $transparentGray;
+
+              &> * {
+                font-size: 13px;
+              }
+
+              &:not(:first-child):after {
+                content: "";
+                width: 100%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                @include border(1px);
+              }
+
+              label {
+                font-weight: normal;
+                font-size: 16px;
+              }
+
+              i {
+                &:after {
+                  content: " | ";
+                }
+              }
+
+              a {
+                text-decoration: none;
+                color: $transparentGray;
+                margin-top: 5px;
+                display: block;
+              }
+            }
+          }
+
+          .trailer {
+            width: 100%;
+            margin: 0 auto;
             background: black;
 
-            &> * {
-              font-size: 13px;
-            }
-
-            &:not(:first-child):after {
-              content: "";
-              width: 100%;
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              @include border(1px);
-            }
-
-            label {
-              font-weight: normal;
-              font-size: 16px;
-            }
-
-            i {
-              &:after {
-                content: " | ";
+            &:hover {
+              .link, .link label {
+                color: $blue;
               }
             }
 
-            a {
-              text-decoration: none;
-              color: $transparentGray;
-              margin-top: 5px;
-              display: block;
-            }
-          }
-        }
-        .trailer {
-          width: 100%;
-          margin: 0 auto;
-          margin-top: 20px;
-          padding: 4px;
-
-          &:hover {
-            .link, .link label {
-              color: $blue;
-            }
-          }
-
-          .link {
-            cursor: pointer;
-            margin: 0px;
-            color: $transparentGray;
-
-            label {
-              color: $transparentGray;
+            .link {
+              cursor: pointer;
               margin: 0px;
-              font-size: 12px;
-              text-transform: uppercase;
-              display: inline-block;
+              padding-top: 17px;
+              color: $transparentGray;
+
+              label {
+                color: $transparentGray;
+                margin: 0px;
+                font-size: 12px;
+                text-transform: uppercase;
+                display: inline-block;
+              }
             }
-          }
 
-          .wrapper {
-            margin-top: 7px;
-            @include borders(1px);
+            .wrapper {
+              margin-top: 7px;
+              @include borders(1px);
 
-            i {
-              font-size: 30px;
-              padding: 6px 0px;
+              i {
+                font-size: 30px;
+                padding: 6px 0px;
+              }
             }
           }
         }
+
+
       }
     }
   }
