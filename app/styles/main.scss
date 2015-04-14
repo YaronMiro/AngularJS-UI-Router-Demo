@@ -198,27 +198,6 @@ body {
       &:hover {
         @include opacity(0.6);
       }
-
-      .popularity-ranking, .bookmarked-icon {
-        position: absolute;
-        padding: 10px;
-        bottom: 0px;
-        font-weight: bold;
-        background: rgba(0, 0, 0, 0.25);
-      }
-
-      .popularity-ranking {
-        right: 0px;
-        color: white;
-        @include border-top-left-radius(6px);
-      }
-
-      .bookmarked-icon {
-        left: 0px;
-        color: white;
-        @include border-top-right-radius(6px);
-
-      }
     }
 
     .summary {
@@ -340,6 +319,18 @@ body {
           background: black;
           padding: 0px 19px 19px 19px;
 
+          .popularity-ranking, .bookmarked-icon {
+            bottom: 50px;
+          }
+
+          .popularity-ranking {
+            right: 20px;
+          }
+
+          .bookmarked-icon {
+            left: 50px;
+          }
+
           img {
             width: 100%;
           }
@@ -370,7 +361,6 @@ body {
           @include background-image(linear-gradient($blue 10%, black 100%));
 
           .details {
-            position: relative;
             background: black;
             margin: 0;
             padding: 7px 0px 0px 20px;
@@ -533,6 +523,26 @@ body {
     cursor: pointer;
     color: rgba(255, 255, 255, 0.21);
   }
+}
+
+.popularity-ranking, .bookmarked-icon {
+  position: absolute;
+  padding: 10px;
+  bottom: 0px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.popularity-ranking {
+  right: 0px;
+  color: white;
+  @include border-top-left-radius(6px);
+}
+
+.bookmarked-icon {
+  left: 0px;
+  color: white;
+  @include border-top-right-radius(6px);
 }
 
 .color-effect {

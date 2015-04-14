@@ -8,6 +8,10 @@
       <div class="background">
         <h3 class="text-center visible-xs">{{ movie.selectedMovie.trackName }}</h3>
         <img ng-src="{{ movie.selectedMovie.artworkUrl600 }}" alt="{{ movie.selectedMovie.trackName }}-poster image"/>
+        <div title="popularity ranking" class="popularity-ranking">{{ movie.selectedMovie.index }}</div>
+        <div title="Bookmarked movie" ng-hide="$state.is('main.bookmarks') || !localStorageService.isSupported || !movie.selectedMovie.isBookmarked" class="bookmarked-icon">
+          <i class="fa fa-check-square"></i>
+        </div>
       </div>
     </div>
   </div>

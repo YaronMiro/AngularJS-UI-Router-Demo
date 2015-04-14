@@ -219,7 +219,7 @@ angular
     $rootScope.parseInt = parseInt;
 
     // Helper to debug on template file.
-    $rootScope.consoleLog = function(data) {
+    $rootScope.console = function(data) {
       return console.log(data);
     };
 
