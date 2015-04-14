@@ -151,7 +151,7 @@ body {
       @include border-bottom-right-radius(6px);
     }
 
-    .links{
+    .footer-links{
 
       margin-top: 15px;
 
@@ -229,61 +229,6 @@ body {
       .date {
         padding: 7px 0px;
         color: $gray;
-      }
-
-      .links {
-        margin: 0px;
-        padding: 0px;
-        list-style: none;
-        margin-top: 7px;
-
-        li {
-          position: relative;
-          padding: 7px 0px 9px 0px;
-          cursor: pointer;
-          font-size: 27px;
-
-          @include tablet-only {
-            padding: 2px 0px 6px 0px;
-            font-size: 24px;
-          }
-
-          &:after,
-          &:last-child:before {
-            content: "";
-            width: 100%;
-            position: absolute;
-            left: 0px;
-            @include border(1px);
-          }
-
-          &:last-child:before {
-            bottom: 0px;
-          }
-
-          &:after {
-            top: 0px;
-          }
-
-          .title {
-            margin: 0px;
-            font-size: 12px;
-            text-transform: uppercase;
-            color: $lightGray;
-          }
-
-          &:hover {
-              color: $blue;
-            }
-
-          &.add:hover {
-            color: $green;
-          }
-
-          &.remove:hover {
-            color: rgb(179, 41, 41);;
-          }
-        }
       }
     }
   }
@@ -547,6 +492,61 @@ body {
 
 .color-effect {
   @include color-change-effect();
+}
+
+.links {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  margin-top: 7px;
+
+  li {
+    position: relative;
+    padding: 7px 0px 9px 0px;
+    cursor: pointer;
+    font-size: 27px;
+
+    @include tablet-only {
+      padding: 2px 0px 6px 0px;
+      font-size: 24px;
+    }
+
+    &:after,
+    &:last-child:before {
+      content: "";
+      width: 100%;
+      position: absolute;
+      left: 0px;
+      @include border(1px);
+    }
+
+    &:last-child:before {
+      bottom: 0px;
+    }
+
+    &:after {
+      top: 0px;
+    }
+
+    .title {
+      margin: 0px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: $lightGray;
+    }
+
+    &:hover {
+      color: $blue;
+    }
+
+    &.add:hover {
+      color: $green;
+    }
+
+    &.remove:hover {
+      color: rgb(179, 41, 41);;
+    }
+  }
 }
 
 // Scrollbar theme

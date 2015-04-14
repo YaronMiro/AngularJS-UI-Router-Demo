@@ -15,6 +15,7 @@ angular.module('myApp')
     // Movies data.
     self.data = moviesData;
 
+
     /**
      * Add movie to the bookmarks list.
      * @param movie {*}
@@ -46,7 +47,7 @@ angular.module('myApp')
             });
           }
         }
-      });;
+      });
     };
 
   }]);
