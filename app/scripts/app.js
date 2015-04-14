@@ -41,7 +41,7 @@ angular
     /**
      * Redirect a user to homepage.
      *
-     * @param movies
+     * @param moviesData
      *   Array of movie {*}.
      * @param $stateParams
      *   The state url params {*}.
@@ -50,8 +50,8 @@ angular
      *
      *  Return the target movie {*}.
      */
-    var gettingSelectedMovie = function(movies, $stateParams, $filter){
-      var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
+    var gettingSelectedMovie = function(moviesData, $stateParams, $filter){
+      var selectedMovie = $filter('filter')(moviesData, {urlAlias: $stateParams.name});
       return selectedMovie[0];
     };
 
@@ -102,7 +102,7 @@ angular
         resolve: {
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
-          movies: function(Movies){
+          moviesData: function(Movies){
             return Movies.gettingMovies();
           }
         }
@@ -131,7 +131,7 @@ angular
           }
         },
         resolve: {
-          movies: function(Bookmarks){
+          moviesData: function(Bookmarks){
             return Bookmarks.getMovies();
           }
         }
@@ -142,9 +142,7 @@ angular
         url: 'movie/{name}?originBookmark',
         abstract: true,
         resolve: {
-          // Example showing injection of service into resolve function.
-          // Service then returns a promise.
-          movies: function(Movies, Bookmarks, $stateParams){
+          moviesData: function(Movies, Bookmarks, $stateParams){
             // Set the data type according to the movie origin.
             return (parseInt($stateParams.originBookmark)) ? Bookmarks.getMovies(): Movies.gettingMovies();
           }
@@ -182,7 +180,10 @@ angular
           // into it's child resolve function.
           selectedMovie: gettingSelectedMovie
         },
-        onEnter: redirect
+        onEnter: redirect,
+        data: {
+          breadcrumbs: 'info'
+        }
       })
 
       // Single movie state.
@@ -203,16 +204,24 @@ angular
           // into it's child resolve function.
           selectedMovie: gettingSelectedMovie
         },
-        onEnter: redirect
+        onEnter: redirect,
+        data: {
+          breadcrumbs: 'trailer'
+        }
       })
   }])
-  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', '$log', function ($rootScope, $state, $stateParams, localStorageService, $log) {
+  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', function ($rootScope, $state, $stateParams, localStorageService) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     $rootScope.parseInt = parseInt;
+
+    // Helper to debug on template file.
+    $rootScope.consoleLog = function(data) {
+      return console.log(data);
+    };
 
     // Access local storage service from any scope.
     $rootScope.localStorageService = localStorageService;

@@ -8,10 +8,12 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('moviesController', ['$scope','$stateParams', '$state', 'movies','Bookmarks', function ($scope, $stateParams, $state, movies, Bookmarks) {
+  .controller('moviesController', ['moviesData','Bookmarks', function (moviesData, Bookmarks) {
+
     var self = this;
+
     // Movies data.
-    self.data = movies;
+    self.data = moviesData;
 
     /**
      * Add movie to the bookmarks list.
@@ -39,8 +41,8 @@ angular.module('myApp')
           // if movie was removed from the bookmarks state.
           if (movie.originBookmark) {
             // Then update the bookmarks state movies.
-            Bookmarks.getMovies().then(function(movies){
-             self.data = movies;
+            Bookmarks.getMovies().then(function(updatedMoviesData){
+             self.data = updatedMoviesData;
             });
           }
         }

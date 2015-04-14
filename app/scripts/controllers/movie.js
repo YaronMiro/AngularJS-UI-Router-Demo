@@ -8,12 +8,12 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('movieController', ['$scope', '$stateParams', '$state', 'Movies', 'selectedMovie', 'movies', function ($scope, $stateParams, $state, Movies, selectedMovie, movies) {
+  .controller('movieController', ['$state', 'Movies', 'selectedMovie', 'moviesData', function ($state, Movies, selectedMovie, moviesData) {
 
     var self = this;
 
     // Array of movies.
-    self.movies = movies;
+    self.movies = moviesData;
 
     // Selected movie.
     self.selectedMovie = selectedMovie;
