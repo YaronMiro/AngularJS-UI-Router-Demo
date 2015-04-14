@@ -148,6 +148,19 @@ angular
             // Set the data type according to the movie origin.
             return (parseInt($stateParams.originBookmark)) ? Bookmarks.getMovies(): Movies.gettingMovies();
           }
+        },
+        data: {
+          trailer: {
+            basePath: 'http://www.youtube.com/embed/?listType=search&list=',
+            params: {
+              controls: 2,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0,
+              autoplay: 1,
+              hd: 1
+            }
+          }
         }
       })
 
@@ -190,20 +203,7 @@ angular
           // into it's child resolve function.
           selectedMovie: gettingSelectedMovie
         },
-        onEnter: redirect,
-        data: {
-          movie: {
-            basePath: 'http://www.youtube.com/embed/?listType=search&list=',
-            params: {
-              controls: 2,
-              modestbranding: 1,
-              rel: 0,
-              showinfo: 0,
-              autoplay: 1,
-              hd: 1
-            }
-          }
-        }
+        onEnter: redirect
       })
   }])
   .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', '$log', function ($rootScope, $state, $stateParams, localStorageService, $log) {

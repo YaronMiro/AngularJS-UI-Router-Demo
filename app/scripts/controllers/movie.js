@@ -12,16 +12,13 @@ angular.module('myApp')
 
     var self = this;
 
-    // Selected movie.
-    self.selectedMovie = selectedMovie;
-
     // Array of movies.
     self.movies = movies;
 
+    // Selected movie.
+    self.selectedMovie = selectedMovie;
 
-    // Verify that we have the data object declared.
-    if (angular.isDefined($state.current.data)) {
-      // Movie trailer.
-      self.movieTrailerUrl = Movies.gettingMovieTrailerUrl(self.selectedMovie.trackName, $state.current.data.movie);
-    }
+    // Movie trailer.
+    self.movieTrailerUrl = Movies.gettingMovieTrailerUrl(self.selectedMovie.trackName, $state.current.data.trailer);
+
   }]);
