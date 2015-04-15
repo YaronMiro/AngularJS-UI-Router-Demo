@@ -158,6 +158,14 @@ body {
       @include border-bottom-right-radius(6px);
     }
 
+    .responsive-icon {
+      fill: white;
+      color: red;
+      background: white;
+      height: 40px;
+      width: 40px;
+    }
+
     .footer-links{
       list-style: none;
       margin: 15px 0px 0px 0px;
