@@ -185,7 +185,18 @@ body {
             color: #337ab7;
           }
 
+          &.gizra {
+            font-size: 17px;
+            font-weight: lighter;
+            font-family: 'Abril Fatface';
+
+            &:hover {
+              color: #e27058;
+            }
+          }
+
           span {
+            font-size: 18px;
             color: $gray;
           }
         }
