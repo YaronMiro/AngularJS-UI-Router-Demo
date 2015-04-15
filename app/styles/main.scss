@@ -347,20 +347,29 @@ body {
                 margin-left: -20px;
                 cursor: pointer;
 
-                &:hover {
-                  color: $blue;
+                label {
+                  display: block;
+                  cursor: inherit;
+                  font-size: 12px;
+                  text-transform: uppercase;
                 }
 
-                &.add:hover {
-                  color: $green;
-                }
-
-                &.remove:hover {
-                  color: rgb(179, 41, 41);;
+                .icon {
+                  font-size: 30px;
+                  margin-bottom: 4px;
                 }
               }
 
+              &.add:hover .icon {
+                color: $green;
+              }
+
+              &.remove:hover .icon {
+                color: $red;
+              }
+
               &:last-child {
+                margin-top: 20px;
                 padding: 10px 0px;
 
                 &:before {
@@ -371,12 +380,13 @@ body {
                   bottom: 0px;
                   @include border(1px);
                 }
-
               }
 
               label {
+                cursor: inherit;
                 font-weight: normal;
                 font-size: 16px;
+                margin: 0px;
               }
 
               i {
@@ -408,11 +418,12 @@ body {
             .link {
               cursor: pointer;
               margin: 0px;
-              padding-top: 17px;
+              padding-top: 25px;
               color: $transparentGray;
 
               label {
                 color: $transparentGray;
+                cursor: inherit;
                 margin: 0px;
                 font-size: 12px;
                 text-transform: uppercase;
@@ -431,8 +442,6 @@ body {
             }
           }
         }
-
-
       }
     }
   }
@@ -589,7 +598,7 @@ body {
     }
 
     &.remove:hover {
-      color: rgb(179, 41, 41);;
+      color: $red;
     }
   }
 }
@@ -619,23 +628,23 @@ body {
   }
 }
 
-repeat-animate.ng-move,
-repeat-animate.ng-enter,
-repeat-animate.ng-leave {
+.repeat-animate.ng-move,
+.repeat-animate.ng-enter,
+.repeat-animate.ng-leave {
   -webkit-transition: opacity linear 0.5s ease;
   -moz-transition: opacity linear 0.5s ease;
   -o-transition: opacity linear 0.5s ease;
   transition: opacity linear 0.5s ease;
 }
 
-repeat-animate.ng-leave.ng-leave-active,
-repeat-animate.ng-move,
-repeat-animate.ng-enter {
+.repeat-animate.ng-leave.ng-leave-active,
+.repeat-animate.ng-move,
+.repeat-animate.ng-enter {
   opacity:0;
 }
 
-repeat-animate.ng-leave,
-repeat-animate.ng-move.ng-move-active,
-repeat-animate.ng-enter.ng-enter-active {
+.repeat-animate.ng-leave,
+.repeat-animate.ng-move.ng-move-active,
+.repeat-animate.ng-enter.ng-enter-active {
   opacity:1;
 }

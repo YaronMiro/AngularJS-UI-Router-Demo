@@ -55,11 +55,16 @@
            <label> <a href="{{ movie.selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
          </li>
          <li class="add text-center" ng-if="localStorageService.isSupported && !movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.addToBookmarks(movie.selectedMovie)">
-           <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
-           <div>Add to bookmarks</div>
+           <div class="bookmark-wrapper">
+             <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
+             <label>Add to bookmarks</label>
+           </div>
          </li>
          <li class="remove text-center" ng-if="localStorageService.isSupported && movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.removeFromBookmarks(movie.selectedMovie)">
-           <div class="icon fa fa-trash-o color-effect" aria-hidden="true"> Remove from bookmarks</div>
+           <div class="bookmark-wrapper">
+             <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
+             <label>Remove from bookmarks</label>
+           </div>
          </li>
        </ul>
        <!-- Trailer link -->

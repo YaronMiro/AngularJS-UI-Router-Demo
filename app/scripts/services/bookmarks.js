@@ -23,9 +23,6 @@ angular.module('myApp')
 
         var deferred = $q.defer();
 
-        // Mark movie as bookmarked.
-        movie.isBookmarked = true;
-
         // Create a deep
         var movieCopy = {};
         angular.copy(movie, movieCopy);
@@ -36,6 +33,7 @@ angular.module('myApp')
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
         movieCopy.originBookmark = 1;
+        movieCopy.isBookmarked = true;
 
         // Set a new index for the incoming movie.
         movieCopy.index = movies.length ? (movies.length + 1) : 1;
@@ -48,6 +46,9 @@ angular.module('myApp')
 
         // In case of success.
         if (save) {
+          // On success mark the movie as bookmarked.
+          movie.isBookmarked = true;
+
           deferred.resolve({"saved": save, "error": false});
         }
         // In case of error.
@@ -70,9 +71,6 @@ angular.module('myApp')
 
         var deferred = $q.defer();
 
-        // Un-mark movie as bookmarked.
-        movie.isBookmarked = false;
-
         // Get array of movies.
         var movies = data;
 
@@ -92,6 +90,10 @@ angular.module('myApp')
 
         // In case of success.
         if (deleted) {
+
+          // On success un-mark the movie as bookmarked.
+          movie.isBookmarked = false;
+
           deferred.resolve({"deleted": deleted, "error": false});
         }
         // In case of error.
@@ -131,19 +133,6 @@ angular.module('myApp')
       var targetMovie = $filter('filter')(movies, {id: movieId});
       return targetMovie.length ? true : false;
     }
-
-//    /**
-//     * Check if a movie is bookmarked.
-//     * if bookmarked then it returns true, else returns false.
-//     *
-//     * @param movie
-//     *  The movi.
-//     *
-//     * @returns bool
-//     */
-//    test: function(movie) {
-//      console.log(movie);
-//    }
    }
 
   }]);
