@@ -22,59 +22,59 @@
      <h3 class="text-center hidden-xs">{{ movie.selectedMovie.trackName }}</h3>
      <div scrollbar class="description">{{ movie.selectedMovie.longDescription }}</div>
      <div class="gradient-wrapper">
-       <!-- Details -->
-       <ul class="details">
-         <!-- Release date -->
-         <li>
-           <label><i class="fa fa-calendar"></i> Release date</label>
-           <div class="data">{{ movie.selectedMovie.releaseDate | date:'longDate' }}</div>
-         </li>
-         <!-- Genre -->
-         <li>
-           <label><i class="fa fa-tag"></i> Primary genre</label>
-           <div class="data">{{ movie.selectedMovie.primaryGenreName }}</div>
-         </li>
-         <!-- Director -->
-         <li>
-           <label><i class="fa fa-user"></i> Director</label>
-           <div class="data">{{ movie.selectedMovie.artistName }}</div>
-         </li>
-         <!-- Prices -->
-         <li>
-           <label><i class="fa fa-money"></i> Prices</label>
-           <span ng-show="movie.selectedMovie.collectionHdPrice" ><span>HD:</span> {{ movie.selectedMovie.collectionHdPrice }}$</span>
-           <span ng-show="movie.selectedMovie.trackHdRentalPrice"> | </span>
-           <span ng-show="movie.selectedMovie.trackHdRentalPrice"><span>Rental HD:</span> {{ movie.selectedMovie.trackHdRentalPrice }}$</span>
-         </li>
-         <!-- Rated -->
-         <li>
-           <label><i class="fa fa-video-camera"></i> Rated:</label>
-           <div class="data">{{ movie.selectedMovie.contentAdvisoryRating }}</div>
-         </li>
-         <li>
-           <label> <a href="{{ movie.selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
-         </li>
-         <li class="add text-center" ng-if="localStorageService.isSupported && !movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.addToBookmarks(movie.selectedMovie)">
-           <div class="bookmark-wrapper">
-             <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
-             <label>Add to bookmarks</label>
-           </div>
-         </li>
-         <li class="remove text-center" ng-if="localStorageService.isSupported && movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.removeFromBookmarks(movie.selectedMovie)">
+      <!-- Details -->
+      <ul class="details">
+       <!-- Release date -->
+       <li>
+         <label><i class="fa fa-calendar"></i> Release date</label>
+         <div class="data">{{ movie.selectedMovie.releaseDate | date:'longDate' }}</div>
+       </li>
+       <!-- Genre -->
+       <li>
+         <label><i class="fa fa-tag"></i> Primary genre</label>
+         <div class="data">{{ movie.selectedMovie.primaryGenreName }}</div>
+       </li>
+       <!-- Director -->
+       <li>
+         <label><i class="fa fa-user"></i> Director</label>
+         <div class="data">{{ movie.selectedMovie.artistName }}</div>
+       </li>
+       <!-- Prices -->
+       <li>
+         <label><i class="fa fa-money"></i> Prices</label>
+         <span ng-show="movie.selectedMovie.collectionHdPrice" ><span>HD:</span> {{ movie.selectedMovie.collectionHdPrice }}$</span>
+         <span ng-show="movie.selectedMovie.trackHdRentalPrice"> | </span>
+         <span ng-show="movie.selectedMovie.trackHdRentalPrice"><span>Rental HD:</span> {{ movie.selectedMovie.trackHdRentalPrice }}$</span>
+       </li>
+       <!-- Rated -->
+       <li>
+         <label><i class="fa fa-video-camera"></i> Rated:</label>
+         <div class="data">{{ movie.selectedMovie.contentAdvisoryRating }}</div>
+       </li>
+       <li>
+         <label> <a href="{{ movie.selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
+       </li>
+       <li class="add text-center" ng-if="localStorageService.isSupported && !movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.addToBookmarks(movie.selectedMovie)">
+         <div class="bookmark-wrapper">
+           <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
+           <label>Add to bookmarks</label>
+         </div>
+       </li>
+       <li class="remove text-center" ng-if="localStorageService.isSupported && movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.removeFromBookmarks(movie.selectedMovie)">
            <div class="bookmark-wrapper">
              <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
              <label>Remove from bookmarks</label>
            </div>
          </li>
-       </ul>
-       <!-- Trailer link -->
-       <div class="text-center trailer">
-         <div class="color-effect link" ng-click="$state.go('main.movie.trailer', {'name': movie.selectedMovie.urlAlias, 'originBookmark': movie.selectedMovie.originBookmark})">
-           <label class="color-effect">Watch the movie trailer</label>
-           <div class="wrapper"> <i class="fa fa-youtube-play"></i> </div>
-         </div>
+      </ul>
+      <!-- Trailer link -->
+      <div class="text-center trailer">
+        <div class="color-effect link" ng-click="$state.go('main.movie.trailer', {'name': movie.selectedMovie.urlAlias, 'originBookmark': movie.selectedMovie.originBookmark})">
+         <label class="color-effect">Watch the movie trailer</label>
+         <div class="wrapper"> <i class="fa fa-youtube-play"></i> </div>
+        </div>
        </div>
-     </div>
-   </div>
-   </div>
+    </div>
+    </div>
+  </div>
 </div>

@@ -26,7 +26,7 @@ body {
 
 #main {
 
-  @include mobile-only {
+  @include phone-only {
     padding: 0px 30px;
   }
 
@@ -81,13 +81,20 @@ body {
       margin-top: 6px;
       margin-bottom: 0;
       line-height: 40px;
+
+      @include tablet-to-desktop-only {
+        font-size: 41px;
+      }
     }
 
     .nav-pills {
+
       li {
         cursor: pointer;
+        margin: 0px;
+        padding: 0px;
 
-        @include mobile-only {
+        @include phone-only {
           position: relative;
           padding: 15px 0px;
           float: none;
@@ -117,7 +124,7 @@ body {
           }
         }
 
-        &:nth-child(n+1) {
+        &:not(:last-child) {
           @include exclude-mobile-only {
             margin-right: 10px;
           }
@@ -129,7 +136,7 @@ body {
           border: 1px solid white;
           font-size: 22px;
 
-          @include mobile-only {
+          @include phone-only {
             padding: 0px;
             text-align: center;
             border: none;
@@ -156,7 +163,7 @@ body {
       margin: 15px 0px 0px 0px;
       padding: 0px;
 
-      @include mobile-only {
+      @include phone-only {
        text-align: center;
       }
 
@@ -201,9 +208,16 @@ body {
     }
 
     .preview {
-
       cursor: pointer;
       @include transition(opacity 0.5s ease-in-out);
+
+      img {
+        width: 100%;
+
+        @include exclude-mobile-only {
+          @include img-responsive;
+        }
+      }
 
       &:hover {
         @include opacity(0.6);
@@ -285,7 +299,7 @@ body {
           .bookmarked-icon {
             left: 50px;
 
-            @include mobile-only {
+            @include phone-only {
               left: 20px;
             }
           }
@@ -304,7 +318,7 @@ body {
           margin-right: 30px;
         }
 
-        @include mobile-only {
+        @include phone-only {
           padding-top: 0px;
         }
 
@@ -553,6 +567,10 @@ body {
   padding: 0px;
   list-style: none;
   margin-top: 7px;
+
+  @include phone-only {
+    margin-bottom: 22px;
+  }
 
   li {
     position: relative;
