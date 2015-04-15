@@ -218,6 +218,10 @@ body {
       height: 360px;
     }
 
+    @include mobile-only {
+      height: 345px;
+    }
+
     .preview {
       cursor: pointer;
       @include transition(opacity 0.5s ease-in-out);
