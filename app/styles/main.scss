@@ -45,7 +45,7 @@ body {
     .top,
     .bottom {
       margin: 0px;
-      height: 42px;
+      height: 15px;
       text-align: center;
       background: $darkGray;
     }
@@ -160,11 +160,21 @@ body {
 
     .responsive-icon {
 
-       img {
-         width: 35px;
-         height: auto;
-       }
-      color: $lightGray;
+      .icon {
+        color: $lightGray;
+
+        &:before {
+          content: "";
+          background-size: 40px auto;
+          background-image: url("../images/responsive-design.png");
+          background-repeat: no-repeat;
+          display: inline-block;
+          width: 40px;
+          height: 24px;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+      }
     }
 
     .footer-links{
