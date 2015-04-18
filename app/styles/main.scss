@@ -159,11 +159,12 @@ body {
     }
 
     .responsive-icon {
-      fill: white;
-      color: red;
-      background: white;
-      height: 40px;
-      width: 40px;
+
+       img {
+         width: 35px;
+         height: auto;
+       }
+      color: $lightGray;
     }
 
     .footer-links{
@@ -171,7 +172,7 @@ body {
       margin: 15px 0px 0px 0px;
       padding: 0px;
 
-      @include phone-only {
+      @include phone-to-mobile-only {
        text-align: center;
       }
 
@@ -185,7 +186,7 @@ body {
           }
         }
 
-        &:not(:first-child):before {
+        &:not(:first-child):not(:last-child):before {
           content: "|";
           padding-right: 3px;
         }
@@ -260,13 +261,13 @@ body {
         font-size: 16px;
         font-weight: bold;
         @include borders(2px);
+
+        @include medium-desktop-only {
+          margin: 20px 0px 9px 0px;
+        }
       }
 
       header {
-
-        @include medium-desktop-only {
-          margin-top: 30px;
-        }
 
         .rating {
           margin-bottom: 10px;
@@ -283,7 +284,11 @@ body {
         .data {
           position: relative;
           color: rgba(255, 255, 255, 0.77);
-          padding: 7px 0px;
+          padding: 14px 0px;
+
+          @include medium-desktop-only {
+            padding: 7px 0px;
+          }
 
           &:after {
             content: "";
@@ -317,6 +322,7 @@ body {
       @include borders(2px);
     }
 
+
     .info-container, .image-container {
       padding-bottom: 30px;
     }
@@ -325,11 +331,11 @@ body {
 
       .image-wrapper {
         padding: 1px;
-
+        margin-left: 30px;
         @include background-image(linear-gradient(black 5%, $blue 95%));
 
-        @include exclude-phone-only {
-          margin-left: 30px;
+        @include phone-to-mobile-only {
+          margin-left: 0px;
         }
 
         .background {
@@ -347,6 +353,7 @@ body {
           .bookmarked-icon {
             left: 50px;
 
+
             @include phone-only {
               left: 20px;
             }
@@ -362,8 +369,10 @@ body {
     .info-container {
 
       .info-wrapper {
-        @include exclude-phone-only {
-          margin-right: 30px;
+        margin-right: 30px;
+
+        @include phone-to-mobile-only {
+          margin-right: 0px;
         }
 
         @include phone-only {
@@ -616,12 +625,12 @@ body {
   list-style: none;
   margin-top: 7px;
 
-  @include phone-only {
-    margin-bottom: 22px;
+  @include medium-to-large-desktop-only {
+    margin-top: 0px;
   }
 
-  @include medium-desktop-only {
-    margin-top: 15px;
+  @include phone-only {
+    margin-bottom: 22px;
   }
 
   @include tablet-only {
@@ -630,13 +639,23 @@ body {
 
   li {
     position: relative;
-    padding: 7px 0px 9px 0px;
+    padding: 9px 0px;
     cursor: pointer;
     font-size: 27px;
 
-    @include tablet-only {
-      padding: 2px 0px 6px 0px;
+    @include medium-desktop-only {
+      padding: 6px 0px;
       font-size: 24px;
+    }
+
+    @include tablet-only {
+      padding: 4px 0px;
+      font-size: 25px;
+    }
+
+    @include mobile-only {
+      padding: 4px 0px;
+      font-size: 21px;
     }
 
     &:after,

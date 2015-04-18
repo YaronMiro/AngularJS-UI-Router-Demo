@@ -107,6 +107,13 @@ $effect: ease-in;
   }
 }
 
+// Medium to large desktop.
+@mixin medium-to-large-desktop-only {
+  @media (min-width: $screen-md-min)  {
+    @content;
+  }
+}
+
 /* Small Devices, Tablets */
 @mixin tablet-only {
   @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
@@ -148,3 +155,11 @@ $effect: ease-in;
     @content;
   }
 }
+
+// Not for phone to mobile width only.
+@mixin phone-to-mobile-only {
+  @media (max-width: $screen-is-max)  {
+    @content;
+  }
+}
+
