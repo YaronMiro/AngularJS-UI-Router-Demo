@@ -199,6 +199,7 @@ body {
         &:not(:first-child):not(:last-child):before {
           content: "|";
           padding-right: 3px;
+          color: $lightGray;
         }
 
         a {
