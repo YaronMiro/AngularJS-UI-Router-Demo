@@ -1,6 +1,6 @@
 'use strict';
 angular.module('myApp')
-  .directive('scrollbar', function () {
+  .directive('scrollBar', function () {
 
     return {
       restrict: 'EA',

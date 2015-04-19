@@ -1,3 +1,7 @@
+<div id="scrollArea" scroll-display ng-show="scrollDisplay">
+  <a href="#myApp" du-smooth-scroll du-scrollspy duration="1000"><i class="fa fa-chevron-circle-up"></i></a>
+</div>
+
 <article id="movies" class="row" ng-hide="$state.is('main.bookmarks') && !localStorageService.isSupported">
   <div class="movies-notification text-center" ng-show="$state.is('main.bookmarks') && !movies.data.length"> Currently there are no bookmarked movies</div>
   <div class="col-xs-12 col-is-6 col-sm-4 movies-wrapper" ng-repeat="movie in movies.data" ng-init="movie.viewMode = false">

@@ -14,7 +14,8 @@ angular
     'ngAnimate',
     'config',
     'angular-loading-bar',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'duScroll',
   ])
   .config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function($stateProvider, $urlRouterProvider, localStorageServiceProvider){
 

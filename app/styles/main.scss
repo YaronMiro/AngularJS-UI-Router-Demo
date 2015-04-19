@@ -707,6 +707,18 @@ body {
   }
 }
 
+#scrollArea {
+  position: fixed;
+  bottom: 50px;
+  z-index: 100;
+  font-size: 44px;
+  color: white;
+
+  i {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
 // Scrollbar theme
 .mCS-light-thick.mCSB_scrollTools .mCSB_draggerRail, .mCS-dark-thick.mCSB_scrollTools .mCSB_draggerRail {
   background-color: rgba(2, 194, 255, 0.24);
