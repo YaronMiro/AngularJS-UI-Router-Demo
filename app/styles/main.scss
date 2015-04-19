@@ -2,7 +2,7 @@
 
 body {
   font-size: 13px;
-  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Play', sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
   background: black;
@@ -704,18 +704,6 @@ body {
     &.remove:hover {
       color: $red;
     }
-  }
-}
-
-#scrollArea {
-  position: fixed;
-  bottom: 50px;
-  z-index: 100;
-  font-size: 44px;
-  color: white;
-
-  i {
-    color: rgba(255, 255, 255, 0.3);
   }
 }
 
