@@ -7,7 +7,7 @@ angular.module('myApp')
       link: function (scope) {
 
         angular.element($window).bind("scroll", function () {
-          if (this.pageYOffset >= 100) {
+          if (this.pageYOffset >= 300) {
             scope.scrollDisplay = true;
           } else {
             scope.scrollDisplay = false;
