@@ -15,7 +15,7 @@ angular
     'config',
     'angular-loading-bar',
     'LocalStorageModule',
-    'duScroll',
+    'duScroll'
   ])
   .config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function($stateProvider, $urlRouterProvider, localStorageServiceProvider){
 
