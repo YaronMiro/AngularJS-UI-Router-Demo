@@ -554,7 +554,6 @@ body {
 
   button.icon {
     padding: 8px;
-    color: rgba(255, 255, 255, 0.32);
     background: transparent;
     border: none;
     outline: none;
@@ -566,24 +565,28 @@ body {
     -moz-osx-font-smoothing: grayscale;
     transform: translate(0, 0);
 
-    &:hover {
+    &:hover:not(:disabled) {
       color: $blue;
     }
 
-    &.previous{
-      &:before {
-        color: $blue;
-        margin-right: 4px;
-        content: "\f137";
-      }
+    &.previous:before,
+    &.next:after {
+      color: $blue;
     }
 
-    &.next{
-      &:after {
-        color: $blue;
-        content: "\f138";
-        margin-left: 4px;
-      }
+    &.previous.disabled:before,
+    &.next.disabled:after {
+      color: rgba(255, 255, 255, 0.32);
+    }
+
+    &.previous:before {
+      margin-right: 4px;
+      content: "\f137";
+    }
+
+    &.next:after {
+      content: "\f138";
+      margin-left: 4px;
     }
   }
 }
