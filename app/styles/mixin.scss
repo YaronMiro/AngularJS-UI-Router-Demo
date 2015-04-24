@@ -128,6 +128,13 @@ $effect: ease-in;
   }
 }
 
+// Not for mobile width only.
+@mixin exclude-mobile-only {
+  @media (min-width: $screen-is-min)  {
+    @content;
+  }
+}
+
 /* Custom, iPhone Retina */
 @mixin phone-only {
   @media (max-width: $screen-xs-max) {
@@ -135,9 +142,9 @@ $effect: ease-in;
   }
 }
 
-// Not for mobile width only.
-@mixin exclude-mobile-only {
-  @media (min-width: $screen-is-min)  {
+// Not for phone width only.
+@mixin exclude-phone-only {
+  @media (min-width: $screen-xs-max)  {
     @content;
   }
 }

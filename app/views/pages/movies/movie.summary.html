@@ -1,12 +1,22 @@
 <div class="summary text-center">
   <h3>{{ movie.trackName }}</h3>
-  <div class="rating">
-    <i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i>
-  </div>
-  <div class="date hidden-sm">
-    <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
-    <span>{{ movie.releaseDate | date:'longDate' }}</span>
-  </div>
+  <header>
+    <div class="rating">
+      <i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i>
+    </div>
+    <div class="visible-lg visible-md">
+      <div class="data">
+        <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
+        <br/>
+        <span>{{ movie.releaseDate | date:'longDate' }}</span>
+      </div>
+      <div class="data">
+        <i class="fa fa-tag"></i> <strong> | Primary genre:</strong>
+        <br/>
+        <span>{{ movie.primaryGenreName }}</span>
+      </div>
+    </div>
+  </header>
   <ul class="links">
     <li class="color-effect" ng-click="movie.viewMode = !movie.viewMode">
       <div class="fa fa-picture-o"></div>

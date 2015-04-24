@@ -125,7 +125,7 @@ body {
         }
 
         &:not(:last-child) {
-          @include exclude-mobile-only {
+          @include exclude-phone-only {
             margin-right: 10px;
           }
         }
@@ -179,19 +179,20 @@ body {
         display: inline;
         padding-right: 3px;
 
+        &:hover {
+          a span {
+            color: #337ab7;
+          }
+        }
+
         &:not(:first-child):before {
-          color: $gray;
           content: "|";
           padding-right: 3px;
         }
 
         a {
           color: white;
-
-          &:hover {
-            text-decoration: none;
-            color: #337ab7;
-          }
+          text-decoration: none;
 
           &.gizra {
             font-size: 17px;
@@ -235,9 +236,9 @@ body {
       @include transition(opacity 0.5s ease-in-out);
 
       img {
-        width: 100%;
+       width: 100%;
 
-        @include exclude-mobile-only {
+        @include exclude-phone-only {
           @include img-responsive;
         }
       }
@@ -261,21 +262,45 @@ body {
         @include borders(2px);
       }
 
-      .rating {
-        margin-bottom: 10px;
-        padding: 5px;
-        display: inline-block;
-        @include border-radius(5px);
-        background: $blue;
+      header {
 
-        i {
-          color: $lightGray;
+        @include medium-desktop-only {
+          margin-top: 30px;
         }
-      }
 
-      .date {
-        padding: 7px 0px;
-        color: $gray;
+        .rating {
+          margin-bottom: 10px;
+          padding: 5px;
+          display: inline-block;
+          @include border-radius(5px);
+          background: $blue;
+
+          i {
+            color: $lightGray;
+          }
+        }
+
+        .data {
+          position: relative;
+          color: rgba(255, 255, 255, 0.77);
+          padding: 7px 0px;
+
+          &:after {
+            content: "";
+            width: 100%;
+            position: absolute;
+            left: 0px;
+            @include border(1px);
+          }
+
+          &:after {
+            top: 0px;
+          }
+
+          span {
+            color: $lightGray;
+          }
+        }
       }
     }
   }
@@ -303,7 +328,7 @@ body {
 
         @include background-image(linear-gradient(black 5%, $blue 95%));
 
-        @include exclude-mobile-only {
+        @include exclude-phone-only {
           margin-left: 30px;
         }
 
@@ -337,7 +362,7 @@ body {
     .info-container {
 
       .info-wrapper {
-        @include exclude-mobile-only {
+        @include exclude-phone-only {
           margin-right: 30px;
         }
 
@@ -593,6 +618,14 @@ body {
 
   @include phone-only {
     margin-bottom: 22px;
+  }
+
+  @include medium-desktop-only {
+    margin-top: 15px;
+  }
+
+  @include tablet-only {
+    margin-top: 0px;
   }
 
   li {
