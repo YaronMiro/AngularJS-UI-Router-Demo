@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', '$sce', function ($http, $q, $sce) {
+  .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
 
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
@@ -44,10 +44,22 @@ angular.module('myApp')
       if (!angular.isArray(ids)) {
         return;
       }
+
       var deferred = $q.defer();
       $http.jsonp('https://itunes.apple.com/lookup', {params: { id: ids.join(), callback: 'JSON_CALLBACK'}})
         .success(function(movies) {
+
           angular.forEach(movies.results, function(movie, index) {
+
+            // Adding unique id for each movie.
+            movie.id = ids[index];
+
+            // Flag to identify if the movie is bookmarked.
+            movie.isBookmarked = Bookmarks.isMovieBookmarked(movie.id);
+
+            // Adding a flag to the movie object to reference it's relationship
+            // to the bookmark type movie.
+            movie.originBookmark = 0;
 
             // Adding index for each movie.
             movie.index = index + 1;
@@ -75,6 +87,8 @@ angular.module('myApp')
        */
       gettingMovies: function(moviesCount) {
         var deferred = $q.defer();
+
+        moviesCount = angular.isDefined(moviesCount) ? moviesCount : 30;
 
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
@@ -104,7 +118,7 @@ angular.module('myApp')
         var params = [];
         angular.forEach(movieData.params, function(value, param){
           this.push(param + '=' + value);
-        },params);
+        }, params);
 
         // Joining the params.
         params = '&' + params.join('&');

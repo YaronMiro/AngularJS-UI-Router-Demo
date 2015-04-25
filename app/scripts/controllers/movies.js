@@ -8,7 +8,14 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('MoviesCtrl', ['$scope','$stateParams', 'movies', '$document', function ($scope, $stateParams, movies, $document) {
+  .controller('moviesController', ['moviesData','Bookmarks', function (moviesData, Bookmarks) {
+
+    var self = this;
+
     // Movies data.
-    $scope.movies = movies;
+    self.data = moviesData;
+
+    // Bookmarks service object.
+    self.bookmarksService = Bookmarks;
+
   }]);

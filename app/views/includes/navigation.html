@@ -1,15 +1,16 @@
 <ul class="nav nav-pills">
+  <!--Bookmarks view -->
+  <li ui-sref-active-eq="active" title="Bookmarks">
+    <a class="color-effect"  ui-sref="main.bookmarks"><i class="fa fa-bookmark"></i></a>
+  </li>
   <!--Movies view -->
-  <div class="visible-xs border"></div>
   <li ui-sref-active-eq="active" title="Movies">
     <a class="color-effect"  ui-sref="main.movies"><i class="glyphicon glyphicon-th"></i></a>
   </li>
-  <div class="visible-xs border"></div>
   <!--Movie full view -->
-  <li ng-if="$state.is('main.movies.trailer')" title="Read more">
-    <a class="color-effect" ui-sref="main.movies.full({'name': $stateParams.name, 'position': $stateParams.position})">
+  <li ng-if="$state.is('main.movie.trailer')" title="Read more">
+    <a class="color-effect" ui-sref="main.movie.movieInfo({'name': $stateParams.name, 'originBookmark': $stateParams.originBookmark})">
       <i class="fa fa-info"></i>
     </a>
   </li>
-  <div class="visible-xs border"></div>
 </ul>

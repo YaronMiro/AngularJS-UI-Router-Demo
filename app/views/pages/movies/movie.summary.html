@@ -1,32 +1,42 @@
-<div class="summary">
-  <div class="title">
-    <div class="border"></div>
-    <h3>{{ movie.trackName }}</h3>
-    <div class="border"></div>
-  </div>
-  <div class="rating text-center"><i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i></div>
-  <div class="wrapper hidden-sm">
-    <div class="border"></div>
-    <div>
-      <label>
-        <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
-        <span>{{ movie.releaseDate | date:'longDate' }}</span>
-      </label>
+<div class="summary text-center">
+  <h3>{{ movie.trackName }}</h3>
+  <header>
+    <div class="rating">
+      <i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i>
     </div>
-  </div>
-  <div class="links">
-    <div class="border"></div>
-    <button class="color-effect" title="Movie poster" class="btn" ng-click="viewMode.value = !viewMode.value">
-      <span class="glyphicon glyphicon-picture"></span>
-    </button>
-    <div class="border"></div>
-    <button class="color-effect" title="Movie trailer" class="btn trailer" ng-click="$state.go('main.movies.trailer', {'name': movie.urlAlias})">
-      <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-    </button>
-    <div class="border"></div>
-    <button class="color-effect" title="Movie information" class="btn trailer" ng-click="$state.go('main.movies.full', {'name': movie.urlAlias})">
-      <span class="fa fa-info-circle" aria-hidden="true"></span>
-    </button>
-    <div class="border"></div>
-  </div>
+    <div class="visible-lg visible-md">
+      <div class="data">
+        <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
+        <br/>
+        <span>{{ movie.releaseDate | date:'longDate' }}</span>
+      </div>
+      <div class="data">
+        <i class="fa fa-tag"></i> <strong> | Primary genre:</strong>
+        <br/>
+        <span>{{ movie.primaryGenreName }}</span>
+      </div>
+    </div>
+  </header>
+  <ul class="links">
+    <li class="color-effect" ng-click="movie.viewMode = !movie.viewMode">
+      <div class="fa fa-picture-o"></div>
+       <div class="title">Poster</div>
+    </li>
+    <li ng-click="$state.go('main.movie.trailer', {'name': movie.urlAlias, 'originBookmark': movie.originBookmark})">
+        <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>
+        <div class="title">Trailer</div>
+    </li>
+    <li ng-click="$state.go('main.movie.movieInfo', {'name': movie.urlAlias, 'originBookmark': movie.originBookmark})">
+        <div class="icon fa fa-info-circle color-effect" aria-hidden="true"></div>
+        <div class="title">Read more</div>
+    </li>
+    <li class="add" ng-if="localStorageService.isSupported && !movie.isBookmarked" ng-click="movies.bookmarksService.addToBookmarks(movie)">
+      <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
+      <div class="title">Add to bookmarks</div>
+    </li>
+    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movies.bookmarksService.removeFromBookmarks(movie)">
+      <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
+      <div class="title">Remove from bookmarks</div>
+    </li>
+  </ul>
 </div>

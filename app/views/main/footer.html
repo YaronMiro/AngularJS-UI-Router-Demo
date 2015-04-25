@@ -1,18 +1,26 @@
 <div class="row">
-  <div class="bottom col-xs-12" ng-hide="$state.is('main.movies.trailer')"></div>
-  <div class="col-xs-12 links">
-    <p>
-      <a class="color-effect" href="http://www.gizra.com/" target="_blank">
-        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Gizra
+  <div class="bottom col-xs-12" ng-hide="$state.is('main.movie.trailer')"></div>
+  <ul class="col-xs-12 footer-links">
+    <li>
+      <a class="gizra color-effect" href="http://www.gizra.com/" target="_blank">gizra</a>
+    </li>
+    <li>
+      <a href="https://github.com/YaronMiro/AngularJs-UI-Router---Example" target="_blank">
+        <span class="fa fa-github color-effect" aria-hidden="true"></span> Get the code
       </a>
-      <span class="divider"> | </span>
-      <a class="color-effect" href="https://github.com/YaronMiro/AngularJs-UI-Router---Example" target="_blank">
-        <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Get the code
+    </li>
+    <li>
+      <a  href="https://github.com/YaronMiro" target="_blank">
+        <span class="fa fa-user color-effect" aria-hidden="true"></span> Yaron Miro
       </a>
-      <span class="divider"> | </span>
-      <a class="color-effect" href="https://github.com/YaronMiro" target="_blank">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Yaron Miro
+    </li>
+    <li ng-if="$state.is('main.movies') || $state.is('main.bookmarks')">
+      <a id="scrollArea" href="#myApp" du-smooth-scroll du-scrollspy duration="1000">
+        <span class="fa fa-chevron-circle-up color-effect" aria-hidden="true"></span> Back to top
       </a>
-    </p>
-  </div>
+    </li>
+    <li class="responsive-icon hidden-xs hidden-is pull-right">
+      <span class="icon">Responsive design</span>
+    </li>
+  </ul>
 </div>

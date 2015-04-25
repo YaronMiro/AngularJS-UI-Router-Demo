@@ -5,10 +5,38 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/images";
 
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-
 // Override default bootstrap variables.
 $grid-gutter-width: 0px;
+
+// Bootstrap icons.
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+// This container is a custom one, Bootstrap out of the box has 3 containers.
+$ContainerPhone: 460px;
+
+// Intermediate small screen / phone. (Custom breakpoint).
+$screen-is: 480px;
+
+// Minimum screen size for the custom grid.
+$screen-is-min: ($screen-is);
+
+// Maximum screen size for the custom grid.
+$screen-is-max: 767px;
+
+// Maximum screen size for Extra small screen / phone (We have to call it before bootstrap).
+$screen-xs-max: ($screen-is-min - 1);
+
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint: $screen-is-min;
+
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+
+// Including the custom grid css.
+@import "_grids.scss";
 
 // Colors.
 $gray: #777777;
@@ -16,13 +44,12 @@ $darkGray: #1e1e1e;
 $lightGray: rgba(255, 255, 255, 0.5);
 $transparentGray: rgba(255, 255, 255, 0.61);
 $blue: rgb(51, 122, 183);
+$green: #72aa25;
+$red: rgb(179, 41, 41);
 
 // Default transition
 $effect: ease-in;
 
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
 
 
 // Color change transition
@@ -32,38 +59,107 @@ $effect: ease-in;
   @include transition-timing-function($effect);
 }
 
-// Only the desktop width.
+// Color change transition
+@mixin border($height) {
+  background: $blue;
+  height: $height;
+  background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(41, 137, 216, 0.51) 50%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(41, 137, 216, 0.51)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(41, 137, 216, 0.51) 50%,rgba(0,0,0,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+}
+
+@mixin borders($height) {
+  position: relative;
+
+  &:after,
+  &:before {
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    @include border($height);
+  }
+
+  &::before {
+    bottom: 0px;
+  }
+
+  &:after {
+    top: 0px;
+  }
+}
+
+/* Large Devices, Wide Screens */
 @mixin large-desktop-only {
   @media (min-width: $screen-lg-min) {
     @content;
   }
 }
 
-// Only the desktop width.
+/* Medium Devices, Desktops */
 @mixin medium-desktop-only {
-  @media (min-width: $screen-md-min) and (max-width: ($screen-md-max)) {
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
     @content;
   }
 }
 
-// Only for tablet width.
+// Medium to large desktop.
+@mixin medium-to-large-desktop-only {
+  @media (min-width: $screen-md-min)  {
+    @content;
+  }
+}
+
+/* Small Devices, Tablets */
 @mixin tablet-only {
-  @media (min-width: $screen-sm-min) and (max-width: ($screen-sm-max)) {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
     @content;
   }
 }
 
-// Only for mobile width.
+/* Extra Small Devices, Phones */
+@mixin tablet-to-desktop-only {
+  @media (min-width: $screen-sm-min) {
+    @content;
+  }
+}
+
+/* Extra Small Devices, Phones */
 @mixin mobile-only {
+  @media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+    @content;
+  }
+}
+
+// Not for mobile width only.
+@mixin exclude-mobile-only {
+  @media (min-width: $screen-is-min)  {
+    @content;
+  }
+}
+
+/* Custom, iPhone Retina */
+@mixin phone-only {
   @media (max-width: $screen-xs-max) {
     @content;
   }
 }
 
-
-// Not for mobile width only.
-@mixin exclude-mobile-only {
-  @media (min-width: $screen-sm-min)  {
+// Not for phone width only.
+@mixin exclude-phone-only {
+  @media (min-width: $screen-xs-max)  {
     @content;
   }
 }
+
+// Not for phone to mobile width only.
+@mixin phone-to-mobile-only {
+  @media (max-width: $screen-is-max)  {
+    @content;
+  }
+}
+

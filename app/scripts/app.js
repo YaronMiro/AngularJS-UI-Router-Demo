@@ -13,10 +13,15 @@ angular
     'ui.router',
     'ngAnimate',
     'config',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'LocalStorageModule',
+    'duScroll'
   ])
-  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+  .config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function($stateProvider, $urlRouterProvider, localStorageServiceProvider){
 
+    // Setting a local storage "prefix" to avoid overwriting another data.
+    // on the local storage.
+    localStorageServiceProvider.setPrefix('myApp');
 
     /**
      * Redirect a user to homepage.
@@ -26,9 +31,7 @@ angular
      * @param $selectedMovie
      *   The target movie.
      */
-    var redirect = function($state, selectedMovie, $document) {
-      $document.title = 'yaron';
-
+    var redirect = function($state, selectedMovie) {
       if (!angular.isDefined(selectedMovie)) {
         // if the movie doesn't exist then redirect to the "parent" state.
         // in our case it's the main "movies" state.
@@ -39,7 +42,7 @@ angular
     /**
      * Redirect a user to homepage.
      *
-     * @param movies
+     * @param moviesData
      *   Array of movie {*}.
      * @param $stateParams
      *   The state url params {*}.
@@ -48,8 +51,8 @@ angular
      *
      *  Return the target movie {*}.
      */
-    var gettingSelectedMovie = function(movies, $stateParams, $filter){
-      var selectedMovie = $filter('filter')(movies, {urlAlias: $stateParams.name});
+    var gettingSelectedMovie = function(moviesData, $stateParams, $filter){
+      var selectedMovie = $filter('filter')(moviesData, {urlAlias: $stateParams.name});
       return selectedMovie[0];
     };
 
@@ -83,7 +86,8 @@ angular
           // 'main'. <div ui-view='content'/> within index.html.
           'content@': {
             templateUrl: 'views/pages/movies/movies.html',
-            controller: 'MoviesCtrl'
+            controller: 'moviesController',
+            controllerAs: 'movies'
           },
           // Absolutely targets the 'preview' view in this state.
           // <div ui-view="preview"/> within movies.html.
@@ -99,52 +103,53 @@ angular
         resolve: {
           // Example showing injection of service into resolve function.
           // Service then returns a promise.
-          movies: function(Movies){
-            return Movies.gettingMovies(30);
+          moviesData: function(Movies){
+            return Movies.gettingMovies();
           }
         }
        })
 
-      // Single movie state.
-      .state('main.movies.full',{
-        // The "^" character excludes the parent prefix url format ("movies")
-        // from this child state url, instead of "movies/movie-details/:name"
-        // it will become "movie-details/:name".
-        url: '^/movie-info/{name}',
+      // Bookmarks Movies state.
+      .state('main.bookmarks',{
+        url: 'bookmarks',
         views: {
+          // Relatively targets the 'content' view in this state parent state,
+          // 'main'. <div ui-view='content'/> within index.html.
           'content@': {
-            templateUrl: 'views/pages/movies/movie.full.html',
-            controller: 'MovieCtrl'
+            templateUrl: 'views/pages/movies/movies.html',
+            controller: 'moviesController',
+            controllerAs: 'movies'
+          },
+          // Absolutely targets the 'preview' view in this state.
+          // <div ui-view="preview"/> within movies.html.
+          'preview@main.bookmarks': {
+            templateUrl: 'views/pages/movies/movie.preview.html'
+          },
+          // Absolutely targets the 'summary' view in this state.
+          // <div ui-view="summary"/> within movies.html.
+          'summary@main.bookmarks': {
+            templateUrl: 'views/pages/movies/movie.summary.html'
           }
         },
         resolve: {
-          // Example showing injection of a "parent" resolve object
-          // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie
-        },
-        onEnter: redirect
-      })
+          moviesData: function(Bookmarks){
+            return Bookmarks.getMovies();
+          }
+        }
+       })
 
-      // Single movie state.
-      .state('main.movies.trailer',{
-        // The "^" character excludes the parent prefix url format ("movies")
-        // from this child state url, instead of "movies/movie-details/:name"
-        // it will become "movie-details/:name".
-        url: '^/trailer/{name}',
-        views: {
-          'content@': {
-            templateUrl: 'views/pages/movies/movie.trailer.html',
-            controller: 'MovieCtrl'
+      // Movies state.
+      .state('main.movie',{
+        url: 'movie/{name}?originBookmark',
+        abstract: true,
+        resolve: {
+          moviesData: function(Movies, Bookmarks, $stateParams){
+            // Set the data type according to the movie origin.
+            return (parseInt($stateParams.originBookmark)) ? Bookmarks.getMovies(): Movies.gettingMovies();
           }
         },
-        resolve: {
-          // Example showing injection of a "parent" resolve object
-          // into it's child resolve function.
-          selectedMovie: gettingSelectedMovie
-        },
-        onEnter: redirect,
         data: {
-          movie: {
+          trailer: {
             basePath: 'http://www.youtube.com/embed/?listType=search&list=',
             params: {
               controls: 2,
@@ -157,11 +162,68 @@ angular
           }
         }
       })
+
+      // Single movie state.
+      .state('main.movie.movieInfo',{
+        // The "^" character excludes the parent prefix url
+        // ("movie/{name}?originBookmark") format from this child state url, it
+        // will become only as "movie/info/{name}?originBookmark".
+        url: '^/movie/info/{name}?originBookmark',
+        views: {
+          'content@': {
+            templateUrl: 'views/pages/movie/movieInfo.html',
+            controller: 'movieController',
+            controllerAs: 'movie'
+          }
+        },
+        resolve: {
+          // Example showing injection of a "parent" resolve object
+          // into it's child resolve function.
+          selectedMovie: gettingSelectedMovie
+        },
+        onEnter: redirect,
+        data: {
+          breadcrumbs: 'info'
+        }
+      })
+
+      // Single movie state.
+      .state('main.movie.trailer',{
+        // The "^" character excludes the parent prefix url
+        // ("movie/{name}?originBookmark") format from this child state url, it
+        // will become only as "movie/trailer/{name}?originBookmark".
+        url: '^/movie/trailer/{name}?originBookmark',
+        views: {
+          'content@': {
+            templateUrl: 'views/pages/movie/trailer.html',
+            controller: 'movieController',
+            controllerAs: 'movie'
+          }
+        },
+        resolve: {
+          // Example showing injection of a "parent" resolve object
+          // into it's child resolve function.
+          selectedMovie: gettingSelectedMovie
+        },
+        onEnter: redirect,
+        data: {
+          breadcrumbs: 'trailer'
+        }
+      })
   }])
-  .run([ '$rootScope', '$state', '$stateParams', '$log', 'Config', function ($rootScope, $state, $stateParams, $log, Config) {
+  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', 'Bookmarks', function ($rootScope, $state, $stateParams, localStorageService, Bookmarks) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
     // applications.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+    $rootScope.parseInt = parseInt;
+
+    // Helper to debug on template file.
+    $rootScope.console = function(data) {
+      return console.log(data);
+    };
+
+    // Access local storage service from any scope.
+    $rootScope.localStorageService = localStorageService;
   }])
