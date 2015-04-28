@@ -243,7 +243,7 @@ module.exports = function (grunt) {
     buildcontrol: {
       dist: {
         options: {
-          remote: 'git@github.com:YaronMiro/AngularJs-UI-Router---Example.git',
+          remote: 'git@github.com:YaronMiro/AngularJS-UI-Router-Demo.git',
           branch: 'gh-pages',
           commit: true,
           push: true
