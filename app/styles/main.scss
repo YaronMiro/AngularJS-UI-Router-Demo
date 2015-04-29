@@ -26,10 +26,6 @@ body {
 
 #main {
 
-  @include phone-only {
-    padding: 0px 30px;
-  }
-
   #movies {
     .movies-notification {
       margin: 8px 0px;
@@ -62,7 +58,7 @@ body {
       width: $ContainerPhone;    }
 
     @include phone-only {
-    width: 100%;
+      width: 100%;
     }
 
     .top,
@@ -79,6 +75,12 @@ body {
     text-transform: uppercase;
     top: 0;
     padding-top: 20px;
+
+    .menu {
+      @include phone-only {
+        padding: 0px 30px;
+      }
+    }
 
     .top {
       margin-top: 15px;
@@ -178,7 +180,7 @@ body {
 
   #main-content {
     margin-top: 86px;
-    margin-bottom: 86px;
+    margin-bottom: 54px;
   }
 
   #main-footer {
