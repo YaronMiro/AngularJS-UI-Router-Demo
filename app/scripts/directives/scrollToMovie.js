@@ -5,19 +5,20 @@ angular.module('myApp')
       restrict: 'EA',
       scope: {
         movieId: '=',
-        offset: '='
       },
       link: function (scope, element) {
 
-        var scrollToMovie = function(id, offset) {
-          var offset = angular.isDefined(offset) ? offset: 90;
-          var element = angular.element(document.getElementById(id));
-          $document.scrollToElementAnimated(element, offset)
-          console.log(offset);
-        }
+        scope.$watch('movieId', function(id){
+          console.log(id);
 
-        element.bind('click', scrollToMovie(948537335, scope.offset));
+          var scrollToMovie = function(id) {
+            var element = angular.element(document.getElementById(id));
+            console.log(element);
+            $document.scrollToElementAnimated(element)
+          }
 
+          element.bind('click', scrollToMovie(id));
+        });
       }
     };
   }]);
