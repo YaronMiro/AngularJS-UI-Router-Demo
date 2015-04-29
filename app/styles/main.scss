@@ -41,6 +41,29 @@ body {
 
   #main-header,
   #main-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+    width: $container-lg;
+    background: black;
+
+    @include medium-desktop-only {
+      width: $container-md;
+    }
+
+    @include tablet-only {
+      width: $container-sm;
+    }
+
+    @include mobile-only {
+      width: $ContainerPhone;    }
+
+    @include phone-only {
+    width: 100%;
+    }
 
     .top,
     .bottom {
@@ -54,6 +77,8 @@ body {
   #main-header {
     color: $gray;
     text-transform: uppercase;
+    top: 0;
+    padding-top: 20px;
 
     .top {
       margin-top: 15px;
@@ -151,7 +176,14 @@ body {
     }
   }
 
+  #main-content {
+    margin-top: 86px;
+    margin-bottom: 86px;
+  }
+
   #main-footer {
+    bottom: 0;
+    padding-bottom: 20px;
 
     .bottom {
       @include border-bottom-left-radius(6px);
