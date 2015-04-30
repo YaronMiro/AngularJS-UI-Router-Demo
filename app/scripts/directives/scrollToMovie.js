@@ -4,20 +4,25 @@ angular.module('myApp')
     return {
       restrict: 'EA',
       scope: {
-        movieId: '=',
+        movie: '='
       },
       link: function (scope, element) {
 
-        scope.$watch('movieId', function(id){
-          console.log(id);
+        scope.$watch('movie', function(movie){
 
-          var scrollToMovie = function(id) {
-            var element = angular.element(document.getElementById(id));
+          var scrollToMovie = function(movie) {
+
+            console.log('test');
+
+            return;
+
+            var id = movie.id;
+            var element = angular.element(document.getElementById('main'));
             console.log(element);
             $document.scrollToElementAnimated(element)
           }
 
-          element.bind('click', scrollToMovie(id));
+          element.bind('click', scrollToMovie(movie));
         });
       }
     };
