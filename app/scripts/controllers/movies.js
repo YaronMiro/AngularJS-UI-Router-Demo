@@ -19,7 +19,6 @@ angular.module('myApp')
       offset = angular.isDefined(offset) ? offset: 90;
       var element = angular.element(document.getElementById(id));
       $document.scrollToElementAnimated(element, offset)
-      console.log(offset);
     }
 
     // Bookmarks service object.
