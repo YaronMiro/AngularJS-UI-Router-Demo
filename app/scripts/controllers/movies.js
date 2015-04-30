@@ -15,12 +15,6 @@ angular.module('myApp')
     // Movies data.
     self.data = moviesData;
 
-    self.scrollToSelf = function(id, offset) {
-      offset = angular.isDefined(offset) ? offset: 90;
-      var element = angular.element(document.getElementById(id));
-      $document.scrollToElementAnimated(element, offset)
-    }
-
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;
 
