@@ -24,7 +24,7 @@
   </head>
   <body id="myApp" ng-app="myApp">
     <!-- Add your site or application content here -->
-    <div id="main" class="container">
+    <div id="main" class="container" ng-class="{'fixed': $state.current.data.fixedPosition}">
       <header id="main-header" name="main-header" ui-view="header"></header>
       <main id="main-content" ui-view="content" class="fadein fadeout"></main>
       <footer id="main-footer" ui-view="footer"></footer>

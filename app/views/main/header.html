@@ -12,7 +12,7 @@
         <h1>
           <span ng-if="parseInt($stateParams.originBookmark) == false || $state.is('main.movies')">Itunes <span class="text-muted">top 60 movies</span></span>
           <span ng-if="parseInt($stateParams.originBookmark) == true || $state.is('main.bookmarks')">My <span class="text-muted">bookmarks</span></span>
-          <span ng-show="$state.current.data"> - {{ $state.current.data.breadcrumbs }}</span>
+          <span ng-show="$state.current.data.breadcrumbs"> - {{ $state.current.data.breadcrumbs }}</span>
         </h1>
       </div>
       <div class="col-is-4 col-xs-2 pull-left">

@@ -106,6 +106,11 @@ angular
           moviesData: function(Movies){
             return Movies.gettingMovies();
           }
+        },
+        // Example of adding custom data (hardcoded) for applying
+        // conditional css class.
+        data: {
+          fixedPosition: true
         }
        })
 
@@ -135,10 +140,15 @@ angular
           moviesData: function(Bookmarks){
             return Bookmarks.getMovies();
           }
+        },
+        // Example of adding custom data (hardcoded) for applying
+        // conditional css class.
+        data: {
+          fixedPosition: true
         }
        })
 
-      // Movies state.
+      // Movie state.
       .state('main.movie',{
         url: 'movie/{name}?originBookmark',
         abstract: true,
@@ -167,7 +177,7 @@ angular
       .state('main.movie.movieInfo',{
         // The "^" character excludes the parent prefix url
         // ("movie/{name}?originBookmark") format from this child state url, it
-        // will become only as "movie/info/{name}?originBookmark".
+        // will transform to "movie/info/{name}?originBookmark".
         url: '^/movie/info/{name}?originBookmark',
         views: {
           'content@': {

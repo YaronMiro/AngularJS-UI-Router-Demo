@@ -259,6 +259,11 @@ body {
     }
   }
 
+
+  &.fixed {
+//    border: 5px solid red;
+  }
+
   .movies-wrapper {
 
     @include large-desktop-only {
@@ -279,18 +284,18 @@ body {
 
     .preview {
       cursor: pointer;
-      @include transition(opacity 0.5s ease-in-out);
 
       img {
        width: 100%;
+        @include transition(opacity 0.5s ease-in-out);
 
         @include exclude-phone-only {
           @include img-responsive;
         }
-      }
 
-      &:hover {
-        @include opacity(0.6);
+        &:hover {
+          @include opacity(0.6);
+        }
       }
     }
 
