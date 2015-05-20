@@ -4,9 +4,7 @@ angular.module('myApp')
   .factory('Bookmarks', ['localStorageService', '$filter', '$q', function (localStorageService, $filter, $q) {
 
     // Private data array of movies.
-    var data =[];
-    data = localStorageService.get('bookmarks');
-    data = data != null ? data : new Array();
+    var data = localStorageService.get('bookmarks') || new Array();
 
     return {
 
@@ -94,11 +92,11 @@ angular.module('myApp')
           // On success un-mark the movie as bookmarked.
           movie.isBookmarked = false;
 
-          deferred.resolve({"deleted": deleted, "error": false});
+          deferred.resolve({"error": false});
         }
         // In case of error.
         else {
-          deferred.reject({"deleted": deleted, "error": true});
+          deferred.reject({"error": true});
         }
 
         // Return promise object.
@@ -113,6 +111,8 @@ angular.module('myApp')
        */
       getMovies: function() {
         var deferred = $q.defer();
+        // count numbers of movies that are returned.
+        data.count = data.length;
         deferred.resolve(data);
         // Return promise object.
         return deferred.promise;

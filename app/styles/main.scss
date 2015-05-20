@@ -37,28 +37,31 @@ body {
 
   #main-header,
   #main-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 5;
-    margin: 0 auto;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
-    width: $container-lg;
-    background: black;
 
-    @include medium-desktop-only {
-      width: $container-md;
-    }
+    &.fixed {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      margin: 0 auto;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+      width: $container-lg;
+      background: black;
 
-    @include tablet-only {
-      width: $container-sm;
-    }
+      @include medium-desktop-only {
+        width: $container-md;
+      }
 
-    @include mobile-only {
-      width: $ContainerPhone;    }
+      @include tablet-only {
+        width: $container-sm;
+      }
 
-    @include phone-only {
-      width: 100%;
+      @include mobile-only {
+        width: $ContainerPhone;    }
+
+      @include phone-only {
+        width: 100%;
+      }
     }
 
     .top,
@@ -179,8 +182,10 @@ body {
   }
 
   #main-content {
-    margin-top: 86px;
-    margin-bottom: 54px;
+    &.fixed {
+      margin-top: 86px;
+      margin-bottom: 54px;
+    }
   }
 
   #main-footer {
@@ -257,11 +262,6 @@ body {
         }
       }
     }
-  }
-
-
-  &.fixed {
-//    border: 5px solid red;
   }
 
   .movies-wrapper {
@@ -371,7 +371,6 @@ body {
       padding: 12px 0px;
       @include borders(2px);
     }
-
 
     .info-container, .image-container {
       padding-bottom: 30px;

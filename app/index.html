@@ -24,10 +24,10 @@
   </head>
   <body id="myApp" ng-app="myApp">
     <!-- Add your site or application content here -->
-    <div id="main" class="container" ng-class="{'fixed': $state.current.data.fixedPosition}">
-      <header id="main-header" name="main-header" ui-view="header"></header>
-      <main id="main-content" ui-view="content" class="fadein fadeout"></main>
-      <footer id="main-footer" ui-view="footer"></footer>
+    <div id="main" class="container">
+      <header id="main-header" ng-class="{'fixed': $state.current.data.fixedPosition}" name="main-header" ui-view="header"></header>
+      <main id="main-content" ui-view="content" class="fadein fadeout" ng-class="{'fixed': $state.current.data.fixedPosition}"></main>
+      <footer id="main-footer" ng-class="{'fixed': $state.current.data.fixedPosition}" ui-view="footer"></footer>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
