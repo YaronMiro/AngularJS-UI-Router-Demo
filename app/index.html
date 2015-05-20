@@ -26,8 +26,8 @@
     <!-- Add your site or application content here -->
     <div id="main" class="container">
       <header id="main-header" ng-class="{'fixed': $state.current.data.fixedPosition}" name="main-header" ui-view="header"></header>
-      <main id="main-content" ui-view="content" class="fadein fadeout" ng-class="{'fixed': $state.current.data.fixedPosition, 'slim': $stateParams.moviesCount < $state.current.data.numberOfMoviesToCompare}"></main>
-      <footer id="main-footer" ng-class="{'fixed': $state.current.data.fixedPosition, 'slim': $stateParams.moviesCount < $state.current.data.numberOfMoviesToCompare}" ui-view="footer"></footer>
+      <main id="main-content" ui-view="content" class="fadein fadeout" ng-class="{'fixed': $state.current.data.fixedPosition, 'slim': $stateParams.moviesCount =< $state.current.data.numberOfMoviesToCompare}"></main>
+      <footer id="main-footer" ng-class="{'fixed': $state.current.data.fixedPosition, 'slim': $stateParams.moviesCount =< $state.current.data.numberOfMoviesToCompare}" ui-view="footer"></footer>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>

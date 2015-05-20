@@ -57,7 +57,8 @@ body {
       }
 
       @include mobile-only {
-        width: $ContainerPhone;    }
+        width: $ContainerPhone;
+      }
 
       @include phone-only {
         width: 100%;
@@ -186,11 +187,52 @@ body {
       margin-top: 86px;
       margin-bottom: 54px;
     }
+
+    &.slim {
+      overflow-y: hidden;
+      height: 562px;
+
+      @include medium-desktop-only {
+
+      }
+
+      @include tablet-only {
+
+      }
+
+      @include mobile-only {
+
+      }
+
+      @include phone-only {
+
+      }
+    }
   }
 
   #main-footer {
     bottom: 0;
     padding-bottom: 20px;
+
+    &.slim {
+      bottom: 347px;
+
+      @include medium-desktop-only {
+
+      }
+
+      @include tablet-only {
+
+      }
+
+      @include mobile-only {
+
+      }
+
+      @include phone-only {
+
+      }
+    }
 
     .bottom {
       @include border-bottom-left-radius(6px);
