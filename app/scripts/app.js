@@ -148,6 +148,13 @@ angular
             });
           }
         },
+        // Callback function been executed immediately after a successful
+        // "state" transition. In this example we make sure we are scrolling to
+        // the top of the page.
+        onEnter: function($document) {
+            var element = angular.element(document.getElementById('myApp'));
+            $document.scrollToElementAnimated(element);
+          },
         // Example of adding custom data (hardcoded) for applying
         // conditional css class.
         data: {
@@ -180,7 +187,6 @@ angular
           }
         }
       })
-
       // Single movie state.
       .state('main.movie.movieInfo',{
         // The "^" character excludes the parent prefix url
