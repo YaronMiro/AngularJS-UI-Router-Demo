@@ -6,7 +6,6 @@ angular.module('myApp')
       restrict: 'EA',
 
       link: function(scope, element) {
-
         // Adding scrollbar js library.
         element.mCustomScrollbar({
           setHeight: 75,

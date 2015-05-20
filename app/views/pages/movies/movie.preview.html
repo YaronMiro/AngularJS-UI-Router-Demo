@@ -1,7 +1,7 @@
-<div class="preview" ng-click="movie.viewMode.value = !movie.viewMode.value;">
+<a href="#{{ movie.id }}" du-smooth-scroll duration="500" offset="105" class="preview" ng-click="movie.viewMode.value = !movie.viewMode.value">
   <img ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
   <div title="popularity ranking" class="popularity-ranking">{{ movie.index }}</div>
   <div title="Bookmarked movie" ng-hide="$state.is('main.bookmarks') || !localStorageService.isSupported || !movie.isBookmarked" class="bookmarked-icon">
     <i class="fa fa-check-square"></i>
   </div>
-</div>
+</a>

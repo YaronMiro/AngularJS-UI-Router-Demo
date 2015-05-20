@@ -26,10 +26,6 @@ body {
 
 #main {
 
-  @include phone-only {
-    padding: 0px 30px;
-  }
-
   #movies {
     .movies-notification {
       margin: 8px 0px;
@@ -41,6 +37,33 @@ body {
 
   #main-header,
   #main-footer {
+
+    &.fixed {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      margin: 0 auto;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+      width: $container-lg;
+      background: black;
+
+      @include medium-desktop-only {
+        width: $container-md;
+      }
+
+      @include tablet-only {
+        width: $container-sm;
+      }
+
+      @include mobile-only {
+        width: $ContainerPhone;
+      }
+
+      @include phone-only {
+        width: 100%;
+      }
+    }
 
     .top,
     .bottom {
@@ -54,6 +77,14 @@ body {
   #main-header {
     color: $gray;
     text-transform: uppercase;
+    top: 0;
+    padding-top: 20px;
+
+    .menu {
+      @include phone-only {
+        padding: 0px 30px;
+      }
+    }
 
     .top {
       margin-top: 15px;
@@ -151,7 +182,57 @@ body {
     }
   }
 
+  #main-content {
+    &.fixed {
+      margin-top: 86px;
+      margin-bottom: 54px;
+    }
+
+    &.slim {
+      overflow-y: hidden;
+      height: 570px;
+
+      @include medium-desktop-only {
+
+      }
+
+      @include tablet-only {
+
+      }
+
+      @include mobile-only {
+
+      }
+
+      @include phone-only {
+
+      }
+    }
+  }
+
   #main-footer {
+    bottom: 0;
+    padding-bottom: 20px;
+
+    &.slim {
+      bottom: 339px;
+
+      @include medium-desktop-only {
+
+      }
+
+      @include tablet-only {
+
+      }
+
+      @include mobile-only {
+
+      }
+
+      @include phone-only {
+
+      }
+    }
 
     .bottom {
       @include border-bottom-left-radius(6px);
@@ -245,18 +326,18 @@ body {
 
     .preview {
       cursor: pointer;
-      @include transition(opacity 0.5s ease-in-out);
 
       img {
        width: 100%;
+        @include transition(opacity 0.5s ease-in-out);
 
         @include exclude-phone-only {
           @include img-responsive;
         }
-      }
 
-      &:hover {
-        @include opacity(0.6);
+        &:hover {
+          @include opacity(0.6);
+        }
       }
     }
 
@@ -332,7 +413,6 @@ body {
       padding: 12px 0px;
       @include borders(2px);
     }
-
 
     .info-container, .image-container {
       padding-bottom: 30px;

@@ -157,6 +157,13 @@ $effect: ease-in;
 }
 
 // Not for phone to mobile width only.
+@mixin phone-to-tablet-only {
+  @media (max-width: $screen-sm-max)  {
+    @content;
+  }
+}
+
+// Not for phone to mobile width only.
 @mixin phone-to-mobile-only {
   @media (max-width: $screen-is-max)  {
     @content;
