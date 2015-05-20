@@ -225,6 +225,17 @@ body {
     }
   }
 
+  #genre-menu-wrapper {
+
+    button {
+      width: 100%;
+      color: white;
+      background-color: rgb(65, 65, 65);
+      border: none;
+      padding: 10px 0px;
+    }
+  }
+
   .movies-wrapper {
 
     @include large-desktop-only {

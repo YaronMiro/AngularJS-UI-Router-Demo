@@ -3,6 +3,12 @@
 angular.module('myApp')
   .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
 
+    // Init default movies data object.
+    var data = {
+      movies: new Array(),
+      genres: new Array()
+    };
+
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
      *
@@ -93,7 +99,8 @@ angular.module('myApp')
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
           requestMoviesById(moviesIds).then(function(movies) {
-            deferred.resolve(movies);
+            data.movies = movies
+            deferred.resolve(data);
           })
         });
 

@@ -4,9 +4,10 @@ angular.module('myApp')
   .factory('Bookmarks', ['localStorageService', '$filter', '$q', function (localStorageService, $filter, $q) {
 
     // Private data array of movies.
-    var data =[];
-    data = localStorageService.get('bookmarks');
-    data = data != null ? data : new Array();
+    var data = {
+      movies: localStorageService.get('bookmarks') || new Array(),
+      genres: new Array()
+    }
 
     return {
 
@@ -28,7 +29,7 @@ angular.module('myApp')
         angular.copy(movie, movieCopy);
 
         // Get array of movies.
-        var movies = data;
+        var movies = data.movies;
 
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
@@ -61,6 +62,23 @@ angular.module('myApp')
       },
 
       /**
+       * Get the movies genres.
+       *
+
+       *
+       * @returns | array [string];
+       */
+      getMoviesGenres: function() {
+
+        angular.forEach(data.movies, function(movie, index) {
+          data.genres[movie.primaryGenreName] = 'name';
+        });
+
+        console.log('Generes: ', data.genres);
+
+      },
+
+      /**
        * Remove a movie to the local storage  "movies" array.
        *
        * @param movie
@@ -72,7 +90,7 @@ angular.module('myApp')
         var deferred = $q.defer();
 
         // Get array of movies.
-        var movies = data;
+        var movies = data.movies;
 
         // Find the target movie from with in the movies array.
         var targetMovie = $filter('filter')(movies, {id: movie.id});
@@ -113,6 +131,8 @@ angular.module('myApp')
        */
       getMovies: function() {
         var deferred = $q.defer();
+
+        data.genres = this.getMoviesGenres();
         deferred.resolve(data);
         // Return promise object.
         return deferred.promise;
@@ -128,7 +148,7 @@ angular.module('myApp')
      * @returns bool
      */
     isMovieBookmarked: function(movieId) {
-      var movies = data;
+      var movies = data.movies;
       // Find the target movie from with in the movies array.
       var targetMovie = $filter('filter')(movies, {id: movieId});
       return targetMovie.length ? true : false;
