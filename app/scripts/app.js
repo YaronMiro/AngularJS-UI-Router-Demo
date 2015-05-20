@@ -138,10 +138,10 @@ angular
         },
         resolve: {
           moviesData: function(Bookmarks, $stateParams){
-            // the resolve object automatically resolved it self as a "promise".
-            // Usually you will call a function that just returns a "promise",
-            // But in this case we want to add extra logic before we resolve.
-            // that's why it's done manually.
+            // The resolve object automatically resolved it self as a "promise".
+            // Usually you will call a function that just returns a "promise"
+            // object, But on this case we want to add extra logic before we
+            // resolve. That's why it's done manually.
             return Bookmarks.getMovies().then(function(movies) {
               $stateParams.moviesCount = movies.length;
               return movies;

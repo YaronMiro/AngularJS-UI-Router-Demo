@@ -93,8 +93,6 @@ angular.module('myApp')
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
           requestMoviesById(moviesIds).then(function(movies) {
-            // count numbers of movies that are returned.
-            movies.count = movies.length;
             deferred.resolve(movies);
           })
         });
