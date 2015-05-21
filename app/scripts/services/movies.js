@@ -86,6 +86,22 @@ angular.module('myApp')
 
     // Public API here
     return {
+
+      /**
+       *
+       * @param movies
+       *  Movies array.
+       * @returns {Array}
+       *  AN array of genres names and counter for each genre.
+       */
+      getMoviesGenres: function(movies) {
+        var genres = new Array();
+        angular.forEach(movies, function(movie) {
+          genres[movie.primaryGenreName] === undefined ? genres[movie.primaryGenreName] = 1 : genres[movie.primaryGenreName]++;
+        });
+        return genres;
+      },
+
       /**
        * Return a promise object of the list of Movies.
        *
@@ -93,6 +109,7 @@ angular.module('myApp')
        */
       gettingMovies: function(moviesCount) {
         var deferred = $q.defer();
+        var self = this;
 
         moviesCount = angular.isDefined(moviesCount) ? moviesCount : 60;
 
@@ -100,6 +117,7 @@ angular.module('myApp')
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
           requestMoviesById(moviesIds).then(function(movies) {
             data.movies = movies
+            data.genres = self.getMoviesGenres(movies);
             deferred.resolve(data);
           })
         });

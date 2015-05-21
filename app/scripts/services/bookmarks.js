@@ -64,14 +64,12 @@ angular.module('myApp')
       /**
        * Get the movies genres.
        *
-
-       *
        * @returns | array [string];
        */
       getMoviesGenres: function() {
 
-        angular.forEach(data.movies, function(movie, index) {
-          data.genres[movie.primaryGenreName] = 'name';
+        angular.forEach(data.movies, function(movie) {
+          data.genres[movie.primaryGenreName] === undefined ? data.genres[movie.primaryGenreName] = 1 : data.genres[movie.primaryGenreName]++;
         });
 
         console.log('Generes: ', data.genres);
