@@ -78,24 +78,26 @@ angular.module('myApp')
       return deferred.promise;
     }
 
+    /**
+     * Get all of the existing genres and a counter for each one.
+     *
+     * @param movies
+     *  Movies array.
+     * @returns {*}
+     *  Array of genres names and counter for each genre.
+     */
+    function getMoviesGenres (movies) {
+      var genres = {};
+      angular.forEach(movies, function(movie) {
+        angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
+      });
+      return genres;
+    }
+
     // Public API here.
     return {
 
-      /**
-       * Get all of the existing genres and a counter for each one.
-       *
-       * @param movies
-       *  Movies array.
-       * @returns {*}
-       *  AN array of genres names and counter for each genre.
-       */
-      getMoviesGenres: function(movies) {
-        var genres = {};
-        angular.forEach(movies, function(movie) {
-          angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
-        });
-        return genres;
-      },
+      self: this,
 
       /**
        * Return a promise object of the list of Movies.
@@ -110,7 +112,11 @@ angular.module('myApp')
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
           requestMoviesById(moviesIds).then(function(movies) {
-            var data = {movies: movies};
+
+            var data = {
+              movies: movies,
+              genres: getMoviesGenres(movies)
+            };
             deferred.resolve(data);
           })
         });

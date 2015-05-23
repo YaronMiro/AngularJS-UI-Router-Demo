@@ -4,8 +4,26 @@ angular.module('myApp')
   .factory('Bookmarks', ['localStorageService', '$filter', '$q', function (localStorageService, $filter, $q) {
 
     // Private data array of movies.
-    var data = {};
-    data.movies = localStorageService.get('bookmarks') || new Array();
+    var data = {
+      movies: localStorageService.get('bookmarks') || new Array(),
+      genres: {}
+    };
+
+    /**
+     * Get all of the existing genres and a counter for each one.
+     *
+     * @param movies
+     *  Movies array.
+     * @returns {*}
+     *  Array of genres names and counter for each genre.
+     */
+    function getMoviesGenres(movies) {
+      var genres = {};
+      angular.forEach(movies, function(movie) {
+        angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
+      });
+      return genres;
+    }
 
     return {
 
@@ -111,6 +129,7 @@ angular.module('myApp')
        */
       getMovies: function() {
         var deferred = $q.defer();
+        data.genres = getMoviesGenres(data.movies);
         deferred.resolve(data);
         // Return promise object.
         return deferred.promise;
