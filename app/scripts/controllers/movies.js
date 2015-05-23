@@ -24,13 +24,4 @@ angular.module('myApp')
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;
 
-    /**
-     * Filter by movie genre.
-     *
-     * @param genreName
-     *  The genre name.
-     */
-    self.filterByMovieGenre = function(genreName) {
-      self.filterByGenre = genreName === 'All' ? '!All' : genreName;
-    }
   }]);

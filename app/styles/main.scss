@@ -595,6 +595,42 @@ body {
         }
       }
     }
+
+    #related-movies-by-genre {
+
+      .title {
+        color: white;
+        padding: 8px;
+        @include borders(1px);
+      }
+
+      article {
+        position: relative;
+        margin-top: 15px;
+
+        &:not(:last-child):after {
+          z-index: 10;
+          content: "";
+          width: 100%;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          height: 100%;
+          width: 25%;
+          background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+          background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+          background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+          background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
+          background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+
+        }
+
+      }
+
+    }
+
   }
 }
 

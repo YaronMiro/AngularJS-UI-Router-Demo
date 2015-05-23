@@ -87,7 +87,7 @@ angular.module('myApp')
      *  Array of genres names and counter for each genre.
      */
     function getMoviesGenres (movies) {
-      var genres = {};
+      var genres = {'All': movies.length};
       angular.forEach(movies, function(movie) {
         angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
       });

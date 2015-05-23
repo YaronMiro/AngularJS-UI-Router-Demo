@@ -24,4 +24,12 @@ angular.module('myApp')
     // Movie trailer.
     self.movieTrailerUrl = Movies.gettingMovieTrailerUrl(self.selectedMovie.trackName, $state.current.data.trailer);
 
+    //filter params.
+    self.filterParams = {};
+    self.filterParams.RelatedMoviesByGenre = {
+      primaryGenreName: self.selectedMovie.primaryGenreName,
+      id: '!' + self.selectedMovie.id
+    };
+
+
   }]);
