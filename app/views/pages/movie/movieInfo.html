@@ -77,4 +77,14 @@
     </div>
     </div>
   </div>
+  <section class="col-sm-12" id="related-movies-by-genre">
+    <article>
+      <div class="col-xs-2" ng-repeat="movie in movie.movies | orderBy: 'index' | filter: {primaryGenreName: movie.selectedMovie.primaryGenreName, id: '!movie.selectedMovie.id'} | limitTo:6">
+        <a ui-sref="main.movie.movieInfo({'name': movie.urlAlias, 'originBookmark': movie.originBookmark})">
+          <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
+        </a>
+      </div>
+    </article>
+  </section>
 </div>
+
