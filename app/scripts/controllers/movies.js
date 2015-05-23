@@ -8,12 +8,15 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('moviesController', ['moviesData','Bookmarks', function (moviesData, Bookmarks) {
+  .controller('moviesController', ['moviesData','Bookmarks','Movies', function (moviesData, Bookmarks, Movies) {
 
     var self = this;
 
     // Movies data.
     self.data = moviesData.movies;
+
+    // Movies data.
+    self.filterByGenre = '!All';
 
     // Movies genres.
     self.genres = moviesData.genres;
@@ -27,10 +30,20 @@ angular.module('myApp')
       'Romance': 2,
       'Sci-Fi & Fantasy': 2,
       'Thriller': 5,
-      'Western': 1
+      'Western': 1,
+      'All': moviesData.movies.length
     }
 
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;
 
+    /**
+     * Filter by movie genre.
+     *
+     * @param genreName
+     *  The genre name.
+     */
+    self.filterByMovieGenre = function(genreName) {
+      self.filterByGenre = genreName === 'All' ? '!All' : genreName;
+    }
   }]);

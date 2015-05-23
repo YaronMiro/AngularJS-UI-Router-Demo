@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('myApp')
-  .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
+  .factory('Movies', ['$http', '$q', '$sce', '$filter', 'Bookmarks', function ($http, $q, $sce, $filter, Bookmarks) {
 
     /**
-     * Return the promise {*} with the list of top movies Ids amount by moviesCount.
+     * Return the movies IDs from the list of "top movies".
      *
      * @param moviesCount
      *  Number of movies to return.
@@ -78,10 +78,11 @@ angular.module('myApp')
       return deferred.promise;
     }
 
-    // Public API here
+    // Public API here.
     return {
 
       /**
+       * Get all of the existing genres and a counter for each one.
        *
        * @param movies
        *  Movies array.
@@ -93,7 +94,6 @@ angular.module('myApp')
         angular.forEach(movies, function(movie) {
           angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
         });
-        console.log(genres)
         return genres;
       },
 
@@ -104,16 +104,13 @@ angular.module('myApp')
        */
       gettingMovies: function(moviesCount) {
         var deferred = $q.defer();
-        var self = this;
 
         moviesCount = angular.isDefined(moviesCount) ? moviesCount : 60;
 
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
           requestMoviesById(moviesIds).then(function(movies) {
-            var data = {};
-            data.movies = movies
-            data.genres = self.getMoviesGenres(movies);
+            var data = {movies: movies};
             deferred.resolve(data);
           })
         });

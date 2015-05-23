@@ -4,10 +4,8 @@ angular.module('myApp')
   .factory('Bookmarks', ['localStorageService', '$filter', '$q', function (localStorageService, $filter, $q) {
 
     // Private data array of movies.
-    var data = {
-      movies: localStorageService.get('bookmarks') || new Array(),
-      genres: new Array()
-    }
+    var data = {};
+    data.movies = localStorageService.get('bookmarks') || new Array();
 
     return {
 
@@ -62,21 +60,6 @@ angular.module('myApp')
       },
 
       /**
-       * Get the movies genres.
-       *
-       * @returns | array [string];
-       */
-      getMoviesGenres: function() {
-
-        angular.forEach(data.movies, function(movie) {
-          data.genres[movie.primaryGenreName] === undefined ? data.genres[movie.primaryGenreName] = 1 : data.genres[movie.primaryGenreName]++;
-        });
-
-        console.log('Generes: ', data.genres);
-
-      },
-
-      /**
        * Remove a movie to the local storage  "movies" array.
        *
        * @param movie
@@ -106,15 +89,14 @@ angular.module('myApp')
 
         // In case of success.
         if (deleted) {
-
           // On success un-mark the movie as bookmarked.
           movie.isBookmarked = false;
 
-          deferred.resolve({"deleted": deleted, "error": false});
+          deferred.resolve({"error": false});
         }
         // In case of error.
         else {
-          deferred.reject({"deleted": deleted, "error": true});
+          deferred.reject({"error": true});
         }
 
         // Return promise object.
@@ -129,8 +111,6 @@ angular.module('myApp')
        */
       getMovies: function() {
         var deferred = $q.defer();
-
-        data.genres = this.getMoviesGenres();
         deferred.resolve(data);
         // Return promise object.
         return deferred.promise;

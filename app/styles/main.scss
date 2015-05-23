@@ -241,15 +241,31 @@ body {
     }
 
     #genre-menu {
+      position: relative;
+      overflow-x: hidden;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 140%;
+        position: absolute;
+        left: -25%;
+        @include border(1px);
+      }
+
+      &:before{
+        top: 0px;
+      }
+
+      &:after {
+        bottom: 0px;
+      }
+
 
       ul {
         text-align: center;
         list-style: none;
-        margin: 5px auto 11px auto;
-        padding: 10px 0px;
-        border-top: 1px solid rgba(51, 122, 183, 0.37);
-        border-bottom: 1px solid rgba(51, 122, 183, 0.37);
-
+        padding: 10px 0px 0px 0px;
         li {
           margin: 4px;
           padding: 5px;
@@ -257,6 +273,7 @@ body {
           @include border-radius(5px);
           color: rgba(51, 122, 183, 1);
           background: rgba(51, 122, 183, 0.21);
+          cursor: pointer;
 
           &:hover {
             color: white;
@@ -350,12 +367,9 @@ body {
             content: "";
             width: 100%;
             position: absolute;
+            top: 0px;
             left: 0px;
             @include border(1px);
-          }
-
-          &:after {
-            top: 0px;
           }
 
           span {

@@ -13,7 +13,7 @@ angular.module('myApp')
     var self = this;
 
     // Array of movies.
-    self.movies = moviesData;
+    self.movies = moviesData.movies;
 
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;
