@@ -245,7 +245,7 @@ body {
       ul {
         text-align: center;
         list-style: none;
-        margin: 5px auto;
+        margin: 5px auto 11px auto;
         padding: 10px 0px;
         border-top: 1px solid rgba(51, 122, 183, 0.37);
         border-bottom: 1px solid rgba(51, 122, 183, 0.37);
@@ -256,7 +256,15 @@ body {
           display: inline-block;
           @include border-radius(5px);
           color: rgba(51, 122, 183, 1);
-          background: rgba(51, 122, 183, 0.14);
+          background: rgba(51, 122, 183, 0.21);
+
+          &:hover {
+            color: white;
+          }
+
+          .count {
+            color: rgba(255, 255, 255, 0.46);
+          }
         }
       }
     }
