@@ -230,20 +230,32 @@ body {
     button {
       width: 100%;
       color: white;
-      background-color: rgb(65, 65, 65);
       border: none;
-      padding: 10px 0px;
+      padding: 6px 0px;
+      background: #000000;
+      
+      &:hover {
+        color: $blue;
+      }
     }
 
     #genre-menu {
 
-      li {
-        padding: 8px;
-        display: inline-block;
-        @include border-radius(5px);
-        background: $blue;
-      }
+      ul {
+        text-align: center;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0px;
 
+        li {
+          margin: 4px;
+          padding: 5px;
+          display: inline-block;
+          @include border-radius(5px);
+          background: transparent;
+          border: 1px solid white;
+        }
+      }
     }
   }
 
