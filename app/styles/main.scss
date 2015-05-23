@@ -234,6 +234,17 @@ body {
       border: none;
       padding: 10px 0px;
     }
+
+    #genre-menu {
+
+      li {
+        padding: 8px;
+        display: inline-block;
+        @include border-radius(5px);
+        background: $blue;
+      }
+
+    }
   }
 
   .movies-wrapper {

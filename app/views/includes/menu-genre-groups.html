@@ -1,7 +1,8 @@
-<button data-toggle="collapse" data-target="#genre-menu">Simple collapsible</button>
+<button data-toggle="collapse" data-target="#genre-menu"><i class="fa fa-filter"></i> Filter by genre</button>
 <div id="genre-menu" class="collapse">
-  <div>{{ movies.genres }}</div>
   <ul>
-    <li class="genre" ng-repeat="genre in movies.genres">{{ $index }} ({{ genre }})</li>
+    <li class="genre" ng-repeat="(name, count) in movies.genres">
+      {{ name }} ({{ count }})
+    </li>
   </ul>
 </div>

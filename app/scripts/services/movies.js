@@ -3,12 +3,6 @@
 angular.module('myApp')
   .factory('Movies', ['$http', '$q', '$sce', 'Bookmarks', function ($http, $q, $sce, Bookmarks) {
 
-    // Init default movies data object.
-    var data = {
-      movies: new Array(),
-      genres: new Array()
-    };
-
     /**
      * Return the promise {*} with the list of top movies Ids amount by moviesCount.
      *
@@ -91,14 +85,15 @@ angular.module('myApp')
        *
        * @param movies
        *  Movies array.
-       * @returns {Array}
+       * @returns {*}
        *  AN array of genres names and counter for each genre.
        */
       getMoviesGenres: function(movies) {
-        var genres = new Array();
+        var genres = {};
         angular.forEach(movies, function(movie) {
-          genres[movie.primaryGenreName] === undefined ? genres[movie.primaryGenreName] = 1 : genres[movie.primaryGenreName]++;
+          angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
         });
+        console.log(genres)
         return genres;
       },
 
@@ -116,6 +111,7 @@ angular.module('myApp')
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {
           requestMoviesById(moviesIds).then(function(movies) {
+            var data = {};
             data.movies = movies
             data.genres = self.getMoviesGenres(movies);
             deferred.resolve(data);
