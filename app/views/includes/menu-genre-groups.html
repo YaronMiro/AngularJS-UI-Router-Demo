@@ -1,7 +1,7 @@
 <button class="color-effect" data-toggle="collapse" data-target="#genre-menu"><i class="fa fa-tags"></i> | Filter by movie genre </button>
 <div id="genre-menu" class="collapse">
   <ul>
-    <li class="genre color-effect" ng-repeat="(name, count) in movies.genres" ng-click="movies.filterByGenre = name === 'All' ? '!All' : name ">
+    <li class="genre color-effect" ng-repeat="(name, count) in movies.genres" ng-click="movies.filterByGenre = name === 'All' ? '!All' : name; movies.data.count = count">
       <span class="name">{{ name }}</span> <span class="count">({{ count }})</span>
     </li>
   </ul>

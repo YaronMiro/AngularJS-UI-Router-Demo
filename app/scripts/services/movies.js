@@ -107,7 +107,7 @@ angular.module('myApp')
       gettingMovies: function(moviesCount) {
         var deferred = $q.defer();
 
-        moviesCount = angular.isDefined(moviesCount) ? moviesCount : 60;
+        moviesCount = angular.isDefined(moviesCount) ? moviesCount : 100;
 
         // Get the top movies ids.
         requestTopMoviesIds(moviesCount).then(function(moviesIds) {

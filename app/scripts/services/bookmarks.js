@@ -130,6 +130,8 @@ angular.module('myApp')
       getMovies: function() {
         var deferred = $q.defer();
         data.genres = getMoviesGenres(data.movies);
+        // count numbers of movies that are returned.
+        data.count = data.length;
         deferred.resolve(data);
         // Return promise object.
         return deferred.promise;
