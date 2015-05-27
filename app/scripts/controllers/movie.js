@@ -13,7 +13,7 @@ angular.module('myApp')
     var self = this;
 
     // Array of movies.
-    self.movies = moviesData;
+    self.movies = moviesData.movies;
 
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;
@@ -23,5 +23,13 @@ angular.module('myApp')
 
     // Movie trailer.
     self.movieTrailerUrl = Movies.gettingMovieTrailerUrl(self.selectedMovie.trackName, $state.current.data.trailer);
+
+    //filter params.
+    self.filterParams = {};
+    self.filterParams.RelatedMoviesByGenre = {
+      primaryGenreName: self.selectedMovie.primaryGenreName,
+      id: '!' + self.selectedMovie.id
+    };
+
 
   }]);

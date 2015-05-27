@@ -1,6 +1,8 @@
+<section class="col-xs-12 text-center" id="genre-menu-wrapper" ng-include="'views/includes/menu-genre-groups.html'"></section>
 <article id="movies" class="row" ng-hide="$state.is('main.bookmarks') && !localStorageService.isSupported">
+  <div class="top"></div>
   <div class="movies-notification text-center" ng-show="$state.is('main.bookmarks') && !movies.data.length"> Currently there are no bookmarked movies</div>
-  <div class="col-xs-12 col-is-6 col-sm-4 movies-wrapper" ng-repeat="movie in movies.data" ng-init="movie.viewMode = false">
+  <div class="col-xs-12 col-is-6 col-sm-4 movies-wrapper" ng-repeat="movie in movies.data | orderBy: 'index' | filter: {primaryGenreName: movies.filterByGenre}" ng-init="movie.viewMode = false">
     <section ng-show="!movie.viewMode" ui-view="preview" class="fadein fadeout"></section>
     <section ng-show="movie.viewMode" ui-view="summary" class="fadein fadeout"></section>
   </div>

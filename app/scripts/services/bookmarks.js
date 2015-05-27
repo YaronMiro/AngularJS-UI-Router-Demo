@@ -4,9 +4,26 @@ angular.module('myApp')
   .factory('Bookmarks', ['localStorageService', '$filter', '$q', function (localStorageService, $filter, $q) {
 
     // Private data array of movies.
-    var data =[];
-    data = localStorageService.get('bookmarks');
-    data = data != null ? data : new Array();
+    var data = {
+      movies: localStorageService.get('bookmarks') || new Array(),
+      genres: {}
+    };
+
+    /**
+     * Get all of the existing genres and a counter for each one.
+     *
+     * @param movies
+     *  Movies array.
+     * @returns {*}
+     *  Array of genres names and counter for each genre.
+     */
+    function getMoviesGenres(movies) {
+      var genres = {'All': movies.length};
+      angular.forEach(movies, function(movie) {
+        angular.isDefined(genres[movie.primaryGenreName]) ? genres[movie.primaryGenreName]++ : genres[movie.primaryGenreName] = 1;
+      });
+      return genres;
+    }
 
     return {
 
@@ -28,7 +45,7 @@ angular.module('myApp')
         angular.copy(movie, movieCopy);
 
         // Get array of movies.
-        var movies = data;
+        var movies = data.movies;
 
         // Adding a flag to the movie object to reference it's relationship
         // to the bookmark type movie.
@@ -72,7 +89,7 @@ angular.module('myApp')
         var deferred = $q.defer();
 
         // Get array of movies.
-        var movies = data;
+        var movies = data.movies;
 
         // Find the target movie from with in the movies array.
         var targetMovie = $filter('filter')(movies, {id: movie.id});
@@ -90,15 +107,14 @@ angular.module('myApp')
 
         // In case of success.
         if (deleted) {
-
           // On success un-mark the movie as bookmarked.
           movie.isBookmarked = false;
 
-          deferred.resolve({"deleted": deleted, "error": false});
+          deferred.resolve({"error": false});
         }
         // In case of error.
         else {
-          deferred.reject({"deleted": deleted, "error": true});
+          deferred.reject({"error": true});
         }
 
         // Return promise object.
@@ -113,6 +129,7 @@ angular.module('myApp')
        */
       getMovies: function() {
         var deferred = $q.defer();
+        data.genres = getMoviesGenres(data.movies);
         deferred.resolve(data);
         // Return promise object.
         return deferred.promise;
@@ -128,7 +145,7 @@ angular.module('myApp')
      * @returns bool
      */
     isMovieBookmarked: function(movieId) {
-      var movies = data;
+      var movies = data.movies;
       // Find the target movie from with in the movies array.
       var targetMovie = $filter('filter')(movies, {id: movieId});
       return targetMovie.length ? true : false;

@@ -8,12 +8,18 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('moviesController', ['moviesData','Bookmarks', function (moviesData, Bookmarks) {
+  .controller('moviesController', ['moviesData','Bookmarks','Movies', function (moviesData, Bookmarks, Movies) {
 
     var self = this;
 
     // Movies data.
-    self.data = moviesData;
+    self.data = moviesData.movies;
+
+    // Movies data.
+    self.filterByGenre = '!All';
+
+    // Movies genres.
+    self.genres = moviesData.genres;
 
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;

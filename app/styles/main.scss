@@ -225,6 +225,78 @@ body {
     }
   }
 
+  .top {
+    margin: 0px;
+    height: 15px;
+    text-align: center;
+    background: $darkGray;
+    margin-top: 15px;
+    @include border-top-left-radius(6px);
+    @include border-top-right-radius(6px);
+  }
+
+  #genre-menu-wrapper {
+
+    button {
+      width: 100%;
+      color: white;
+      outline: none;
+      border: none;
+      padding: 10px 0px;
+      margin: 13px auto 0px auto;
+      background: #000000;
+
+      @include borders(1px);
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    #genre-menu {
+      position: relative;
+      overflow-x: hidden;
+      margin: 2px auto 0px auto;
+
+      &:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        @include border(1px);
+      }
+
+      &:after {
+        bottom: 0px;
+      }
+
+
+      ul {
+        text-align: center;
+        list-style: none;
+        padding: 10px 0px 0px 0px;
+
+        li {
+          margin: 4px;
+          padding: 5px;
+          display: inline-block;
+          @include border-radius(5px);
+          color: rgba(51, 122, 183, 1);
+          background: rgba(51, 122, 183, 0.14);
+          cursor: pointer;
+
+          &:hover {
+            color: white;
+          }
+
+          .count {
+            color: rgba(255, 255, 255, 0.46);
+          }
+        }
+      }
+    }
+  }
+
   .movies-wrapper {
 
     @include large-desktop-only {
@@ -305,12 +377,9 @@ body {
             content: "";
             width: 100%;
             position: absolute;
+            top: 0px;
             left: 0px;
             @include border(1px);
-          }
-
-          &:after {
-            top: 0px;
           }
 
           span {
@@ -523,6 +592,48 @@ body {
               }
             }
           }
+        }
+      }
+    }
+
+    #related-movies-by-genre {
+      position: relative;
+      padding-bottom: 14px;
+      margin-bottom: 15px;
+
+      &:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        @include border(1px);
+      }
+
+      .title {
+        color: white;
+        padding: 8px;
+        @include borders(1px);
+      }
+
+      article {
+        position: relative;
+        margin-top: 15px;
+        @include transition(opacity 0.5s ease-in-out);
+
+        &:hover {
+          @include opacity(0.6);
+        }
+
+        &:not(:last-child):after {
+          content: "";
+          width: 100%;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          height: 100%;
+          width: 5%;
+          background: #000000;
         }
       }
     }

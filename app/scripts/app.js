@@ -52,7 +52,7 @@ angular
      *  Return the target movie {*}.
      */
     var gettingSelectedMovie = function(moviesData, $stateParams, $filter){
-      var selectedMovie = $filter('filter')(moviesData, {urlAlias: $stateParams.name});
+      var selectedMovie = $filter('filter')(moviesData.movies, {urlAlias: $stateParams.name});
       return selectedMovie[0];
     };
 
