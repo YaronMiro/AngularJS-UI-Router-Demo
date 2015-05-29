@@ -12,7 +12,8 @@
     "angular-loading-bar": "~0.6.0",
     "malihu-custom-scrollbar-plugin": "~3.0.8",
     "angular-local-storage": "~0.1.5",
-    "angular-scroll": "~0.6.5"
+    "angular-scroll": "~0.6.5",
+    "shuffle-array": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.0",

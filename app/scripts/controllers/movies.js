@@ -8,7 +8,7 @@
  * Controller of the myApp
  */
 angular.module('myApp')
-  .controller('moviesController', ['moviesData','Bookmarks','Movies', function (moviesData, Bookmarks, Movies) {
+  .controller('moviesController', ['moviesData','Bookmarks', function (moviesData, Bookmarks) {
 
     var self = this;
 
