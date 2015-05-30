@@ -45,24 +45,8 @@ body {
       z-index: 5;
       margin: 0 auto;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
-      width: $container-lg;
       background: black;
-
-      @include medium-desktop-only {
-        width: $container-md;
-      }
-
-      @include tablet-only {
-        width: $container-sm;
-      }
-
-      @include mobile-only {
-        width: $ContainerPhone;
-      }
-
-      @include phone-only {
-        width: 100%;
-      }
+      @include responsive-width();
     }
 
     .top,
@@ -80,16 +64,14 @@ body {
     top: 0;
     padding-top: 20px;
 
+    &.fixed {
+      padding-bottom: 4px;
+    }
+
     .menu {
       @include phone-only {
         padding: 0px 30px;
       }
-    }
-
-    .top {
-      margin-top: 15px;
-      @include border-top-left-radius(6px);
-      @include border-top-right-radius(6px);
     }
 
     .navbar {
@@ -184,29 +166,13 @@ body {
 
   #main-content {
     &.fixed {
-      margin-top: 86px;
+      margin-top: 140px;
       margin-bottom: 54px;
     }
 
     &.slim {
       overflow-y: hidden;
       height: 570px;
-
-      @include medium-desktop-only {
-
-      }
-
-      @include tablet-only {
-
-      }
-
-      @include mobile-only {
-
-      }
-
-      @include phone-only {
-
-      }
     }
   }
 
@@ -216,22 +182,7 @@ body {
 
     &.slim {
       bottom: 339px;
-
-      @include medium-desktop-only {
-
-      }
-
-      @include tablet-only {
-
-      }
-
-      @include mobile-only {
-
-      }
-
-      @include phone-only {
-
-      }
+      width: inherit;
     }
 
     .bottom {
@@ -306,26 +257,28 @@ body {
     }
   }
 
-  .top {
-    margin: 0px;
-    height: 15px;
-    text-align: center;
-    background: $darkGray;
-    margin-top: 15px;
-    @include border-top-left-radius(6px);
-    @include border-top-right-radius(6px);
-  }
-
   #genre-menu-wrapper {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    margin: 0 auto;
+    background: black;
+    @include responsive-width();
 
     button {
       width: 100%;
-      color: white;
+      color: $gray-light;
       outline: none;
       border: none;
       padding: 10px 0px;
       margin: 13px auto 0px auto;
       background: #000000;
+
+      span {
+        color: $blue;
+      }
 
       @include borders(1px);
 
@@ -337,7 +290,6 @@ body {
     #genre-menu {
       position: relative;
       overflow-x: hidden;
-      margin: 2px auto 0px auto;
 
       &:after {
         content: "";
@@ -351,11 +303,11 @@ body {
         bottom: 0px;
       }
 
-
       ul {
         text-align: center;
         list-style: none;
-        padding: 10px 0px 0px 0px;
+        padding: 0px;
+        margin: 9px auto 13px auto;
 
         li {
           margin: 4px;
@@ -374,6 +326,11 @@ body {
             color: rgba(255, 255, 255, 0.46);
           }
         }
+      }
+
+      .top {
+        margin: 13px auto 0px auto;
+        width: inherit;
       }
     }
   }
@@ -718,6 +675,16 @@ body {
       }
     }
   }
+
+ .top {
+   margin: 0px;
+   height: 15px;
+   text-align: center;
+   background: $darkGray;
+   margin-top: 15px;
+   @include border-top-left-radius(6px);
+   @include border-top-right-radius(6px);
+ }
 }
 
 .trailer {
@@ -880,6 +847,11 @@ body {
       top: 0px;
     }
 
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
     .title {
       margin: 0px;
       font-size: 12px;
@@ -889,6 +861,10 @@ body {
 
     &:hover {
       color: $blue;
+
+      a{
+        color: $blue;
+      }
     }
 
     &.add:hover {

@@ -3,8 +3,9 @@ angular.module('myApp').filter('alterCollection', function($window, $filter) {
     console.log(params);
     console.log(collection);
 
+
     // Exclude self movie and movies from different genres.
-    return $filter('filter')(collection, params.config);
+    return $filter('filter')(collection, params.config).slice(0,6);
 
     var newCollection = new Array();
     angular.copy(collection, newCollection);

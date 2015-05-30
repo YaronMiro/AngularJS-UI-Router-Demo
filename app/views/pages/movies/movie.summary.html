@@ -1,27 +1,26 @@
 <div class="summary text-center">
-  <h3>{{ movie.trackName }}</h3>
+  <h3>{{ ::movie.trackName }}</h3>
   <header>
     <div class="rating">
-      <i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i> {{ ::movie.index }} <i class="fa fa-star"></i>
     </div>
     <div class="visible-lg visible-md">
       <div class="data">
         <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
         <br/>
-        <span>{{ movie.releaseDate | date:'longDate' }}</span>
+        <span>{{ ::movie.releaseDate | date:'longDate' }}</span>
       </div>
       <div class="data">
         <i class="fa fa-tag"></i> <strong> | Primary genre:</strong>
         <br/>
-        <span>{{ movie.primaryGenreName }}</span>
+        <span>{{ ::movie.primaryGenreName }}</span>
       </div>
     </div>
   </header>
   <ul class="links">
-
-    <li class="color-effect">
-      <a href="#{{ movie.id }}" du-smooth-scroll duration="500" offset="105"  ng-click="movie.viewMode = !movie.viewMode;">
-        <div class="fa fa-picture-o"></div>
+    <li ng-click="movie.viewMode = !movie.viewMode;">
+      <a href="#{{ movie.id }}" du-smooth-scroll duration="500" offset="105">
+        <div class="fa fa-picture-o color-effect"></div>
         <div class="title">Poster</div>
       </a>
     </li>

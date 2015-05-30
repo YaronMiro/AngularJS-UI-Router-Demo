@@ -6,9 +6,9 @@
     <div class="image-wrapper">
       <!-- Mobile title -->
       <div class="background">
-        <h3 class="text-center visible-xs">{{ movie.selectedMovie.trackName }}</h3>
-        <img ng-src="{{ movie.selectedMovie.artworkUrl600 }}" alt="{{ movie.selectedMovie.trackName }}-poster image"/>
-        <div title="popularity ranking" class="popularity-ranking">{{ movie.selectedMovie.index }}</div>
+        <h3 class="text-center visible-xs">{{ ::movie.selectedMovie.trackName }}</h3>
+        <img ng-src="{{ movie.selectedMovie.artworkUrl600 }}" alt="{{ ::movie.selectedMovie.trackName }}-poster image"/>
+        <div title="popularity ranking" class="popularity-ranking">{{ ::movie.selectedMovie.index }}</div>
         <div title="Bookmarked movie" ng-hide="$state.is('main.bookmarks') || !localStorageService.isSupported || !movie.selectedMovie.isBookmarked" class="bookmarked-icon">
           <i class="fa fa-check-square"></i>
         </div>
@@ -19,40 +19,40 @@
   <div class="col-xs-12 col-sm-5 col-sm-pull-7 col-lg-7 col-lg-pull-5 info-container">
    <div class="info-wrapper">
      <!-- Title -->
-     <h3 class="text-center hidden-xs">{{ movie.selectedMovie.trackName }}</h3>
-     <div scroll-bar class="description">{{ movie.selectedMovie.longDescription }}</div>
+     <h3 class="text-center hidden-xs">{{ ::movie.selectedMovie.trackName }}</h3>
+     <div scroll-bar class="description">{{ ::movie.selectedMovie.longDescription }}</div>
      <div class="gradient-wrapper">
       <!-- Details -->
       <ul class="details">
        <!-- Release date -->
        <li>
          <label><i class="fa fa-calendar"></i> Release date</label>
-         <div class="data">{{ movie.selectedMovie.releaseDate | date:'longDate' }}</div>
+         <div class="data">{{ ::movie.selectedMovie.releaseDate | date:'longDate' }}</div>
        </li>
        <!-- Genre -->
        <li>
          <label><i class="fa fa-tag"></i> Primary genre</label>
-         <div class="data">{{ movie.selectedMovie.primaryGenreName }}</div>
+         <div class="data">{{ ::movie.selectedMovie.primaryGenreName }}</div>
        </li>
        <!-- Director -->
        <li>
          <label><i class="fa fa-user"></i> Director</label>
-         <div class="data">{{ movie.selectedMovie.artistName }}</div>
+         <div class="data">{{ ::movie.selectedMovie.artistName }}</div>
        </li>
        <!-- Prices -->
        <li>
          <label><i class="fa fa-money"></i> Prices</label>
-         <span ng-show="movie.selectedMovie.collectionHdPrice" ><span>HD:</span> {{ movie.selectedMovie.collectionHdPrice }}$</span>
+         <span ng-show="movie.selectedMovie.collectionHdPrice" ><span>HD:</span> {{ ::movie.selectedMovie.collectionHdPrice }}$</span>
          <span ng-show="movie.selectedMovie.trackHdRentalPrice"> | </span>
-         <span ng-show="movie.selectedMovie.trackHdRentalPrice"><span>Rental HD:</span> {{ movie.selectedMovie.trackHdRentalPrice }}$</span>
+         <span ng-show="movie.selectedMovie.trackHdRentalPrice"><span>Rental HD:</span> {{ ::movie.selectedMovie.trackHdRentalPrice }}$</span>
        </li>
        <!-- Rated -->
        <li>
          <label><i class="fa fa-video-camera"></i> Rated:</label>
-         <div class="data">{{ movie.selectedMovie.contentAdvisoryRating }}</div>
+         <div class="data">{{ ::movie.selectedMovie.contentAdvisoryRating }}</div>
        </li>
        <li>
-         <label> <a href="{{ movie.selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
+         <label> <a href="{{ ::movie.selectedMovie.trackViewUrl }}"> <i class="fa fa-apple"></i> Source link</a></label>
        </li>
        <li class="add text-center" ng-if="localStorageService.isSupported && !movie.selectedMovie.isBookmarked" ng-click="movie.bookmarksService.addToBookmarks(movie.selectedMovie)">
          <div class="bookmark-wrapper">
@@ -79,9 +79,9 @@
   </div>
   <section class="col-sm-12" id="related-movies-by-genre">
     <div class="text-center title"><i class="fa fa-tags"></i> Related movies by genre</div>
-    <article class="col-xs-2" ng-repeat="movie in ::movie.movies | alterCollection: {config: movie.filterParams.RelatedMoviesByGenre, limitTo: 6, shuffle: true} track by movie.id">
+      <article class="col-xs-2" ng-repeat="movie in ::movie.movies | alterCollection: {config: movie.filterParams.RelatedMoviesByGenre, limitTo: 6, shuffle: true} track by ::movie.id">
       <a ui-sref="main.movie.movieInfo({'name': movie.urlAlias, 'originBookmark': movie.originBookmark})">
-        <img class="img-responsive" ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
+        <img class="img-responsive" ng-src="{{ ::movie.artworkUrl600 }}" alt="{{ ::movie.trackName }}-poster image"/>
       </a>
     </article>
   </section>
