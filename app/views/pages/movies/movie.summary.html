@@ -19,10 +19,8 @@
   </header>
   <ul class="links">
     <li ng-click="movie.viewMode = !movie.viewMode;">
-      <a href="#{{ movie.id }}" du-smooth-scroll duration="500" offset="105">
-        <div class="fa fa-picture-o color-effect"></div>
-        <div class="title">Poster</div>
-      </a>
+      <div class="fa fa-picture-o color-effect"></div>
+      <div class="title">Poster</div>
     </li>
     <li ng-click="$state.go('main.movie.trailer', {'name': movie.urlAlias, 'originBookmark': movie.originBookmark})">
         <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>

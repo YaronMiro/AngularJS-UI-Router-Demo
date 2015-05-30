@@ -31,5 +31,4 @@ angular.module('myApp')
       id: '!' + self.selectedMovie.id
     };
 
-
   }]);
