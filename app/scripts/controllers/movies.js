@@ -13,7 +13,13 @@ angular.module('myApp')
     var self = this;
 
     // Movies data.
-    self.data = moviesData;
+    self.data = moviesData.movies;
+
+    // Movies data.
+    self.filterByGenre = '!All';
+
+    // Movies genres.
+    self.genres = moviesData.genres;
 
     // Bookmarks service object.
     self.bookmarksService = Bookmarks;

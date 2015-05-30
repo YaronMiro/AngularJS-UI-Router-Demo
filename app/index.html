@@ -25,9 +25,9 @@
   <body id="myApp" ng-app="myApp">
     <!-- Add your site or application content here -->
     <div id="main" class="container">
-      <header id="main-header" name="main-header" ui-view="header"></header>
-      <main id="main-content" ui-view="content" class="fadein fadeout"></main>
-      <footer id="main-footer" ui-view="footer"></footer>
+      <header id="main-header" ng-class="{'fixed': $state.current.data.fixedPosition}" name="main-header" ui-view="header"></header>
+      <main id="main-content" ui-view="content" class="fadein fadeout" ng-class="{'fixed': $state.current.data.fixedPosition, 'slim': $stateParams.moviesCount <= $state.current.data.numberOfMoviesToCompare}"></main>
+      <footer id="main-footer" ng-class="{'fixed': $state.current.data.fixedPosition, 'slim': $stateParams.moviesCount <= $state.current.data.numberOfMoviesToCompare}" ui-view="footer"></footer>
     </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -60,6 +60,7 @@
     <script src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.js"></script>
+    <script src="bower_components/shuffle-array/dist/shuffle-array.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -72,7 +73,9 @@
     <script src="scripts/services/bookmarks.js"></script>
     <script src="scripts/directives/scrollBar.js"></script>
     <script src="scripts/directives/scrollDisplay.js"></script>
+    <script src="scripts/directives/scrollToMovie.js"></script>
     <script src="scripts/directives/movieLink.js"></script>
+    <script src="scripts/filters/alterCollection.js"></script>
     <!-- endbuild -->
 </body>
 </html>

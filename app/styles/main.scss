@@ -26,10 +26,6 @@ body {
 
 #main {
 
-  @include phone-only {
-    padding: 0px 30px;
-  }
-
   #movies {
     .movies-notification {
       margin: 8px 0px;
@@ -41,6 +37,17 @@ body {
 
   #main-header,
   #main-footer {
+
+    &.fixed {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      margin: 0 auto;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
+      background: black;
+      @include responsive-width();
+    }
 
     .top,
     .bottom {
@@ -54,11 +61,17 @@ body {
   #main-header {
     color: $gray;
     text-transform: uppercase;
+    top: 0;
+    padding-top: 20px;
 
-    .top {
-      margin-top: 15px;
-      @include border-top-left-radius(6px);
-      @include border-top-right-radius(6px);
+    &.fixed {
+      padding-bottom: 4px;
+    }
+
+    .menu {
+      @include phone-only {
+        padding: 0px 30px;
+      }
     }
 
     .navbar {
@@ -151,7 +164,26 @@ body {
     }
   }
 
+  #main-content {
+    &.fixed {
+      margin-top: 140px;
+      margin-bottom: 54px;
+    }
+
+    &.slim {
+      overflow-y: hidden;
+      height: 570px;
+    }
+  }
+
   #main-footer {
+    bottom: 0;
+    padding-bottom: 20px;
+
+    &.slim {
+      bottom: 339px;
+      width: inherit;
+    }
 
     .bottom {
       @include border-bottom-left-radius(6px);
@@ -225,6 +257,84 @@ body {
     }
   }
 
+  #genre-menu-wrapper {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    margin: 0 auto;
+    background: black;
+    @include responsive-width();
+
+    button {
+      width: 100%;
+      color: $gray-light;
+      outline: none;
+      border: none;
+      padding: 10px 0px;
+      margin: 13px auto 0px auto;
+      background: #000000;
+
+      span {
+        color: $blue;
+      }
+
+      @include borders(1px);
+
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    #genre-menu {
+      position: relative;
+      overflow-x: hidden;
+
+      &:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        @include border(1px);
+      }
+
+      &:after {
+        bottom: 0px;
+      }
+
+      ul {
+        text-align: center;
+        list-style: none;
+        padding: 0px;
+        margin: 9px auto 13px auto;
+
+        li {
+          margin: 4px;
+          padding: 5px;
+          display: inline-block;
+          @include border-radius(5px);
+          color: rgba(51, 122, 183, 1);
+          background: rgba(51, 122, 183, 0.14);
+          cursor: pointer;
+
+          &:hover {
+            color: white;
+          }
+
+          .count {
+            color: rgba(255, 255, 255, 0.46);
+          }
+        }
+      }
+
+      .top {
+        margin: 13px auto 0px auto;
+        width: inherit;
+      }
+    }
+  }
+
   .movies-wrapper {
 
     @include large-desktop-only {
@@ -245,18 +355,18 @@ body {
 
     .preview {
       cursor: pointer;
-      @include transition(opacity 0.5s ease-in-out);
 
       img {
        width: 100%;
+        @include transition(opacity 0.5s ease-in-out);
 
         @include exclude-phone-only {
           @include img-responsive;
         }
-      }
 
-      &:hover {
-        @include opacity(0.6);
+        &:hover {
+          @include opacity(0.6);
+        }
       }
     }
 
@@ -305,12 +415,9 @@ body {
             content: "";
             width: 100%;
             position: absolute;
+            top: 0px;
             left: 0px;
             @include border(1px);
-          }
-
-          &:after {
-            top: 0px;
           }
 
           span {
@@ -332,7 +439,6 @@ body {
       padding: 12px 0px;
       @include borders(2px);
     }
-
 
     .info-container, .image-container {
       padding-bottom: 30px;
@@ -526,7 +632,59 @@ body {
         }
       }
     }
+
+    #related-movies-by-genre {
+      position: relative;
+      padding-bottom: 14px;
+      margin-bottom: 15px;
+
+      &:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        @include border(1px);
+      }
+
+      .title {
+        color: white;
+        padding: 8px;
+        @include borders(1px);
+      }
+
+      article {
+        position: relative;
+        margin-top: 15px;
+        @include transition(opacity 0.5s ease-in-out);
+
+        &:hover {
+          @include opacity(0.6);
+        }
+
+        &:not(:last-child):after {
+          content: "";
+          width: 100%;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          height: 100%;
+          width: 5%;
+          background: #000000;
+        }
+      }
+    }
   }
+
+ .top {
+   margin: 0px;
+   height: 15px;
+   text-align: center;
+   background: $darkGray;
+   margin-top: 15px;
+   @include border-top-left-radius(6px);
+   @include border-top-right-radius(6px);
+ }
 }
 
 .trailer {
@@ -689,6 +847,11 @@ body {
       top: 0px;
     }
 
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
     .title {
       margin: 0px;
       font-size: 12px;
@@ -698,6 +861,10 @@ body {
 
     &:hover {
       color: $blue;
+
+      a{
+        color: $blue;
+      }
     }
 
     &.add:hover {

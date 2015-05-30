@@ -1,26 +1,26 @@
 <div class="summary text-center">
-  <h3>{{ movie.trackName }}</h3>
+  <h3>{{ ::movie.trackName }}</h3>
   <header>
     <div class="rating">
-      <i class="fa fa-star"></i> {{ movie.index }} <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i> {{ ::movie.index }} <i class="fa fa-star"></i>
     </div>
     <div class="visible-lg visible-md">
       <div class="data">
         <i class="fa fa-calendar"></i> <strong> | Release Date:</strong>
         <br/>
-        <span>{{ movie.releaseDate | date:'longDate' }}</span>
+        <span>{{ ::movie.releaseDate | date:'longDate' }}</span>
       </div>
       <div class="data">
         <i class="fa fa-tag"></i> <strong> | Primary genre:</strong>
         <br/>
-        <span>{{ movie.primaryGenreName }}</span>
+        <span>{{ ::movie.primaryGenreName }}</span>
       </div>
     </div>
   </header>
   <ul class="links">
-    <li class="color-effect" ng-click="movie.viewMode = !movie.viewMode">
-      <div class="fa fa-picture-o"></div>
-       <div class="title">Poster</div>
+    <li ng-click="movie.viewMode = !movie.viewMode;">
+      <div class="fa fa-picture-o color-effect"></div>
+      <div class="title">Poster</div>
     </li>
     <li ng-click="$state.go('main.movie.trailer', {'name': movie.urlAlias, 'originBookmark': movie.originBookmark})">
         <div class="icon fa fa-play-circle color-effect" aria-hidden="true"></div>
@@ -34,7 +34,7 @@
       <div class="icon fa fa-bookmark color-effect" aria-hidden="true"></div>
       <div class="title">Add to bookmarks</div>
     </li>
-    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movies.bookmarksService.removeFromBookmarks(movie)">
+    <li class="remove" ng-if="localStorageService.isSupported && movie.isBookmarked" ng-click="movies.bookmarksService.removeFromBookmarks(movie); $stateParams.moviesCount = $stateParams.moviesCount -1">
       <div class="icon fa fa-trash-o color-effect" aria-hidden="true"></div>
       <div class="title">Remove from bookmarks</div>
     </li>

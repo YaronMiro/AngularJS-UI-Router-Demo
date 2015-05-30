@@ -52,7 +52,7 @@ angular
      *  Return the target movie {*}.
      */
     var gettingSelectedMovie = function(moviesData, $stateParams, $filter){
-      var selectedMovie = $filter('filter')(moviesData, {urlAlias: $stateParams.name});
+      var selectedMovie = $filter('filter')(moviesData.movies, {urlAlias: $stateParams.name});
       return selectedMovie[0];
     };
 
@@ -106,6 +106,11 @@ angular
           moviesData: function(Movies){
             return Movies.gettingMovies();
           }
+        },
+        // Example of adding custom data (hardcoded) for applying
+        // conditional css class.
+        data: {
+          fixedPosition: true
         }
        })
 
@@ -132,13 +137,33 @@ angular
           }
         },
         resolve: {
-          moviesData: function(Bookmarks){
-            return Bookmarks.getMovies();
+          moviesData: function(Bookmarks, $stateParams){
+            // The resolve object automatically resolved it self as a "promise".
+            // Usually you will call a function that just returns a "promise"
+            // object, But on this case we want to add extra logic before we
+            // resolve. That's why it's done manually.
+            return Bookmarks.getMovies().then(function(movies) {
+              $stateParams.moviesCount = movies.length;
+              return movies;
+            });
           }
+        },
+        // Callback function been executed immediately after a successful
+        // "state" transition. In this example we make sure we are scrolling to
+        // the top of the page.
+        onEnter: function($document) {
+            var element = angular.element(document.getElementById('myApp'));
+            $document.scrollToElementAnimated(element);
+          },
+        // Example of adding custom data (hardcoded) for applying
+        // conditional css class.
+        data: {
+          fixedPosition: true,
+          numberOfMoviesToCompare: 3
         }
        })
 
-      // Movies state.
+      // Movie state.
       .state('main.movie',{
         url: 'movie/{name}?originBookmark',
         abstract: true,
@@ -162,12 +187,11 @@ angular
           }
         }
       })
-
       // Single movie state.
       .state('main.movie.movieInfo',{
         // The "^" character excludes the parent prefix url
         // ("movie/{name}?originBookmark") format from this child state url, it
-        // will become only as "movie/info/{name}?originBookmark".
+        // will transform to "movie/info/{name}?originBookmark".
         url: '^/movie/info/{name}?originBookmark',
         views: {
           'content@': {
@@ -211,7 +235,7 @@ angular
         }
       })
   }])
-  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', 'Bookmarks', function ($rootScope, $state, $stateParams, localStorageService, Bookmarks) {
+  .run([ '$rootScope', '$state', '$stateParams', 'localStorageService', function ($rootScope, $state, $stateParams, localStorageService) {
     // It's very handy to add references to $state and $stateParams to the
     // $rootScope so that you can access them from any scope within your
     // applications.
@@ -223,6 +247,9 @@ angular
     $rootScope.console = function(data) {
       return console.log(data);
     };
+
+    //Debug variable
+    $rootScope.debug = false;
 
     // Access local storage service from any scope.
     $rootScope.localStorageService = localStorageService;

@@ -60,6 +60,27 @@ $effect: ease-in;
 }
 
 // Color change transition
+@mixin responsive-width {
+  width: $container-lg;
+
+  @include medium-desktop-only {
+    width: $container-md;
+  }
+
+  @include tablet-only {
+    width: $container-sm;
+  }
+
+  @include mobile-only {
+    width: $ContainerPhone;
+  }
+
+  @include phone-only {
+    width: 100%;
+  }
+}
+
+// Color change transition
 @mixin border($height) {
   background: $blue;
   height: $height;
@@ -152,6 +173,13 @@ $effect: ease-in;
 // Not for phone width only.
 @mixin exclude-phone-only {
   @media (min-width: $screen-xs-max)  {
+    @content;
+  }
+}
+
+// Not for phone to mobile width only.
+@mixin phone-to-tablet-only {
+  @media (max-width: $screen-sm-max)  {
     @content;
   }
 }
