@@ -1,4 +1,4 @@
-<div movie="movie" scroll-to-movie class="preview" ng-click="movie.viewMode.value = !movie.viewMode.value">
+<div movie="movie" scroll-to-movie class="preview" ng-click="movie.viewMode = !movie.viewMode">
   <img ng-src="{{ movie.artworkUrl600 }}" alt="{{ movie.trackName }}-poster image"/>
   <div title="popularity ranking" class="popularity-ranking">{{ movie.index }}</div>
   <div title="Bookmarked movie" ng-hide="$state.is('main.bookmarks') || !localStorageService.isSupported || !movie.isBookmarked" class="bookmarked-icon">
